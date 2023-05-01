@@ -1,0 +1,60 @@
+<body>
+	
+	<div class="limiter">
+<div class="container-login100">
+    <div class="wrap-login100">
+        <div class="login100-form-title" style="background-image: url(../assets/images/Make.jpeg);">
+            <span class="login100-form-title-1">
+                Sign In
+            </span>
+        </div>
+<!--             <form class="login100-form validate-form"> 
+                <div class="form-group"> 
+                    <label >Nom Utilisateur :</label> 
+                    <input type="text" name="username" class="form-control" [(ngModel)]="user.username" > 
+                </div> 
+
+                <div class="form-group"> 
+                    <label >Mot de passe :</label> 
+                    <input type="password" name="password" [(ngModel)]="user.password" class="form-control"> 
+                </div> 
+
+                <div class="row justify-content-md-center"> 
+                    <button type="button" (click)="onLoggedin()" class="btn btn-success">Connexion</button> 
+                </div> 
+            </form>  -->
+
+
+            <form class="login100-form validate-form">
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                    <span class="label-input100">Username</span>
+                    <input type="text" name="username" class="form-control" [(ngModel)]="user.username"  placeholder="Enter username"> 
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+                    <span class="label-input100">Password</span>
+                    <input type="password" name="password" [(ngModel)]="user.password" class="form-control" placeholder="Enter password">
+<!--                     <input class="input100" type="password" name="pass" placeholder="Enter password">
+ -->                    <span class="focus-input100"></span>
+                </div>
+
+                <div>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button type="button" (click)="onLoggedin()" class="login100-form-btn">Connexion</button> 
+                </div>
+
+                <div class="row justify-content-md-center"> 
+                    <div class="col-md-4"> 
+                        <div class="alert alert-danger" *ngIf="erreur==1"> 
+                            <strong>login ou mot de passe erronés..</strong> 
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div> 
+</div>
+</div>
+</body>

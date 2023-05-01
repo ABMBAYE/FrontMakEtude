@@ -1,0 +1,12 @@
+.upSize{
+    width: 750px;
+    right: 100px;
+    margin: auto;
+}
+form{
+    font-family: 'Varela Round', sans-serif;
+}
+
+.invalidMessage{
+    color: bisque;
+}

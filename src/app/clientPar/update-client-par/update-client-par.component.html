@@ -1,0 +1,200 @@
+<div class="container">
+    <div class="modal-dialog">
+        <div class="modal-content center upSize">
+            <form [formGroup]="registerForm" (ngSubmit)="validChamps()" style="background-color: #334CFF;">
+                <div class="modal-header text-center">
+                    <h1 class="modal-title w-100" style="color: #dadde2;">Modifier les informations</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label style="color: white;">Prénom(s)</label>
+                            <!-- <input type="text" [(ngModel)]="newClientPar.prenom" name="prenom" class="form-control"
+                            placeholder="Prénom(s)" required="required"> -->
+                            <input type="text" [(ngModel)]="currentClient.prenom" formControlName="prenom"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }"
+                                placeholder="Préom(s)" />
+                            <div *ngIf="submitted && f['prenom'].errors" class="invalid-feedback">
+                                <div *ngIf="f['prenom'].errors?.['required'] || f['prenom'].errors?.['null']"
+                                    style="color: bisque;"><strong>Champ Obligatoire</strong></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label style="color: white;">Nom</label>
+                            <!-- <input type="text" [(ngModel)]="newClientPar.nom" name="nom" class="form-control"
+                                placeholder="Nom" required="required"> -->
+                            <input type="text" [(ngModel)]="currentClient.nom" formControlName="nom"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }"
+                                placeholder="Nom" />
+                            <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
+                                <div *ngIf="f['nom'].errors?.['required'] || f['nom'].errors?.['null']"
+                                    style="color: bisque;"><strong>Champ Obligatoire</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label style="color: white;">Adresse Mail</label>
+                            <!-- <input type="text" [(ngModel)]="newClientPar.adresseMail" name="adresseMail"
+                                class="form-control" placeholder="Adresse Mail" required="required"> -->
+                            <input type="text" [(ngModel)]="currentClient.adresseMail" formControlName="adresseMail"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f['adresseMail'].errors }"
+                                placeholder="exemple@gmail.com" />
+                            <div *ngIf="submitted && f['adresseMail'].errors" class="invalid-feedback">
+                                <div *ngIf="f['adresseMail'].errors?.['required'] || f['adresseMail'].errors?.['pattern']"
+                                    style="color: bisque;"><strong>Le champ est vide ou le format n'est pas
+                                        respesté.</strong></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label style="color: white;">Mot De Passe</label>
+                            <!-- <input type="text" [(ngModel)]="newClientPar.motDePasse" name="motDePasse"
+                                class="form-control" placeholder="Mot De Passe" required="required"> -->
+                            <input type="text" [(ngModel)]="currentClient.motDePasse" formControlName="motDePasse"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f['motDePasse'].errors }"
+                                placeholder="Mot De Passe" />
+                            <div *ngIf="submitted && f['motDePasse'].errors" class="invalid-feedback">
+                                <div *ngIf="f['motDePasse'].errors?.['required'] || f['motDePasse'].errors?.['null']"
+                                    style="color: bisque;"><strong>Champ Obligatoire</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label style="color: white;">Numéro Dossier</label>
+                            <!-- <input type="text" [(ngModel)]="newClientPar.numDossier" name="numDossier"
+                                class="form-control" placeholder="Numéro Dossier" required="required"> -->
+                            <input type="text" [(ngModel)]="currentClient.numDossier" formControlName="numDossier"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f['numDossier'].errors }"
+                                placeholder="SN00-12345" />
+                            <div *ngIf="submitted && f['numDossier'].errors" class="invalid-feedback">
+                                <div *ngIf="f['numDossier'].errors?.['required'] || f['numDossier'].errors?.['pattern']"
+                                    style="color: bisque;"><strong>Le champ est vide ou le format n'est pas
+                                        respesté.</strong></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label style="color: white;">Téléphone</label>
+                            <!-- <input type="text" [(ngModel)]="newClientPar.numTel" name="numTel" class="form-control"
+                                placeholder="Téléphone" required="required"> -->
+                            <input type="text" [(ngModel)]="currentClient.numTel" formControlName="numTel"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f['numTel'].errors }"
+                                placeholder="Téléphone" />
+                            <div *ngIf="submitted && f['numTel'].errors" class="invalid-feedback">
+                                <div *ngIf="f['numTel'].errors?.['required'] || f['numTel'].errors?.['pattern']"
+                                    style="color: bisque;"><strong>Le champ est vide ou le format n'est pas
+                                        respesté.</strong> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label style="color: white;">Compte CF</label>
+                            <!-- <select class="col-md-6" [(ngModel)]="newClientPar.compteCF" name="compteCF"
+                                class="form-control">
+                                <option *ngFor="let s of listBol" [value]="s.idBool">{{s.boolValue}}</option>
+                            </select> -->
+                            <select class="col-md-6" [(ngModel)]="currentClient.compteCF" formControlName="compteCF"
+                                [ngClass]="{ 'is-invalid': submitted && f['compteCF'].errors }" class="form-control">
+                                <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
+                            </select>
+                            <div *ngIf="submitted && f['compteCF'].errors" class="invalid-feedback">
+                                <div *ngIf="f['compteCF'].errors?.['required']" style="color: bisque;"><strong>Champ
+                                        Obligatoire.</strong> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label style="color: white;">Inscription</label>
+                            <!-- <select class="col-md-6" [(ngModel)]="newClientPar.inscription" name="inscription"
+                                (change)="charger(newClientPar)" class="form-control">
+                                <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
+                            </select> -->
+                            <select class="col-md-6" [(ngModel)]="currentClient.inscription"
+                                formControlName="inscription"
+                                [ngClass]="{ 'is-invalid': submitted && f['inscription'].errors }" class="form-control">
+                                <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
+                            </select>
+                            <div *ngIf="submitted && f['inscription'].errors" class="invalid-feedback">
+                                <div *ngIf="f['inscription'].errors?.['required']" style="color: bisque;"><strong>Champ
+                                        Obligatoire.</strong> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label style="color: white;">Formulation</label>
+                            <select class="col-md-6" [(ngModel)]="currentClient.formulation"
+                                formControlName="formulation"
+                                [ngClass]="{ 'is-invalid': submitted && f['formulation'].errors }" class="form-control">
+                                <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
+                            </select>
+                            <div *ngIf="submitted && f['formulation'].errors" class="invalid-feedback">
+                                <div *ngIf="f['formulation'].errors?.['required']" style="color: bisque;"><strong>Champ
+                                        Obligatoire.</strong> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label style="color: white;">Confirmation</label>
+                            <select class="col-md-6" [(ngModel)]="currentClient.confirmation"
+                                formControlName="confirmation"
+                                [ngClass]="{ 'is-invalid': submitted && f['confirmation'].errors }"
+                                class="form-control">
+                                <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
+                            </select>
+                            <div *ngIf="submitted && f['confirmation'].errors" class="invalid-feedback">
+                                <div *ngIf="f['confirmation'].errors?.['required']" style="color: bisque;"><strong>Champ
+                                        Obligatoire.</strong> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label style="color: white;">Attente</label>
+                            <input type="number" max="20" min="0" [(ngModel)]="currentClient.attente" formControlName="attente"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f['attente'].errors }"
+                                placeholder="Nombre d'attente" />
+                            <div *ngIf="submitted && f['attente'].errors" class="invalid-feedback">
+                                <div *ngIf="f['attente'].errors?.['required']" style="color: bisque;"><strong>Champ
+                                        Obligatoire.</strong> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: white;">Refus</label>
+                            <input type="number" max="20" min="0" [(ngModel)]="currentClient.refus" formControlName="refus"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f['refus'].errors }"
+                                placeholder="Nombre de refus" />
+                            <div *ngIf="submitted && f['refus'].errors" class="invalid-feedback">
+                                <div *ngIf="f['refus'].errors?.['required']" style="color: bisque;"><strong>Champ
+                                        Obligatoire.</strong> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label style="color: white;">Acceptation</label>
+                            <input type="number" max="20" min="0" [(ngModel)]="currentClient.accepte" formControlName="accepte"
+                                class="form-control" [ngClass]="{ 'is-invalid': submitted && f['accepte'].errors }"
+                                placeholder="Nombre d'acceptation" />
+                            <div *ngIf="submitted && f['accepte'].errors" class="invalid-feedback">
+                                <div *ngIf="f['accepte'].errors?.['required']" style="color: bisque;"><strong>Champ
+                                        Obligatoire.</strong> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal"
+                        routerLink="/clientsPar">Close</button>
+                    <button type="submit" (click)="updateClientPar()" class="btn btn-success">Modifier</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
