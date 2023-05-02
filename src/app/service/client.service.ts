@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Client } from '../model/client.model';
 import { BoolList } from '../model/boolean.model';
+import {Year} from "../model/year.model";
 
 
 const httpOptions = {
@@ -26,7 +27,7 @@ export class ClientService {
       }
     ]
    }
-   
+
   bools():BoolList[]{
     return this.listBol;
   }
@@ -34,25 +35,32 @@ export class ClientService {
     return this.http.get<Client[]>(this.apiURL);
   }
 
-  ajouterClient(client: Client): Observable<Client> { 
-    return this.http.post<Client>(this.apiURL, client, httpOptions); 
+  ajouterClient(client: Client): Observable<Client> {
+    return this.http.post<Client>(this.apiURL, client, httpOptions);
   }
 
-  supprimerClient(idClient : number) { 
-    const url = `${this.apiURL}/${idClient}`; 
-    return this.http.delete(url, httpOptions); 
+  supprimerClient(idClient : number) {
+    const url = `${this.apiURL}/${idClient}`;
+    return this.http.delete(url, httpOptions);
   }
 
-  consulterClient(idClient: number): Observable<Client> { 
-    const url = `${this.apiURL}/${idClient}`; 
-    return this.http.get<Client>(url); 
+  consulterClient(idClient: number): Observable<Client> {
+    const url = `${this.apiURL}/${idClient}`;
+    return this.http.get<Client>(url);
   }
 
-  updateClient(client :Client) : Observable<Client> { 
+  updateClient(client :Client) : Observable<Client> {
     return this.http.put<Client>(this.apiURL, client, httpOptions);
   }
 
-  rechercherParNom(nom: string):Observable< Client[]> { 
-    const url = `${this.apiURL}/clientByName/${nom}`; 
-    return this.http.get<Client[]>(url); }
+  rechercherParNom(nom: string):Observable< Client[]> {
+    const url = `${this.apiURL}/clientByName/${nom}`;
+    return this.http.get<Client[]>(url);
+  }
+
+  listYears():Observable<Year[]>{
+    return this.http.get<Year[]>(this.apiURL+"/year");
+  }
 }
+
+

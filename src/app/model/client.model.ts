@@ -1,5 +1,7 @@
-export class Client { 
-    idClient!: number; 
+import {Year} from "./year.model";
+
+export class Client {
+    idClient!: number;
     prenom?: string;
     nom?: string;
     identifiant?: string;
@@ -12,4 +14,5 @@ export class Client {
     acceptation?: string;
     refus?: string;
     dateEntretien? : Date;
+    year? : Year;
 }

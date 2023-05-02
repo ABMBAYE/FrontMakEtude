@@ -14,6 +14,17 @@
                     <h1 class="modal-title w-100" style="color: #dadde2;">Ajouter les informations</h1>
                 </div>
                 <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Année</label>
+                      <input type="text" [(ngModel)]="newClient.year" formControlName="year"
+                             class="form-control" placeholder="Année"/>
+                      <div *ngIf="submitted && f['year'].errors" class="invalid-feedback">
+                        <div *ngIf="f['year'].errors?.['required'] || f['year'].errors?.['null']"
+                             style="color: bisque;"><strong>Champ obligatoire.</strong></div>
+                      </div>
+                    </div>
+                  </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label>Prénom(s)</label>
@@ -120,7 +131,7 @@
                         <div class="col-md-6">
                             <label>Date d'Entretien</label>
                             <input type="date" [disabled]="disableDate" [(ngModel)]="newClient.dateEntretien" formControlName="dateEntretien"
-                            class="form-control" placeholder="Date d'Entretien" /> 
+                            class="form-control" placeholder="Date d'Entretien" />
 
                         </div>
                         <div class="col-md-6">

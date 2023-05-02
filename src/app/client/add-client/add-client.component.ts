@@ -4,6 +4,7 @@ import { Client } from '../../model/client.model';
 import { ClientService } from '../../service/client.service';
 import { BoolList } from '../../model/boolean.model';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {Year} from "../../model/year.model";
 
 @Component({
   selector: 'app-add-client',
@@ -18,6 +19,10 @@ export class AddClientComponent implements OnInit {
   submitted = false;
   view = false;
   disableDate: boolean = false;
+
+  years! : Year[];
+  newIdYear! : number;
+  newYear! : Year;
 
 
   constructor(private clientService: ClientService,
@@ -40,15 +45,21 @@ export class AddClientComponent implements OnInit {
       entretien: ['', Validators.required],
 
       acceptation: ['', Validators.required],
-      refus: ['', Validators.required]
+      refus: ['', Validators.required],
+
+      year: ['', Validators.required]
+
     });
   }
 
   ngOnInit() {
-  }
+    this.clientService.listYears(). subscribe(year => {
+      this.years = year;
+  });
+}
 
-  get f() { 
-    return this.registerForm.controls; 
+  get f() {
+    return this.registerForm.controls;
   }
 
   validChamps(): boolean {
@@ -58,9 +69,10 @@ export class AddClientComponent implements OnInit {
     }else{
       return true;
     }
-  } 
+  }
 
   addClient() {
+    this.newClient.year = this.years.find(y => y.idYear == this.newIdYear)!;
     if(this.validChamps()){
       this.clientService.ajouterClient(this.newClient).subscribe(client => {
         this.router.navigate(['clients']);

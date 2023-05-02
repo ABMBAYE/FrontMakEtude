@@ -17,6 +17,7 @@ import { AddClientCanadaComponent } from './clientCanada/add-client-canada/add-c
 import { UpdateClientCanadaComponent } from './clientCanada/update-client-canada/update-client-canada.component';
 import { ClientsCanadaComponent } from './clientCanada/clients-canada/clients-canada.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { YearComponent } from './year/year.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     AddClientCanadaComponent,
     UpdateClientCanadaComponent,
     ClientsCanadaComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    YearComponent
     ],
   imports: [
     BrowserModule,
