@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { BoolList } from 'src/app/model/boolean.model';
 import { ClientPar } from 'src/app/model/clientpar.model';
 import { ClientParService } from 'src/app/service/client-par.service';
+import {Year} from "../../model/year.model";
+import {YearService} from "../../service/year.service";
 
 @Component({
   selector: 'app-add-client-par',
@@ -16,8 +18,9 @@ export class AddClientParComponent implements OnInit {
   submitted = false;
   registerForm!: FormGroup;
   showDiv = false;
+  years!: Year[];
 
-  constructor(private clientService: ClientParService,
+  constructor(private clientService: ClientParService, private yearService : YearService,
     private router: Router, private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       prenom: ['', Validators.required],
@@ -36,14 +39,21 @@ export class AddClientParComponent implements OnInit {
 
       attente: ['', Validators.required],
       refus: ['', Validators.required],
-      accepte: ['', Validators.required]
+      accepte: ['', Validators.required],
+
+      yearId: ['']
 
     });
     this.listBol = clientService.bools();
   }
 
   ngOnInit() {
-
+    this.yearService.listeYears().subscribe(years => {
+      this.years = years;
+      if (years.length > 0) {
+        this.newClientPar.year = years[0];
+      }
+    });
   }
   get f() { return this.registerForm.controls; }
 
@@ -58,7 +68,7 @@ export class AddClientParComponent implements OnInit {
 
   addClientPar() {
     if (this.validChamps()) {
-      this.clientService.ajouterClientPar(this.newClientPar).subscribe(client => {
+      this.clientService.ajouterClientPar(this.registerForm.value).subscribe(client => {
         this.router.navigate(['clientsPar']);
       });
     }

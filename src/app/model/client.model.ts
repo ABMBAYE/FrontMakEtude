@@ -14,5 +14,5 @@ export class Client {
     acceptation?: string;
     refus?: string;
     dateEntretien? : Date;
-    year? : Year;
+    year = new Year();
 }

@@ -5,6 +5,7 @@ import { ClientService } from '../../service/client.service';
 import { BoolList } from '../../model/boolean.model';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {Year} from "../../model/year.model";
+import {YearService} from "../../service/year.service";
 
 @Component({
   selector: 'app-add-client',
@@ -20,12 +21,12 @@ export class AddClientComponent implements OnInit {
   view = false;
   disableDate: boolean = false;
 
-  years! : Year[];
+  years!: Year[];
   newIdYear! : number;
   newYear! : Year;
 
 
-  constructor(private clientService: ClientService,
+  constructor(private clientService: ClientService, private yearService : YearService,
     private router: Router, private formBuilder: FormBuilder) {
     this.listBol = clientService.bools();
 
@@ -46,17 +47,18 @@ export class AddClientComponent implements OnInit {
 
       acceptation: ['', Validators.required],
       refus: ['', Validators.required],
-
-      year: ['', Validators.required]
-
+      yearId: ['']
     });
   }
 
   ngOnInit() {
-    this.clientService.listYears(). subscribe(year => {
-      this.years = year;
-  });
-}
+    this.yearService.listeYears().subscribe(years => {
+      this.years = years;
+      if (years.length > 0) {
+        this.newClient.year = years[0];
+      }
+    });
+  }
 
   get f() {
     return this.registerForm.controls;
@@ -72,9 +74,8 @@ export class AddClientComponent implements OnInit {
   }
 
   addClient() {
-    this.newClient.year = this.years.find(y => y.idYear == this.newIdYear)!;
     if(this.validChamps()){
-      this.clientService.ajouterClient(this.newClient).subscribe(client => {
+      this.clientService.ajouterClient(this.registerForm.value).subscribe(client => {
         this.router.navigate(['clients']);
       });
     }
@@ -101,13 +102,4 @@ export class AddClientComponent implements OnInit {
     client.acceptation = '0';
     client.refus = '0';
   }
-
-  formateDateToday(){
-    let date=new Date();
-    let day =date.toLocaleDateString().slice(0,2);
-    let month = date.toLocaleDateString().slice(3,5);
-    let year= date.toLocaleDateString().slice(6);
-    return year+"-"+month+"-"+day ;
-    //2022-08-10
-  }
 }

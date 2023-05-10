@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BoolList } from '../model/boolean.model';
 import { ClientPar } from '../model/clientpar.model';
 import { Observable } from 'rxjs';
+import {FormGroup} from "@angular/forms";
+import {Client} from "../model/client.model";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -25,30 +27,29 @@ export class ClientParService {
       }
     ]
    }
-   
+
   bools():BoolList[]{
     return this.listBol;
   }
 
   listeClientPar(): Observable<ClientPar[]> {
-    return this.http.get<ClientPar[]>(this.apiURL);
+    return this.http.get<ClientPar[]>(this.apiURL+"/clients");
   }
 
-  ajouterClientPar(client: ClientPar): Observable<ClientPar> { 
-    return this.http.post<ClientPar>(this.apiURL, client, httpOptions); 
+  ajouterClientPar(form: FormGroup): Observable<ClientPar> {
+    return this.http.post<ClientPar>(`${this.apiURL}/clients`, form, httpOptions);
+  }
+  supprimerClientPar(idClient : number) {
+    const url = `${this.apiURL}/clients/${idClient}`;
+    return this.http.delete(url, httpOptions);
   }
 
-  supprimerClientPar(idClient : number) { 
-    const url = `${this.apiURL}/${idClient}`; 
-    return this.http.delete(url, httpOptions); 
+  consulterClientPar(idClient: number): Observable<ClientPar> {
+    const url = `${this.apiURL}/clients/${idClient}`;
+    return this.http.get<ClientPar>(url);
   }
 
-  consulterClientPar(idClient: number): Observable<ClientPar> { 
-    const url = `${this.apiURL}/${idClient}`; 
-    return this.http.get<ClientPar>(url); 
-  }
-
-  updateClientPar(client :ClientPar) : Observable<ClientPar> { 
-    return this.http.put<ClientPar>(this.apiURL, client, httpOptions);
+  updateClientPar(client :ClientPar) : Observable<ClientPar> {
+    return this.http.put<ClientPar>(`${this.apiURL}/clients`, client, httpOptions);
   }
 }

@@ -17,7 +17,12 @@ import { AddClientCanadaComponent } from './clientCanada/add-client-canada/add-c
 import { UpdateClientCanadaComponent } from './clientCanada/update-client-canada/update-client-canada.component';
 import { ClientsCanadaComponent } from './clientCanada/clients-canada/clients-canada.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { YearComponent } from './year/year.component';
+import { AddYearComponent } from './years/add-year/add-year.component';
+import { YearsComponent } from './years/years/years.component';
+import { UpdateYearComponent } from './years/update-year/update-year.component';
+import { AddGerantComponent } from './gerant/add-gerant/add-gerant.component';
+import { UpdateGerantComponent } from './gerant/update-gerant/update-gerant.component';
+import { GerantsComponent } from './gerant/gerants/gerants.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { YearComponent } from './year/year.component';
     UpdateClientCanadaComponent,
     ClientsCanadaComponent,
     ForbiddenComponent,
-    YearComponent
+    AddYearComponent,
+    YearsComponent,
+    UpdateYearComponent,
+    AddGerantComponent,
+    UpdateGerantComponent,
+    GerantsComponent
     ],
   imports: [
     BrowserModule,

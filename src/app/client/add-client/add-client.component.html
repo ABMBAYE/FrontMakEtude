@@ -17,12 +17,9 @@
                   <div class="row">
                     <div class="col-md-6">
                       <label>Année</label>
-                      <input type="text" [(ngModel)]="newClient.year" formControlName="year"
-                             class="form-control" placeholder="Année"/>
-                      <div *ngIf="submitted && f['year'].errors" class="invalid-feedback">
-                        <div *ngIf="f['year'].errors?.['required'] || f['year'].errors?.['null']"
-                             style="color: bisque;"><strong>Champ obligatoire.</strong></div>
-                      </div>
+                      <select formControlName ="yearId" [(ngModel)]="newClient.year" class="form-control">
+                        <option *ngFor="let year of years" [value]="year.idYear">{{ year.year }}</option>
+                      </select>
                     </div>
                   </div>
                     <div class="row">

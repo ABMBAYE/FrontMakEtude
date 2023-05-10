@@ -273,7 +273,7 @@ table.table .avatar {
     font-weight: normal;
 }
 
-.modal-confirm {		
+.modal-confirm {
 	color: #636363;
 	width: 400px;
 }
@@ -285,7 +285,7 @@ table.table .avatar {
 	font-size: 14px;
 }
 .modal-confirm .modal-header {
-	border-bottom: none;   
+	border-bottom: none;
 	position: relative;
 }
 .modal-confirm h4 {
@@ -303,14 +303,14 @@ table.table .avatar {
 }
 .modal-confirm .modal-footer {
 	border: none;
-	text-align: center;		
+	text-align: center;
 	border-radius: 5px;
 	font-size: 13px;
 	padding: 10px 15px 25px;
 }
 .modal-confirm .modal-footer a {
 	color: #999;
-}		
+}
 .modal-confirm .icon-box {
 	width: 80px;
 	height: 80px;
@@ -350,4 +350,60 @@ table.table .avatar {
 }
 .modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
 	background: #ee3535;
+}
+
+.table-filter .filter-group {
+  float: right;
+  margin-left: 15px;
+}
+.table-filter input, .table-filter select {
+  height: 34px;
+  border-radius: 3px;
+  border-color: #ddd;
+  box-shadow: none;
+}
+.table-filter {
+  padding: 5px 0 15px;
+  border-bottom: 1px solid #e9e9e9;
+  margin-bottom: 5px;
+}
+.table-filter .btn {
+  height: 34px;
+}
+.table-filter label {
+  font-weight: normal;
+  margin-left: 10px;
+}
+.table-filter select, .table-filter input {
+  display: inline-block;
+  margin-left: 5px;
+}
+.table-filter input {
+  width: 200px;
+  display: inline-block;
+}
+.filter-group select.form-control {
+  width: 110px;
+}
+.filter-icon {
+  float: right;
+  margin-top: 7px;
+}
+.filter-icon i {
+  font-size: 18px;
+  opacity: 0.7;
+}
+
+.add-new {
+  float: right;
+  height: 40px;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: none;
+  min-width: 100px;
+  border-radius: 50px;
+  line-height: 15px;
+}
+.add-new i {
+  margin-right: 4px;
 }

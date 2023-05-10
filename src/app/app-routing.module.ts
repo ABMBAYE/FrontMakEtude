@@ -14,6 +14,12 @@ import { AddClientCanadaComponent } from './clientCanada/add-client-canada/add-c
 import { UpdateClientCanadaComponent } from './clientCanada/update-client-canada/update-client-canada.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { ClientGuard } from './client.guard';
+import {YearsComponent} from "./years/years/years.component";
+import {AddYearComponent} from "./years/add-year/add-year.component";
+import {UpdateYearComponent} from "./years/update-year/update-year.component";
+import {AddGerantComponent} from "./gerant/add-gerant/add-gerant.component";
+import {GerantsComponent} from "./gerant/gerants/gerants.component";
+import {UpdateGerantComponent} from "./gerant/update-gerant/update-gerant.component";
 
 const routes: Routes = [
   {path: "clients", component : ClientsComponent},
@@ -30,6 +36,17 @@ const routes: Routes = [
   {path: "updateClientCanada/:idClientCan", component : UpdateClientCanadaComponent}, */
 
   {path: "login", component : LoginComponent},
+
+  {path: "addYear", component : AddYearComponent},
+  {path: "updateYear/:idYear", component : UpdateYearComponent},
+  {path: "years", component : YearsComponent},
+
+  {path: "addGerant", component : AddGerantComponent},
+  {path: "updateGerant/:idGerant", component : UpdateGerantComponent},
+  {path: "gerants", component : GerantsComponent},
+
+
+
   {path: "accueil", component : AccueilComponent},
 
   {path: 'app-forbidden', component: ForbiddenComponent},

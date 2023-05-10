@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BoolList } from 'src/app/model/boolean.model';
 import { ClientPar } from 'src/app/model/clientpar.model';
 import { ClientParService } from 'src/app/service/client-par.service';
+import {Year} from "../../model/year.model";
+import {YearService} from "../../service/year.service";
 
 @Component({
   selector: 'app-update-client-par',
@@ -14,10 +16,14 @@ export class UpdateClientParComponent implements OnInit {
   currentClient = new ClientPar();
   listBol: BoolList[];
   updatedId!: number;
+
+  updatedIdYear! : number;
+
   submitted = false;
   registerForm!: FormGroup;
+  years!: Year[];
 
-  constructor(private clientService: ClientParService, private activatedRoute: ActivatedRoute,
+  constructor(private clientService: ClientParService, private yearService : YearService, private activatedRoute: ActivatedRoute,
     private router: Router, private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       prenom: ['', Validators.required],
@@ -26,7 +32,7 @@ export class UpdateClientParComponent implements OnInit {
       motDePasse: ['', Validators.required],
       adresseMail: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@gmail.com$/)]],
 
-      numDossier: ['', [Validators.required, Validators.pattern(/^(SN\d{2}-)\d{5}$/)]],
+      numDossier: ['', [Validators.required, Validators.pattern(/\d{7}$/)]],
       numTel: ['', [Validators.required, Validators.pattern(/^(77|78|70|76)\s\d{3}\s\d{2}\s\d{2}$/)]],
 
       compteCF: ['', Validators.required],
@@ -36,18 +42,34 @@ export class UpdateClientParComponent implements OnInit {
 
       attente: ['', Validators.required],
       refus: ['', Validators.required],
-      accepte: ['', Validators.required]
+      accepte: ['', Validators.required],
+
+      yearId: ['']
     });
     this.listBol = clientService.bools();
   }
 
   ngOnInit(): void {
-    this.clientService.consulterClientPar(this.activatedRoute.snapshot.params['idClientPar']).subscribe(client => {
+    /*this.clientService.consulterClientPar(this.activatedRoute.snapshot.params['idClientPar']).subscribe(client => {
       this.currentClient = client;
     });
-    this.updatedId = this.currentClient.idClientPar;
+    this.updatedId = this.currentClient.idClientPar;*/
+
+    this.chargerYears();
+    this.clientService.consulterClientPar(this.activatedRoute.snapshot.params['idClientPar']).subscribe(
+      clientPar =>{
+        this.currentClient = clientPar;
+        this.updatedIdYear = this.currentClient.year.idYear;
+      });
   }
-  get f() { return this.registerForm.controls; }
+  chargerYears(){
+    this.yearService.listeYears().subscribe(year => {
+      this.years = year;
+    });
+  }
+  get f() {
+    return this.registerForm.controls;
+  }
 
 
   validChamps(): boolean {
@@ -60,6 +82,8 @@ export class UpdateClientParComponent implements OnInit {
   }
 
   updateClientPar() {
+    this.currentClient.year = this.years.find(y => y.idYear == this.updatedIdYear)!;
+
     if (this.validChamps()) {
       this.clientService.updateClientPar(this.currentClient).subscribe(client => {
         this.router.navigate(['clientsPar']);

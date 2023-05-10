@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    
+
         <br>
         <div class="table-responsive">
             <div class="table-wrapper">
@@ -30,14 +30,36 @@
                             <h1><b>Suivi des comptes</b></h1>
                         </div>
                         <div class="col-sm-3">
-                            <a class="btn btn-success" data-toggle="modal" routerLink="/addClientPar"><b><i
-                                        class="material-icons">&#xE147;</i> <span>Ajouter</span></b></a>
+                          <!--<a class="btn btn-success" data-toggle="modal" routerLink="/addClientPar"><b><i class="material-icons">&#xE147;</i> <span>Ajouter</span></b></a>-->
+                          <button type="button" class="btn btn-success add-new" data-toggle="modal" routerLink="/addClientPar"><i class="fa fa-plus"></i> Add New Client</button>
+
                         </div>
                     </div>
                 </div>
+              <div class="table-filter">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <div class="filter-group">
+                      <label>Name</label>
+                      <input type="text" class="form-control">
+                      <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </div>
+
+                    <div class="filter-group">
+                      <label>Année</label>
+                      <select class="form-control">
+                        <option>All</option>
+                        <option *ngFor="let year of years" [value]="year.year">{{year.year}}</option>
+                      </select>
+                    </div>
+                    <span class="filter-icon"><i class="fa fa-filter"></i></span>
+                  </div>
+                </div>
+              </div>
                 <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr style="background-color: #334CFF; color: white; text-align: center;">
+                            <th>Année</th>
                             <th>Prénom(s)</th>
                             <th>Nom</th>
                             <th>Adresse Mail</th>
@@ -56,6 +78,7 @@
                     </thead>
                     <tbody *ngFor="let client of clientsPar">
                         <tr style="text-align: center;">
+                            <td style="background-color: #334CFF; color: white">{{client.year.year}}</td>
                             <td>{{client.prenom | titlecase}}</td>
                             <td>{{client.nom | uppercase}}</td>
                             <td>{{client.adresseMail}}</td>

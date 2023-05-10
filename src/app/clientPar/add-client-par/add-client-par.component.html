@@ -6,9 +6,17 @@
                     <h1 class="modal-title w-100" style="color: #dadde2;">Ajouter les informations</h1>
                 </div>
                 <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Année</label>
+                      <select formControlName ="yearId" [(ngModel)]="newClientPar.year" class="form-control">
+                        <option *ngFor="let year of years" [value]="year.idYear">{{ year.year }}</option>
+                      </select>
+                    </div>
+                  </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label style="color: white;">Prénom(s)</label>
+                            <label>Prénom(s)</label>
                             <input type="text" [(ngModel)]="newClientPar.prenom" formControlName="prenom"
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }"
                                 placeholder="Préom(s)" />
@@ -19,7 +27,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label style="color: white;">Nom</label>
+                            <label>Nom</label>
                             <input type="text" [(ngModel)]="newClientPar.nom" formControlName="nom" class="form-control"
                                 [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }" placeholder="Nom" />
                             <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
@@ -31,7 +39,7 @@
                     <br />
                     <div class="row">
                         <div class="col-md-6">
-                            <label style="color: white;">Adresse Mail</label>
+                            <label>Adresse Mail</label>
                             <input type="text" [(ngModel)]="newClientPar.adresseMail" formControlName="adresseMail"
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['adresseMail'].errors }"
                                 placeholder="exemple@gmail.com" />
@@ -42,7 +50,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label style="color: white;">Mot De Passe</label>
+                            <label>Mot De Passe</label>
                             <input type="text" [(ngModel)]="newClientPar.motDePasse" formControlName="motDePasse"
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['motDePasse'].errors }"
                                 placeholder="Mot De Passe" />
@@ -55,7 +63,7 @@
                     <br />
                     <div class="row">
                         <div class="col-md-6">
-                            <label style="color: white;">Numéro Dossier</label>
+                            <label>Numéro Dossier</label>
                             <input type="text" [(ngModel)]="newClientPar.numDossier" formControlName="numDossier"
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['numDossier'].errors }"
                                 placeholder="1234567" />
@@ -66,7 +74,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label style="color: white;">Téléphone</label>
+                            <label>Téléphone</label>
                             <input type="text" [(ngModel)]="newClientPar.numTel" formControlName="numTel"
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['numTel'].errors }"
                                 placeholder="Téléphone" />
@@ -80,7 +88,7 @@
                     <br />
                     <div class="row">
                         <div class="col-md-6">
-                            <label style="color: white;">Compte CF</label>
+                            <label>Compte CF</label>
                             <select class="col-md-6" [(ngModel)]="newClientPar.compteCF" formControlName="compteCF"
                                 [ngClass]="{ 'is-invalid': submitted && f['compteCF'].errors }" class="form-control">
                                 <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
@@ -91,7 +99,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label style="color: white;">Inscription</label>
+                            <label>Inscription</label>
                             <select class="col-md-6" [(ngModel)]="newClientPar.inscription"
                                 formControlName="inscription"
                                 [ngClass]="{ 'is-invalid': submitted && f['inscription'].errors }"
@@ -107,7 +115,7 @@
                     <br />
                     <div class="row">
                         <div class="col-md-6">
-                            <label style="color: white;">Formulation</label>
+                            <label>Formulation</label>
                             <select class="col-md-6" [(ngModel)]="newClientPar.formulation"
                                 formControlName="formulation"
                                 [ngClass]="{ 'is-invalid': submitted && f['formulation'].errors }" class="form-control">
@@ -119,7 +127,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label style="color: white;">Confirmation</label>
+                            <label>Confirmation</label>
                             <select class="col-md-6" [(ngModel)]="newClientPar.confirmation"
                                 formControlName="confirmation"
                                 [ngClass]="{ 'is-invalid': submitted && f['confirmation'].errors }"
@@ -135,7 +143,7 @@
                     <br />
                     <div class="row">
                         <div class="col-md-4">
-                            <label style="color: white;">Attente</label>
+                            <label>Attente</label>
                             <input type="number" max="20" min="0" [(ngModel)]="newClientPar.attente" formControlName="attente"
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['attente'].errors }"
                                 placeholder="Nombre d'attente" />
@@ -145,7 +153,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label style="color: white;">Refus</label>
+                            <label>Refus</label>
                             <input type="number" max="20" min="0" [(ngModel)]="newClientPar.refus" formControlName="refus"
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['refus'].errors }"
                                 placeholder="Nombre de refus" />
@@ -155,7 +163,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <label style="color: white;">Acceptation</label>
+                            <label>Acceptation</label>
                             <input type="number" max="20" min="0" [(ngModel)]="newClientPar.accepte" formControlName="accepte"
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['accepte'].errors }"
                                 placeholder="Nombre d'acceptation" />

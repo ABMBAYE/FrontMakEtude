@@ -1,5 +1,7 @@
-export class ClientPar { 
-    idClientPar!: number; 
+import {Year} from "./year.model";
+
+export class ClientPar {
+    idClientPar!: number;
     prenom?: string;
     nom?: string;
     compteCF?: string;
@@ -13,4 +15,6 @@ export class ClientPar {
     attente?: string;
     accepte? : string;
     refus? : string;
+
+    year = new Year();
 }

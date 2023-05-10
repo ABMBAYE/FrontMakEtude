@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Client } from '../model/client.model';
 import { BoolList } from '../model/boolean.model';
 import {Year} from "../model/year.model";
+import {FormGroup} from "@angular/forms";
 
 
 const httpOptions = {
@@ -32,34 +33,30 @@ export class ClientService {
     return this.listBol;
   }
   listeClient(): Observable<Client[]> {
-    return this.http.get<Client[]>(this.apiURL);
+    return this.http.get<Client[]>(this.apiURL+"/clients");
   }
 
-  ajouterClient(client: Client): Observable<Client> {
-    return this.http.post<Client>(this.apiURL, client, httpOptions);
+  ajouterClient(form: FormGroup): Observable<Client> {
+    return this.http.post<Client>(`${this.apiURL}/clients`, form, httpOptions);
   }
 
   supprimerClient(idClient : number) {
-    const url = `${this.apiURL}/${idClient}`;
+    const url = `${this.apiURL}/clients/${idClient}`;
     return this.http.delete(url, httpOptions);
   }
 
-  consulterClient(idClient: number): Observable<Client> {
-    const url = `${this.apiURL}/${idClient}`;
+  consulterClient(idClient: Client): Observable<Client> {
+    const url = `${this.apiURL}/clients/${idClient}`;
     return this.http.get<Client>(url);
   }
 
   updateClient(client :Client) : Observable<Client> {
-    return this.http.put<Client>(this.apiURL, client, httpOptions);
+    return this.http.put<Client>(`${this.apiURL}/clients`, client, httpOptions);
   }
 
   rechercherParNom(nom: string):Observable< Client[]> {
     const url = `${this.apiURL}/clientByName/${nom}`;
     return this.http.get<Client[]>(url);
-  }
-
-  listYears():Observable<Year[]>{
-    return this.http.get<Year[]>(this.apiURL+"/year");
   }
 }
 

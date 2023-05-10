@@ -11,3 +11,7 @@ h1{
 form{
     font-family: 'Varela Round', sans-serif;
 }
+
+label{
+  color: white;
+}

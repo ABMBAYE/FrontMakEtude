@@ -10,3 +10,7 @@ form{
 .invalidMessage{
     color: bisque;
 }
+
+label{
+  color: white;
+}
