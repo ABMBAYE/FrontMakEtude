@@ -32,7 +32,7 @@ export class ClientService {
   bools():BoolList[]{
     return this.listBol;
   }
-  listeClient(): Observable<Client[]> {
+  listeClients(): Observable<Client[]> {
     return this.http.get<Client[]>(this.apiURL+"/clients");
   }
 

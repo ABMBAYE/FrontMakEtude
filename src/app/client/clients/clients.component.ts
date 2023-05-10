@@ -27,7 +27,7 @@ export class ClientsComponent implements OnInit {
   }
 
   chargerClients(){
-    this.clientService.listeClient().subscribe(client => {
+    this.clientService.listeClients().subscribe(client => {
       this.clients = client;
     });
   }
