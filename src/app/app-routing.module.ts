@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddClientComponent } from './client/add-client/add-client.component';
 import { ClientsComponent } from './client/clients/clients.component';
 import { LoginComponent } from './login/login.component';
-import { RechercheParNomComponent } from './client/recherche-par-nom/recherche-par-nom.component';
 import { UpdateClientComponent } from './client/update-client/update-client.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { UpdateClientParComponent } from './clientPar/update-client-par/update-client-par.component';
@@ -20,12 +19,14 @@ import {UpdateYearComponent} from "./years/update-year/update-year.component";
 import {AddGerantComponent} from "./gerant/add-gerant/add-gerant.component";
 import {GerantsComponent} from "./gerant/gerants/gerants.component";
 import {UpdateGerantComponent} from "./gerant/update-gerant/update-gerant.component";
+import {RechercheParYearComponent} from "./client/recherche-par-year/recherche-par-year.component";
+import {ComptabiliteComponent} from "./comptabilite/comptabilite.component";
 
 const routes: Routes = [
   {path: "clients", component : ClientsComponent},
   {path: "addClient", component : AddClientComponent, canActivate:[ClientGuard]},
   {path: "updateClient/:idClient", component : UpdateClientComponent},
-  {path: "rechercheParNom", component : RechercheParNomComponent},
+  {path: "rechercheParYear", component : RechercheParYearComponent},
 
   {path: "clientsPar", component : ClientsParComponent},
   {path: "addClientPar", component : AddClientParComponent},
@@ -45,9 +46,9 @@ const routes: Routes = [
   {path: "updateGerant/:idGerant", component : UpdateGerantComponent},
   {path: "gerants", component : GerantsComponent},
 
-
-
   {path: "accueil", component : AccueilComponent},
+
+  {path: "comptabilite", component : ComptabiliteComponent},
 
   {path: 'app-forbidden', component: ForbiddenComponent},
 

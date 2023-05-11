@@ -6,6 +6,8 @@ import { ClientPar } from 'src/app/model/clientpar.model';
 import { ClientParService } from 'src/app/service/client-par.service';
 import {Year} from "../../model/year.model";
 import {YearService} from "../../service/year.service";
+import {GerantService} from "../../service/gerant.service";
+import {Gerant} from "../../model/gerant.model";
 
 @Component({
   selector: 'app-add-client-par',
@@ -19,9 +21,10 @@ export class AddClientParComponent implements OnInit {
   registerForm!: FormGroup;
   showDiv = false;
   years!: Year[];
+  gerants!: Gerant[];
 
   constructor(private clientService: ClientParService, private yearService : YearService,
-    private router: Router, private formBuilder: FormBuilder) {
+              private gerantService : GerantService, private router: Router, private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       prenom: ['', Validators.required],
       nom: ['', Validators.required],
@@ -41,17 +44,30 @@ export class AddClientParComponent implements OnInit {
       refus: ['', Validators.required],
       accepte: ['', Validators.required],
 
-      yearId: ['']
+      yearId: [''],
+      gerantId: ['']
 
     });
     this.listBol = clientService.bools();
   }
 
   ngOnInit() {
+    this.chargerYears();
+    this.chargerGerants();
+  }
+  chargerYears(){
     this.yearService.listeYears().subscribe(years => {
       this.years = years;
       if (years.length > 0) {
         this.newClientPar.year = years[0];
+      }
+    });
+  }
+  chargerGerants(){
+    this.gerantService.listeGerants().subscribe(gerants => {
+      this.gerants = gerants;
+      if (gerants.length > 0) {
+        this.newClientPar.gerant = gerants[0];
       }
     });
   }

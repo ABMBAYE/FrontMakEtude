@@ -53,13 +53,24 @@
                       </select>
                     </div>
                     <span class="filter-icon"><i class="fa fa-filter"></i></span>
+
+                    <!--<div class="filter-group">
+                      <label>Gérant</label>
+                      <select class="form-control">
+                        <option>All</option>
+                        <option *ngFor="let gerant of gerants" [value]="gerant.prenomGerant">{{gerant.prenomGerant+" "+gerant.nomGerant}}</option>
+                      </select>
+                    </div>
+                    <span class="filter-icon"><i class="fa fa-filter"></i></span>-->
                   </div>
                 </div>
               </div>
-                <table class="table table-striped table-hover table-bordered">
+              <h1 style="color: #334CFF;" class="text-center">Comptes gérés par ABM</h1>
+              <table class="table table-striped table-hover table-bordered">
                     <thead>
                         <tr style="background-color: #334CFF; color: white; text-align: center;">
                             <th>Année</th>
+                            <th>Gérant</th>
                             <th>Prénom(s)</th>
                             <th>Nom</th>
                             <th>Adresse Mail</th>
@@ -77,8 +88,58 @@
                         </tr>
                     </thead>
                     <tbody *ngFor="let client of clientsPar">
-                        <tr style="text-align: center;">
+                        <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Ahmadou'">
                             <td style="background-color: #334CFF; color: white">{{client.year.year}}</td>
+                            <td>{{client.gerant.prenomGerant+" "}}{{client.gerant.nomGerant}}</td>
+                            <td>{{client.prenom | titlecase}}</td>
+                            <td>{{client.nom | uppercase}}</td>
+                            <td>{{client.adresseMail}}</td>
+                            <td>{{client.motDePasse}}</td>
+                            <td>{{client.numDossier}}</td>
+                            <td>+221 {{client.numTel}}</td>
+                            <td>{{client.compteCF}}</td>
+                            <td>{{client.inscription}}</td>
+                            <td>{{client.formulation}}</td>
+                            <td>{{client.confirmation}}</td>
+                            <td [ngStyle]="{ color: '#E0322A'}">{{client.attente}}/20</td>
+                            <td [ngStyle]="{ color: '#E0322A'}">{{client.refus}}/20</td>
+                            <td [ngStyle]="{ color: '#3FCB2C'}">{{client.accepte}}/20</td>
+                            <td class="text-center">
+                                <a class="btn btn-success" [routerLink]="['/updateClientPar', client.idClientPar]"  style="color: #334CFF;" class="edit" title="Edit" data-toggle="tooltip">
+                                    <i class="material-icons">&#xE254;</i>
+                                </a>
+                                <a type="button" (click)="supprimerClientPar(client)"  style="color: red;" class="trigger-btn" data-toggle="modal">
+                                    <i class="material-icons">&#xE5C9;</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+              <h1 style="color: #334CFF" class="text-center">Comptes gérés par GOUMBALLA</h1>
+              <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                        <tr style="background-color: #334CFF; color: white; text-align: center;">
+                            <th>Année</th>
+                            <th>Gérant</th>
+                            <th>Prénom(s)</th>
+                            <th>Nom</th>
+                            <th>Adresse Mail</th>
+                            <th>Mot De Passe</th>
+                            <th>Numéro De Dossier</th>
+                            <th>Téléphone</th>
+                            <th>Compte CF</th>
+                            <th>Inscription</th>
+                            <th>Formulation</th>
+                            <th>Confirmation</th>
+                            <th>En Attente</th>
+                            <th>Refus</th>
+                            <th>Acceptation</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let client of clientsPar">
+                        <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Khadim'">
+                            <td style="background-color: #334CFF; color: white">{{client.year.year}}</td>
+                            <td>{{client.gerant.prenomGerant+" "}}{{client.gerant.nomGerant}}</td>
                             <td>{{client.prenom | titlecase}}</td>
                             <td>{{client.nom | uppercase}}</td>
                             <td>{{client.adresseMail}}</td>

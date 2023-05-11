@@ -1,4 +1,5 @@
 import {Year} from "./year.model";
+import {Gerant} from "./gerant.model";
 
 export class Client {
     idClient!: number;
@@ -15,4 +16,5 @@ export class Client {
     refus?: string;
     dateEntretien? : Date;
     year = new Year();
+    gerant = new Gerant();
 }

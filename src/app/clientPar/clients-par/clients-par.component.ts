@@ -4,6 +4,8 @@ import { ClientParService } from 'src/app/service/client-par.service';
 import {Year} from "../../model/year.model";
 import {YearService} from "../../service/year.service";
 import {AuthentificationService} from "../../service/authentification.service";
+import {Gerant} from "../../model/gerant.model";
+import {GerantService} from "../../service/gerant.service";
 
 @Component({
   selector: 'app-clients-par',
@@ -13,13 +15,14 @@ import {AuthentificationService} from "../../service/authentification.service";
 export class ClientsParComponent implements OnInit {
   clientsPar! : ClientPar[];
   years! : Year[];
-
+  gerants! : Gerant[];
   constructor(private clientService : ClientParService, public authService : AuthentificationService,
-              public yearService : YearService) { }
+              private gerantService : GerantService, public yearService : YearService) { }
 
   ngOnInit(): void {
     this.chargerClientsPar();
-    this.chargerYears()
+    this.chargerYears();
+    this.chargerGerants()
   }
 
   chargerClientsPar(){
@@ -28,8 +31,14 @@ export class ClientsParComponent implements OnInit {
     });
   }
   chargerYears(){
-    this.yearService.listeYears(). subscribe(year => {
+    this.yearService.listeYears().subscribe(year => {
       this.years = year;
+    });
+  }
+
+  chargerGerants(){
+    this.gerantService.listeGerants().subscribe(gerant => {
+      this.gerants = gerant;
     });
   }
 

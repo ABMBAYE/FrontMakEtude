@@ -6,6 +6,8 @@ import { BoolList } from '../../model/boolean.model';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {Year} from "../../model/year.model";
 import {YearService} from "../../service/year.service";
+import {GerantService} from "../../service/gerant.service";
+import {Gerant} from "../../model/gerant.model";
 
 @Component({
   selector: 'app-add-client',
@@ -22,11 +24,12 @@ export class AddClientComponent implements OnInit {
   disableDate: boolean = false;
 
   years!: Year[];
+  gerants!: Gerant[];
   newIdYear! : number;
   newYear! : Year;
 
 
-  constructor(private clientService: ClientService, private yearService : YearService,
+  constructor(private clientService: ClientService, private yearService : YearService, private gerantService: GerantService,
     private router: Router, private formBuilder: FormBuilder) {
     this.listBol = clientService.bools();
 
@@ -35,7 +38,7 @@ export class AddClientComponent implements OnInit {
       nom: ['', Validators.required],
 
       identifiant: ['', [Validators.required, Validators.pattern(/^(SN\d{2}-)\d{5}$/)]],
-      numTel: ['', [Validators.required, Validators.pattern(/^(77|78|70|76)\s\d{3}\s\d{2}\s\d{2}$/)]],
+      numTel: ['', [Validators.required, Validators.pattern(/^(77|78|70|76|75)\s\d{3}\s\d{2}\s\d{2}$/)]],
 
       adresseMail: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@gmail.com$/)]],
       motDePasse: ['', Validators.required],
@@ -47,19 +50,30 @@ export class AddClientComponent implements OnInit {
 
       acceptation: ['', Validators.required],
       refus: ['', Validators.required],
-      yearId: ['']
+      yearId: [''],
+      gerantId: ['']
     });
   }
 
   ngOnInit() {
-    this.yearService.listeYears().subscribe(years => {
-      this.years = years;
-      if (years.length > 0) {
-        this.newClient.year = years[0];
-      }
-    });
+    this.chargerYears();
+    this.chargerGerants();
   }
-
+chargerYears(){
+  this.yearService.listeYears().subscribe(years => {
+    this.years = years;
+    if (years.length > 0) {
+      this.newClient.year = years[0];
+    }
+  });
+}chargerGerants(){
+  this.gerantService.listeGerants().subscribe(gerants => {
+    this.gerants = gerants;
+    if (gerants.length > 0) {
+      this.newClient.gerant = gerants[0];
+    }
+  });
+}
   get f() {
     return this.registerForm.controls;
   }

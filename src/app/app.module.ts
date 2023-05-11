@@ -8,7 +8,6 @@ import { AddClientComponent } from './client/add-client/add-client.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateClientComponent } from './client/update-client/update-client.component';
 import { LoginComponent } from './login/login.component';
-import { RechercheParNomComponent } from './client/recherche-par-nom/recherche-par-nom.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ClientsParComponent } from './clientPar/clients-par/clients-par.component';
 import { AddClientParComponent } from './clientPar/add-client-par/add-client-par.component';
@@ -23,6 +22,8 @@ import { UpdateYearComponent } from './years/update-year/update-year.component';
 import { AddGerantComponent } from './gerant/add-gerant/add-gerant.component';
 import { UpdateGerantComponent } from './gerant/update-gerant/update-gerant.component';
 import { GerantsComponent } from './gerant/gerants/gerants.component';
+import { RechercheParYearComponent } from './recherche-par-year/recherche-par-year.component';
+import { ComptabiliteComponent } from './comptabilite/comptabilite.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,6 @@ import { GerantsComponent } from './gerant/gerants/gerants.component';
     AddClientComponent,
     UpdateClientComponent,
     LoginComponent,
-    RechercheParNomComponent,
     AccueilComponent,
     ClientsParComponent,
     AddClientParComponent,
@@ -45,7 +45,9 @@ import { GerantsComponent } from './gerant/gerants/gerants.component';
     UpdateYearComponent,
     AddGerantComponent,
     UpdateGerantComponent,
-    GerantsComponent
+    GerantsComponent,
+    RechercheParYearComponent,
+    ComptabiliteComponent
     ],
   imports: [
     BrowserModule,

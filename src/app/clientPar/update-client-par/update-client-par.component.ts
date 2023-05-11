@@ -6,6 +6,8 @@ import { ClientPar } from 'src/app/model/clientpar.model';
 import { ClientParService } from 'src/app/service/client-par.service';
 import {Year} from "../../model/year.model";
 import {YearService} from "../../service/year.service";
+import {Gerant} from "../../model/gerant.model";
+import {GerantService} from "../../service/gerant.service";
 
 @Component({
   selector: 'app-update-client-par',
@@ -22,8 +24,10 @@ export class UpdateClientParComponent implements OnInit {
   submitted = false;
   registerForm!: FormGroup;
   years!: Year[];
-
-  constructor(private clientService: ClientParService, private yearService : YearService, private activatedRoute: ActivatedRoute,
+  gerants!: Gerant[];
+  updatedIdGerant! : number;
+  constructor(private clientService: ClientParService, private yearService : YearService, private gerantService : GerantService,
+              private activatedRoute: ActivatedRoute,
     private router: Router, private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       prenom: ['', Validators.required],
@@ -44,7 +48,8 @@ export class UpdateClientParComponent implements OnInit {
       refus: ['', Validators.required],
       accepte: ['', Validators.required],
 
-      yearId: ['']
+      yearId: [''],
+      gerantId: ['']
     });
     this.listBol = clientService.bools();
   }
@@ -56,10 +61,12 @@ export class UpdateClientParComponent implements OnInit {
     this.updatedId = this.currentClient.idClientPar;*/
 
     this.chargerYears();
+    this.chargerGerants();
     this.clientService.consulterClientPar(this.activatedRoute.snapshot.params['idClientPar']).subscribe(
       clientPar =>{
         this.currentClient = clientPar;
         this.updatedIdYear = this.currentClient.year.idYear;
+        this.updatedIdGerant = this.currentClient.gerant.idGerant;
       });
   }
   chargerYears(){
@@ -67,10 +74,14 @@ export class UpdateClientParComponent implements OnInit {
       this.years = year;
     });
   }
+  chargerGerants(){
+    this.gerantService.listeGerants().subscribe(g => {
+      this.gerants = g;
+    });
+  }
   get f() {
     return this.registerForm.controls;
   }
-
 
   validChamps(): boolean {
     this.submitted = true;
@@ -83,6 +94,7 @@ export class UpdateClientParComponent implements OnInit {
 
   updateClientPar() {
     this.currentClient.year = this.years.find(y => y.idYear == this.updatedIdYear)!;
+    this.currentClient.gerant = this.gerants.find(g => g.idGerant == this.updatedIdGerant)!;
 
     if (this.validChamps()) {
       this.clientService.updateClientPar(this.currentClient).subscribe(client => {

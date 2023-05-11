@@ -54,8 +54,8 @@ export class ClientService {
     return this.http.put<Client>(`${this.apiURL}/clients`, client, httpOptions);
   }
 
-  rechercherParNom(nom: string):Observable< Client[]> {
-    const url = `${this.apiURL}/clientByName/${nom}`;
+  rechercherParYear(year : number):Observable<Client[]> {
+    const url = `${this.apiURL}/clients?year=${year}`;
     return this.http.get<Client[]>(url);
   }
 }

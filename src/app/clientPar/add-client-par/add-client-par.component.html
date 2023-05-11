@@ -13,6 +13,12 @@
                         <option *ngFor="let year of years" [value]="year.idYear">{{ year.year }}</option>
                       </select>
                     </div>
+                    <div class="col-md-6">
+                      <label>Gérant</label>
+                      <select formControlName ="gerantId" [(ngModel)]="newClientPar.gerant" class="form-control">
+                        <option *ngFor="let g of gerants" [value]="g.idGerant">{{ g.prenomGerant+" "+g.nomGerant}}</option>
+                      </select>
+                    </div>
                   </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -158,8 +164,7 @@
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['refus'].errors }"
                                 placeholder="Nombre de refus" />
                             <div *ngIf="submitted && f['refus'].errors" class="invalid-feedback">
-                                <div *ngIf="f['refus'].errors?.['required']" style="color: bisque;"><strong>Champ
-                                        Obligatoire.</strong> </div>
+                                <div *ngIf="f['refus'].errors?.['required']" style="color: bisque;"><strong>Champ Obligatoire.</strong> </div>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -168,8 +173,7 @@
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['accepte'].errors }"
                                 placeholder="Nombre d'acceptation" />
                             <div *ngIf="submitted && f['accepte'].errors" class="invalid-feedback">
-                                <div *ngIf="f['accepte'].errors?.['required']" style="color: bisque;"><strong>Champ
-                                        Obligatoire.</strong> </div>
+                                <div *ngIf="f['accepte'].errors?.['required']" style="color: bisque;"><strong>Champ Obligatoire.</strong> </div>
                             </div>
                         </div>
                     </div>

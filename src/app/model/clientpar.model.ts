@@ -1,4 +1,5 @@
 import {Year} from "./year.model";
+import {Gerant} from "./gerant.model";
 
 export class ClientPar {
     idClientPar!: number;
@@ -15,6 +16,6 @@ export class ClientPar {
     attente?: string;
     accepte? : string;
     refus? : string;
-
     year = new Year();
+    gerant = new Gerant();
 }
