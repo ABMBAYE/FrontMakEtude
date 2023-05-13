@@ -13,14 +13,11 @@ import {GerantService} from "../../service/gerant.service";
 })
 export class ClientsComponent implements OnInit {
   clients! : Client[];
-  newClient = new Client();
-
   years! : Year[];
-  yearId !: number;
   gerants! : Gerant[];
-
-  newIdYear! : number;
-  newYear! : Year;
+  nomClient !: string;
+  yearReach !: string;
+  nombreDeClient !: number;
 
   constructor(private clientService : ClientService, public authService : AuthentificationService,
               public yearService : YearService, private gerantService : GerantService) { }
@@ -28,7 +25,12 @@ export class ClientsComponent implements OnInit {
   ngOnInit(): void {
     this.chargerClients();
     this.chargerYears();
-    this.chargerGerants()
+    this.chargerGerants();
+
+    console.log("Test Test"+this.nombreDeClient);
+    //console.log("Nombre de clients : "+this.clientService.nombreDeClientCF().subscribe());
+
+    console.log("Nombre de clients : "+this.chargerNombreDeClientCF());
   }
 
   chargerClients(){
@@ -46,6 +48,16 @@ export class ClientsComponent implements OnInit {
       this.gerants = gerant;
     });
   }
+  chargerNombreDeClientCF(){
+    this.clientService.nombreDeClientCF().subscribe(
+      data => {
+        this.nombreDeClient = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
   supprimerClient(client : Client) {
     let conf = confirm("Etes-vous sûr ?");
     if (conf) {
@@ -54,10 +66,15 @@ export class ClientsComponent implements OnInit {
       });
     }
   }
-
-  onChange() {
-    this.clientService.rechercherParYear(this.yearId).subscribe(clients =>{
-      this.clients = clients
+  rechercherParNom(){
+    this.clientService.rechercherParNom(this.nomClient).subscribe(clientsFiltred => {
+      this.clients = clientsFiltred;
+    });
+  }
+  rechercherParYear() {
+    this.clientService.rechercherParYear(this.yearReach).subscribe(
+      clientsFiltred =>{
+        this.clients = clientsFiltred
     });
   }
 }

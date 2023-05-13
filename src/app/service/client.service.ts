@@ -53,10 +53,17 @@ export class ClientService {
   updateClient(client :Client) : Observable<Client> {
     return this.http.put<Client>(`${this.apiURL}/clients`, client, httpOptions);
   }
-
-  rechercherParYear(year : number):Observable<Client[]> {
-    const url = `${this.apiURL}/clients?year=${year}`;
+  rechercherParNom(nom: string):Observable< Client[]> {
+    const url = `${this.apiURL}/clients/reachByName/${nom}`;
     return this.http.get<Client[]>(url);
+  }
+  rechercherParYear(year : string):Observable<Client[]> {
+    const url = `${this.apiURL}/clients/reachByYear/${year}`;
+    return this.http.get<Client[]>(url);
+  }
+  nombreDeClientCF():Observable<number> {
+    const url = this.apiURL+"/clients/nombreDeClient";
+    return this.http.get<number>(url);
   }
 }
 
