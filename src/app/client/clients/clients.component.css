@@ -230,128 +230,81 @@ table.table .avatar {
 }
 
 /* Modal styles */
-.modal .modal-dialog {
-    max-width: 400px;
-}
-
-.modal .modal-header,
-.modal .modal-body,
-.modal .modal-footer {
-    padding: 20px 30px;
-}
-
-.modal .modal-content {
-    border-radius: 3px;
-    font-size: 14px;
-}
-
-.modal .modal-footer {
-    background: #ecf0f1;
-    border-radius: 0 0 3px 3px;
-}
-
-.modal .modal-title {
-    display: inline-block;
-}
-
-.modal .form-control {
-    border-radius: 2px;
-    box-shadow: none;
-    border-color: #dddddd;
-}
-
-.modal textarea.form-control {
-    resize: vertical;
-}
-
-.modal .btn {
-    border-radius: 2px;
-    min-width: 100px;
-}
-
-.modal form label {
-    font-weight: normal;
-}
-
 .modal-confirm {
-	color: #636363;
-	width: 400px;
+  color: #636363;
+  width: 325px;
 }
 .modal-confirm .modal-content {
-	padding: 20px;
-	border-radius: 5px;
-	border: none;
-	text-align: center;
-	font-size: 14px;
+  padding: 30px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  width: 130%;
 }
 .modal-confirm .modal-header {
-	border-bottom: none;
-	position: relative;
+  border-bottom: none;
+  position: relative;
 }
 .modal-confirm h4 {
-	text-align: center;
-	font-size: 26px;
-	margin: 30px 0 -10px;
+  text-align: center;
+  font-size: 30px;
+  margin: 30px 0 -15px;
+  font-family: 'Varela Round', sans-serif;
+}
+.modal-confirm .form-control, .modal-confirm .btn {
+  min-height: 40px;
+  border-radius: 3px;
 }
 .modal-confirm .close {
-	position: absolute;
-	top: -5px;
-	right: -2px;
-}
-.modal-confirm .modal-body {
-	color: #999;
+  position: absolute;
+  top: -5px;
+  right: -5px;
 }
 .modal-confirm .modal-footer {
-	border: none;
-	text-align: center;
-	border-radius: 5px;
-	font-size: 13px;
-	padding: 10px 15px 25px;
-}
-.modal-confirm .modal-footer a {
-	color: #999;
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 13px;
 }
 .modal-confirm .icon-box {
-	width: 80px;
-	height: 80px;
-	margin: 0 auto;
-	border-radius: 50%;
-	z-index: 9;
-	text-align: center;
-	border: 3px solid #f15e5e;
+  color: #fff;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: -70px;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  z-index: 9;
+  background: #ef513a;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
 }
 .modal-confirm .icon-box i {
-	color: #f15e5e;
-	font-size: 46px;
-	display: inline-block;
-	margin-top: 13px;
+  font-size: 56px;
+  position: relative;
+  top: 4px;
 }
-.modal-confirm .btn, .modal-confirm .btn:active {
-	color: #fff;
-	border-radius: 4px;
-	background: #60c7c1;
-	text-decoration: none;
-	transition: all 0.4s;
-	line-height: normal;
-	min-width: 120px;
-	border: none;
-	min-height: 40px;
-	border-radius: 3px;
-	margin: 0 5px;
+.modal-confirm.modal-dialog {
+  margin-top: 80px;
+  font-family: 'Varela Round', sans-serif;
 }
-.modal-confirm .btn-secondary {
-	background: #c1c1c1;
+.modal-confirm .btn {
+  color: #fff;
+  border-radius: 4px;
+  background: #ef513a;
+  text-decoration: none;
+  transition: all 0.4s;
+  line-height: normal;
+  border: none;
 }
-.modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
-	background: #a8a8a8;
+.modal-confirm .btn:hover, .modal-confirm .btn:focus {
+  background: #da2c12;
+  outline: none;
 }
-.modal-confirm .btn-danger {
-	background: #f15e5e;
-}
-.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
-	background: #ee3535;
-}
-
 
 
 
@@ -411,4 +364,36 @@ table.table .avatar {
 }
 .add-new i {
   margin-right: 4px;
+}
+
+
+
+
+
+p {
+  position: relative;
+  width: 200px;
+  color: white;
+  border: 4px solid white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  transition: all .2s;
+
+  font-family: 'Varela Round', sans-serif;
+  font-size: 13px;
+}
+
+p span {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  background: #5cb85c;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid white;
+  border-radius: 50%;
 }

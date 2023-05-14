@@ -2,168 +2,213 @@
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
 <body>
 <br>
-    <div class="table-responsive">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-8">
-                        <h1><b>Suivi des comptes</b></h1>
-                    </div>
-                  <div class="col-sm-4">
-                    <!--<a class="btn btn-success" *ngIf="authService.isAdmin()" data-toggle="modal" routerLink="/addClient"><b><i
-                                    class="material-icons">&#xE147;</i> <span>Ajouter</span></b></a>-->
-                    <button type="button" class="btn btn-success add-new" data-toggle="modal" routerLink="/addClient"><i class="fa fa-plus"></i> Add New Client</button>
-                  </div>
-                </div>
-            </div>
-          <div class="table-filter">
-            <div class="row">
-              <div class="col-sm-9">
-                <div class="filter-group">
-                  <label>Name</label>
-                  <input type="text" [(ngModel)]="nomClient" class="form-control">
-                  <button type="button" (click)="rechercherParNom()" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                </div>
+<div class="table-responsive">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-5"><br>
+          <h1><b>Suivi des comptes</b></h1>
+        </div>
+        <div class="col-sm-3"><br>
+          <p style="color: white;">
+            <b>Nombre de Clients</b>
+            <span>{{nombreDeClient}}</span>
+          </p>
+        </div>
 
-                <div class="filter-group">
-                  <label>Année</label>
-                  <select class="form-control" [(ngModel)]="yearReach" (change)="rechercherParYear()">
-                    <option>All</option>
-                    <option *ngFor="let year of years" [value]="year.year">{{year.year}}</option>
-                  </select>
+        <div class="col-sm-4"><br>
+          <!--<a class="btn btn-success" *ngIf="authService.isAdmin()" data-toggle="modal" routerLink="/addClient"><b><i
+                          class="material-icons">&#xE147;</i> <span>Ajouter</span></b></a>-->
+          <button type="button" class="btn btn-success add-new" data-toggle="modal" routerLink="/addClient"><i
+            class="fa fa-plus"></i> Add New Client
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="table-filter">
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="filter-group">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="nomClient" class="form-control">
+            <button type="button" (click)="rechercherParNom()" class="btn btn-primary"><i class="fa fa-search"></i>
+            </button>
+          </div>
+
+          <div class="filter-group">
+            <label>Année</label>
+            <select class="form-control" [(ngModel)]="idYearReach" (change)="rechercherParYear()">
+              <option>All</option>
+              <option *ngFor="let year of years" [value]="year.year">{{year.year}}</option>
+            </select>
+          </div>
+          <span class="filter-icon"><i class="fa fa-filter"></i></span>
+          <!--<div class="filter-group">
+            <label>Gérant</label>
+            <select class="form-control">
+              <option>All</option>
+              <option *ngFor="let gerant of gerants" [value]="gerant.prenomGerant">{{gerant.prenomGerant+" "+gerant.nomGerant}}</option>
+            </select>
+          </div>
+          <span class="filter-icon"><i class="fa fa-filter"></i></span>-->
+        </div>
+      </div>
+    </div>
+    <h1 class="text-center">Comptes gérés par ABM</h1>
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+      <tr style="background-color: #435d7d; color: white; text-align: center;">
+        <th>Année</th>
+        <th>Gérant</th>
+        <th>Prénom(s)</th>
+        <th>Nom</th>
+        <th>Identifiant</th>
+        <th>Téléphone</th>
+        <th>Adresse Mail</th>
+        <th>Mot De Passe</th>
+        <th>Soumis</th>
+        <th>Paiement</th>
+        <th>Date d'Entretien</th>
+        <th>Entretien</th>
+        <th>Acceptation</th>
+        <th>Refus</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let client of clients">
+      <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Ahmadou'">
+        <td style="background-color: #435d7d; color: white">{{client.year.year}}</td>
+        <td>{{client.gerant.prenomGerant + " "}}{{client.gerant.nomGerant}}</td>
+        <td>{{client.prenom | titlecase}}</td>
+        <td>{{client.nom | uppercase}}</td>
+        <td>{{client.identifiant}}</td>
+        <td>+221 {{client.numTel}}</td>
+        <td>{{client.adresseMail}}</td>
+        <td>{{client.motDePasse}}</td>
+        <td>{{client.soumis | titlecase}}</td>
+        <td>{{client.paiement | titlecase}}</td>
+        <td>{{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</td>
+        <td>{{client.entretien | titlecase}}</td>
+        <td [ngStyle]="{ color: '#3FCB2C'}">{{client.acceptation}}/7</td>
+        <td [ngStyle]="{ color: '#E0322A'}">{{client.refus}}/7</td>
+        <td class="text-center">
+          <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateClient', client.idClient]"
+             style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
+            <i class="material-icons">&#xE254;</i>
+          </a>
+          <a type="button" href="#myModal1" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
+             data-toggle="modal">
+            <i class="material-icons">&#xE5C9;</i>
+          </a>
+          <div id="myModal1" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+              <div class="modal-content">
+                <div class="modal-header flex-column">
+                  <div class="icon-box">
+                    <i style="font-size: 50px" class="material-icons">&#xE5CD;</i>
+                  </div>
+                  <h4 class="modal-title w-100">Etes-vous sûr ?</h4>
                 </div>
-                <span class="filter-icon"><i class="fa fa-filter"></i></span>
-                <div matBadgeSize="large" class="demo-section">{{nombreDeClient}} clients</div>
-                <!--<div class="filter-group">
-                  <label>Gérant</label>
-                  <select class="form-control">
-                    <option>All</option>
-                    <option *ngFor="let gerant of gerants" [value]="gerant.prenomGerant">{{gerant.prenomGerant+" "+gerant.nomGerant}}</option>
-                  </select>
+                <div class="modal-body">
+                  <p><strong>Voulez-vous supprimer cette ligne ?</strong></p>
                 </div>
-                <span class="filter-icon"><i class="fa fa-filter"></i></span>-->
+                <div class="modal-footer justify-content-center">
+                  <button style="background-color: #435d7d" type="button" class="btn btn-secondary"
+                          data-dismiss="modal">Annuler
+                  </button>
+                  <button type="button" (click)="supprimerClient(client)" class="btn btn-danger">Supprimer</button>
+                </div>
               </div>
             </div>
           </div>
-          <h1 class="text-center">Comptes gérés par ABM</h1>
-          <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr style="background-color: #435d7d; color: white; text-align: center;">
-                        <th>Année</th>
-                        <th>Gérant</th>
-                        <th>Prénom(s)</th>
-                        <th>Nom</th>
-                        <th>Identifiant</th>
-                        <th>Téléphone</th>
-                        <th>Adresse Mail</th>
-                        <th>Mot De Passe</th>
-                        <th>Soumis</th>
-                        <th>Paiement</th>
-                        <th>Date d'Entretien</th>
-                        <th>Entretien</th>
-                        <th>Acceptation</th>
-                        <th>Refus</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let client of clients">
-                    <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Ahmadou'">
-                        <td style="background-color: #435d7d; color: white">{{client.year.year}}</td>
-                        <td>{{client.gerant.prenomGerant+" "}}{{client.gerant.nomGerant}}</td>
-                        <td>{{client.prenom | titlecase}}</td>
-                        <td>{{client.nom | uppercase}}</td>
-                        <td>{{client.identifiant}}</td>
-                        <td>+221 {{client.numTel}}</td>
-                        <td>{{client.adresseMail}}</td>
-                        <td>{{client.motDePasse}}</td>
-                        <td>{{client.soumis | titlecase}}</td>
-                        <td>{{client.paiement | titlecase}}</td>
-                        <td>{{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</td>
-                        <td>{{client.entretien | titlecase}}</td>
-                        <td [ngStyle]="{ color: '#3FCB2C'}">{{client.acceptation}}/7</td>
-                        <td [ngStyle]="{ color: '#E0322A'}">{{client.refus}}/7</td>
-                        <td class="text-center">
-                            <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateClient', client.idClient]"
-                                style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
-                                <i class="material-icons">&#xE254;</i>
-                            </a>
-                            <a type="button" *ngIf="authService.isAdmin()" (click)="supprimerClient(client)" style="color: red;" class="trigger-btn"
-                                data-toggle="modal">
-                                <i class="material-icons">&#xE5C9;</i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-          <h1 class="text-center">Comptes gérés par GOUMBALLA</h1>
-          <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr style="background-color: #435d7d; color: white; text-align: center;">
-                        <th>Année</th>
-                        <th>Gérant</th>
-                        <th>Prénom(s)</th>
-                        <th>Nom</th>
-                        <th>Identifiant</th>
-                        <th>Téléphone</th>
-                        <th>Adresse Mail</th>
-                        <th>Mot De Passe</th>
-                        <th>Soumis</th>
-                        <th>Paiement</th>
-                        <th>Date d'Entretien</th>
-                        <th>Entretien</th>
-                        <th>Acceptation</th>
-                        <th>Refus</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let client of clients">
-                    <tr style="text-align: center;"  *ngIf="client.gerant.prenomGerant === 'Khadim'">
-                        <td style="background-color: #435d7d; color: white">{{client.year.year}}</td>
-                        <td>{{client.gerant.prenomGerant+" "}}{{client.gerant.nomGerant}}</td>
-                        <td>{{client.prenom | titlecase}}</td>
-                        <td>{{client.nom | uppercase}}</td>
-                        <td>{{client.identifiant}}</td>
-                        <td>+221 {{client.numTel}}</td>
-                        <td>{{client.adresseMail}}</td>
-                        <td>{{client.motDePasse}}</td>
-                        <td>{{client.soumis | titlecase}}</td>
-                        <td>{{client.paiement | titlecase}}</td>
-                        <td>{{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</td>
-                        <td>{{client.entretien | titlecase}}</td>
-                        <td [ngStyle]="{ color: '#3FCB2C'}">{{client.acceptation}}/7</td>
-                        <td [ngStyle]="{ color: '#E0322A'}">{{client.refus}}/7</td>
-                        <td class="text-center">
-                            <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateClient', client.idClient]"
-                                style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
-                                <i class="material-icons">&#xE254;</i>
-                            </a>
-                            <a type="button" *ngIf="authService.isAdmin()" (click)="supprimerClient(client)" style="color: red;" class="trigger-btn"
-                                data-toggle="modal">
-                                <i class="material-icons">&#xE5C9;</i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <h1 class="text-center">Comptes gérés par GOUMBALLA</h1>
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+      <tr style="background-color: #435d7d; color: white; text-align: center;">
+        <th>Année</th>
+        <th>Gérant</th>
+        <th>Prénom(s)</th>
+        <th>Nom</th>
+        <th>Identifiant</th>
+        <th>Téléphone</th>
+        <th>Adresse Mail</th>
+        <th>Mot De Passe</th>
+        <th>Soumis</th>
+        <th>Paiement</th>
+        <th>Date d'Entretien</th>
+        <th>Entretien</th>
+        <th>Acceptation</th>
+        <th>Refus</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let client of clients">
+      <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Khadim'">
+        <td style="background-color: #435d7d; color: white">{{client.year.year}}</td>
+        <td>{{client.gerant.prenomGerant + " "}}{{client.gerant.nomGerant}}</td>
+        <td>{{client.prenom | titlecase}}</td>
+        <td>{{client.nom | uppercase}}</td>
+        <td>{{client.identifiant}}</td>
+        <td>+221 {{client.numTel}}</td>
+        <td>{{client.adresseMail}}</td>
+        <td>{{client.motDePasse}}</td>
+        <td>{{client.soumis | titlecase}}</td>
+        <td>{{client.paiement | titlecase}}</td>
+        <td>{{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</td>
+        <td>{{client.entretien | titlecase}}</td>
+        <td [ngStyle]="{ color: '#3FCB2C'}">{{client.acceptation}}/7</td>
+        <td [ngStyle]="{ color: '#E0322A'}">{{client.refus}}/7</td>
+        <td class="text-center">
+          <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateClient', client.idClient]"
+             style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
+            <i class="material-icons">&#xE254;</i>
+          </a>
+          <a type="button" href="#myModal" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
+             data-toggle="modal">
+            <i class="material-icons">&#xE5C9;</i>
+          </a>
+          <div id="myModal" class="modal fade">
+            <div class="modal-dialog modal-confirm">
+              <div class="modal-content">
+                <div class="modal-header flex-column">
+                  <div class="icon-box">
+                    <i class="material-icons">&#xE5CD;</i>
+                  </div>
+                  <h4 class="modal-title w-100">Etes-vous sûr ?</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p><strong>Voulez-vous supprimer cette ligne ?</strong></p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                  <button type="button" (click)="supprimerClient(client)" class="btn btn-danger">Supprimer</button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 </body>
 
 </html>

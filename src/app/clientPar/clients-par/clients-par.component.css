@@ -407,3 +407,31 @@ table.table .avatar {
 .add-new i {
   margin-right: 4px;
 }
+
+p {
+  position: relative;
+  width: 200px;
+  color: white;
+  border: 4px solid white;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  transition: all .2s;
+
+  font-family: 'Varela Round', sans-serif;
+  font-size: 13px;
+}
+
+p span {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  background: #5cb85c;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid white;
+  border-radius: 50%;
+}

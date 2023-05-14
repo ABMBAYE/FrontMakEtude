@@ -16,13 +16,23 @@ export class ClientsParComponent implements OnInit {
   clientsPar! : ClientPar[];
   years! : Year[];
   gerants! : Gerant[];
+  nomReach !: string;
+  yearReach !: string;
+  nombreDeClient !: number;
+
   constructor(private clientService : ClientParService, public authService : AuthentificationService,
               private gerantService : GerantService, public yearService : YearService) { }
 
   ngOnInit(): void {
     this.chargerClientsPar();
     this.chargerYears();
-    this.chargerGerants()
+    this.chargerGerants();
+
+    this.clientService.nombreDeClientCF().subscribe(
+      data => {
+        this.nombreDeClient = data;
+      }
+    );
   }
 
   chargerClientsPar(){
@@ -49,5 +59,17 @@ export class ClientsParComponent implements OnInit {
         this.chargerClientsPar();
       });
     }
+  }
+
+  rechercherParNom(){
+    this.clientService.rechercherParNom(this.nomReach).subscribe(clientsFiltred => {
+      this.clientsPar = clientsFiltred;
+    });
+  }
+  rechercherParYear() {
+    this.clientService.rechercherParYear(this.yearReach).subscribe(
+      clientsFiltred =>{
+        this.clientsPar = clientsFiltred
+      });
   }
 }

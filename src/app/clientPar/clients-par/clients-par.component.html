@@ -26,10 +26,17 @@
             <div class="table-wrapper">
                 <div class="table-title" style="background-color: #334CFF;">
                     <div class="row">
-                        <div class="col-sm-9">
+                        <div class="col-sm-5"><br>
                             <h1><b>Suivi des comptes</b></h1>
                         </div>
-                        <div class="col-sm-3">
+                      <div class="col-sm-3"><br>
+                        <p style="color: white;">
+                          <b>Nombre de Clients</b>
+                          <span>{{nombreDeClient}}</span>
+                        </p>
+                      </div>
+                        <div class="col-sm-4">
+                          <br>
                           <!--<a class="btn btn-success" data-toggle="modal" routerLink="/addClientPar"><b><i class="material-icons">&#xE147;</i> <span>Ajouter</span></b></a>-->
                           <button type="button" class="btn btn-success add-new" data-toggle="modal" routerLink="/addClientPar"><i class="fa fa-plus"></i> Add New Client</button>
 
@@ -41,19 +48,18 @@
                   <div class="col-sm-9">
                     <div class="filter-group">
                       <label>Name</label>
-                      <input type="text" class="form-control">
-                      <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                      <input type="text" class="form-control" [(ngModel)]="nomReach">
+                      <button type="button" (click)="rechercherParNom()" class="btn btn-primary"><i class="fa fa-search"></i></button>
                     </div>
 
                     <div class="filter-group">
                       <label>Année</label>
-                      <select class="form-control">
+                      <select class="form-control" [(ngModel)]="yearReach" (change)="rechercherParYear()">
                         <option>All</option>
                         <option *ngFor="let year of years" [value]="year.year">{{year.year}}</option>
                       </select>
                     </div>
                     <span class="filter-icon"><i class="fa fa-filter"></i></span>
-
                     <!--<div class="filter-group">
                       <label>Gérant</label>
                       <select class="form-control">

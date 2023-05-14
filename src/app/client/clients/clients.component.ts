@@ -17,6 +17,7 @@ export class ClientsComponent implements OnInit {
   gerants! : Gerant[];
   nomClient !: string;
   yearReach !: string;
+  idYearReach !: number;
   nombreDeClient !: number;
 
   constructor(private clientService : ClientService, public authService : AuthentificationService,
@@ -27,12 +28,12 @@ export class ClientsComponent implements OnInit {
     this.chargerYears();
     this.chargerGerants();
 
-    console.log("Test Test"+this.nombreDeClient);
-    //console.log("Nombre de clients : "+this.clientService.nombreDeClientCF().subscribe());
-
-    console.log("Nombre de clients : "+this.chargerNombreDeClientCF());
+    this.clientService.nombreDeClientCF().subscribe(
+      data => {
+        this.nombreDeClient = data;
+      }
+    );
   }
-
   chargerClients(){
     this.clientService.listeClients().subscribe(client => {
       this.clients = client;
@@ -48,23 +49,14 @@ export class ClientsComponent implements OnInit {
       this.gerants = gerant;
     });
   }
-  chargerNombreDeClientCF(){
-    this.clientService.nombreDeClientCF().subscribe(
-      data => {
-        this.nombreDeClient = data;
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
   supprimerClient(client : Client) {
-    let conf = confirm("Etes-vous sûr ?");
-    if (conf) {
+    //let conf = confirm("Etes-vous sûr ?");
+   // if (conf) {
       this.clientService.supprimerClient(client.idClient).subscribe(() => {
         this.chargerClients();
+        window.location.reload();
       });
-    }
+   // }
   }
   rechercherParNom(){
     this.clientService.rechercherParNom(this.nomClient).subscribe(clientsFiltred => {
@@ -72,9 +64,9 @@ export class ClientsComponent implements OnInit {
     });
   }
   rechercherParYear() {
-    this.clientService.rechercherParYear(this.yearReach).subscribe(
+    this.clientService.rechercherParYear(this.idYearReach).subscribe(
       clientsFiltred =>{
-        this.clients = clientsFiltred
+        this.clients = clientsFiltred;
     });
   }
 }

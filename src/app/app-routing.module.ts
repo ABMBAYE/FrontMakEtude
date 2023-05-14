@@ -19,14 +19,12 @@ import {UpdateYearComponent} from "./years/update-year/update-year.component";
 import {AddGerantComponent} from "./gerant/add-gerant/add-gerant.component";
 import {GerantsComponent} from "./gerant/gerants/gerants.component";
 import {UpdateGerantComponent} from "./gerant/update-gerant/update-gerant.component";
-import {RechercheParYearComponent} from "./client/recherche-par-year/recherche-par-year.component";
 import {ComptabiliteComponent} from "./comptabilite/comptabilite.component";
 
 const routes: Routes = [
   {path: "clients", component : ClientsComponent},
   {path: "addClient", component : AddClientComponent, canActivate:[ClientGuard]},
   {path: "updateClient/:idClient", component : UpdateClientComponent},
-  {path: "rechercheParYear", component : RechercheParYearComponent},
 
   {path: "clientsPar", component : ClientsParComponent},
   {path: "addClientPar", component : AddClientParComponent},
