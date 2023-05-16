@@ -28,7 +28,7 @@ export class ClientsParComponent implements OnInit {
     this.chargerYears();
     this.chargerGerants();
 
-    this.clientService.nombreDeClientCF().subscribe(
+    this.clientService.nombreDeClientTotalPS().subscribe(
       data => {
         this.nombreDeClient = data;
       }

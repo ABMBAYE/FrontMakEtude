@@ -46,6 +46,31 @@
     </div>
 
   </nav>
+  <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+    <a href="#" class="navbar-brand"><h1><b>MAK'ETUDE</b></h1></a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collection of nav links, forms, and other content for toggling -->
+    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+      <div class="navbar-nav ml-auto">
+        <a routerLink="accueil" class="nav-item nav-link active"><i class="fa fa-home"></i><span>Accueil</span></a>
+        <a routerLink="gerants" class="nav-item nav-link"><i class="fa fa-users"></i><span>Gérant(s)</span></a>
+        <a routerLink="years" class="nav-item nav-link"><i class="fa fa-calendar"></i><span>Année(s)</span></a>
+        <a routerLink="comptabilite" class="nav-item nav-link"><i class="fa fa-dollar"></i><span>Comptabilités</span></a>
+        <div class="nav-item dropdown">
+          <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><i class="fa fa-dollar"></i>Antonio Moreno <b class="caret"></b></a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+            <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a>
+            <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
+            <div class="divider dropdown-divider"></div>
+            <a href="#" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 </body>
 
 </html>

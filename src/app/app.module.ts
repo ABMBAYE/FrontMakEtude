@@ -22,7 +22,6 @@ import { UpdateYearComponent } from './years/update-year/update-year.component';
 import { AddGerantComponent } from './gerant/add-gerant/add-gerant.component';
 import { UpdateGerantComponent } from './gerant/update-gerant/update-gerant.component';
 import { GerantsComponent } from './gerant/gerants/gerants.component';
-import { RechercheParYearComponent } from './recherche-par-year/recherche-par-year.component';
 import { ComptabiliteComponent } from './comptabilite/comptabilite.component';
 
 @NgModule({
@@ -46,7 +45,6 @@ import { ComptabiliteComponent } from './comptabilite/comptabilite.component';
     AddGerantComponent,
     UpdateGerantComponent,
     GerantsComponent,
-    RechercheParYearComponent,
     ComptabiliteComponent
     ],
   imports: [

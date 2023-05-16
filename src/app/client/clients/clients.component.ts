@@ -19,6 +19,7 @@ export class ClientsComponent implements OnInit {
   yearReach !: string;
   idYearReach !: number;
   nombreDeClient !: number;
+  sommeCF !: number;
 
   constructor(private clientService : ClientService, public authService : AuthentificationService,
               public yearService : YearService, private gerantService : GerantService) { }
@@ -31,6 +32,12 @@ export class ClientsComponent implements OnInit {
     this.clientService.nombreDeClientCF().subscribe(
       data => {
         this.nombreDeClient = data;
+      }
+    );
+
+    this.clientService.sommeCF().subscribe(
+      data => {
+        this.sommeCF = data;
       }
     );
   }

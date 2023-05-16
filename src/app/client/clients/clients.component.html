@@ -87,7 +87,7 @@
         <th>Actions</th>
       </tr>
       </thead>
-      <tbody *ngFor="let client of clients">
+      <tbody *ngFor="let client of clients" [ngStyle]="{'background-color': client.acceptation >= 1 ? 'red' : 'inherit'}">
       <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Ahmadou'">
         <td style="background-color: #435d7d; color: white">{{client.year.year}}</td>
         <td>{{client.gerant.prenomGerant + " "}}{{client.gerant.nomGerant}}</td>

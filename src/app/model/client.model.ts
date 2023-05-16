@@ -12,8 +12,8 @@ export class Client {
     paiement?: string;
     entretien?: string;
     soumis?: string;
-    acceptation?: string;
-    refus?: string;
+    acceptation?: number;
+    refus?: number;
     dateEntretien? : Date;
     year = new Year();
     gerant = new Gerant();

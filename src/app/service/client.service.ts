@@ -65,6 +65,10 @@ export class ClientService {
     const url = this.apiURL+"/clients/nombreDeClient";
     return this.http.get<number>(url);
   }
+  sommeCF():Observable<number> {
+    const url = this.apiURL+"/clients/sommeCF";
+    return this.http.get<number>(url);
+  }
 }
 
 

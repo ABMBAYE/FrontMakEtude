@@ -104,8 +104,8 @@ chargerYears(){
       client.paiement = '';
       client.entretien = '';
     }
-    client.acceptation = '0';
-    client.refus = '0';
+    client.acceptation = 0;
+    client.refus = 0;
   }
   chargerPaiement(client: Client) {
     if(client.paiement === 'Non'){
@@ -113,7 +113,7 @@ chargerYears(){
     }else{
       client.entretien = '';
     }
-    client.acceptation = '0';
-    client.refus = '0';
+    client.acceptation = 0;
+    client.refus = 0;
   }
 }
