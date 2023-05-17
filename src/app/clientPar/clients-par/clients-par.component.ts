@@ -28,11 +28,7 @@ export class ClientsParComponent implements OnInit {
     this.chargerYears();
     this.chargerGerants();
 
-    this.clientService.nombreDeClientTotalPS().subscribe(
-      data => {
-        this.nombreDeClient = data;
-      }
-    );
+    this.nombreDeClientTotalPS();
   }
 
   chargerClientsPar(){
@@ -53,12 +49,10 @@ export class ClientsParComponent implements OnInit {
   }
 
   supprimerClientPar(client : ClientPar) {
-    let conf = confirm("Etes-vous sûr ?");
-    if (conf) {
       this.clientService.supprimerClientPar(client.idClientPar).subscribe(() => {
         this.chargerClientsPar();
+        window.location.reload();
       });
-    }
   }
 
   rechercherParNom(){
@@ -71,5 +65,12 @@ export class ClientsParComponent implements OnInit {
       clientsFiltred =>{
         this.clientsPar = clientsFiltred
       });
+  }
+  nombreDeClientTotalPS(){
+    this.clientService.nombreDeClientTotalPS().subscribe(
+      data => {
+        this.nombreDeClient = data;
+      }
+    );
   }
 }

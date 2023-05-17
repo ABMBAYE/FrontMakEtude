@@ -66,7 +66,9 @@ chargerYears(){
       this.newClient.year = years[0];
     }
   });
-}chargerGerants(){
+}
+
+chargerGerants(){
   this.gerantService.listeGerants().subscribe(gerants => {
     this.gerants = gerants;
     if (gerants.length > 0) {

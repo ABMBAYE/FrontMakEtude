@@ -123,8 +123,7 @@
                                 <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
                             </select>
                             <div *ngIf="submitted && f['paiement'].errors" class="invalid-feedback">
-                                <div *ngIf="f['paiement'].errors?.['required']" style="color: bisque;"><strong>Champ
-                                        obligatoire.</strong></div>
+                                <div *ngIf="f['paiement'].errors?.['required']" style="color: bisque;"><strong>Champ obligatoire.</strong></div>
                             </div>
 
                         </div>
@@ -135,7 +134,6 @@
                             <label>Date d'Entretien</label>
                             <input type="date" [disabled]="disableDate" [(ngModel)]="newClient.dateEntretien" formControlName="dateEntretien"
                             class="form-control" placeholder="Date d'Entretien" />
-
                         </div>
                         <div class="col-md-6">
                             <label>Entretien</label>

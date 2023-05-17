@@ -61,14 +61,20 @@ export class ClientService {
     const url = `${this.apiURL}/clients/reachByYear/${idYear}`;
     return this.http.get<Client[]>(url);
   }
-  nombreDeClientCF():Observable<number> {
-    const url = this.apiURL+"/clients/nombreDeClient";
+  nombreDeClientTotalCF():Observable<number> {
+    const url = this.apiURL+"/clients/nombreDeClientTotal";
     return this.http.get<number>(url);
   }
   sommeCF():Observable<number> {
     const url = this.apiURL+"/clients/sommeCF";
     return this.http.get<number>(url);
   }
+  nombreAcceptationCF():Observable<number>{
+    const url = this.apiURL+"/clients/nombreAcceptationCF";
+    return this.http.get<number>(url);
+  }
+  sommeTotalAcceptationCF():Observable<number> {
+    const url = this.apiURL+"/clients/sommeTotalAcceptationCF";
+    return this.http.get<number>(url);
+  }
 }
-
-

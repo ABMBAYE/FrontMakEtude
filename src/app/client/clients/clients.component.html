@@ -87,7 +87,7 @@
         <th>Actions</th>
       </tr>
       </thead>
-      <tbody *ngFor="let client of clients" [ngStyle]="{'background-color': client.acceptation >= 1 ? 'red' : 'inherit'}">
+      <tbody *ngFor="let client of clients">
       <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Ahmadou'">
         <td style="background-color: #435d7d; color: white">{{client.year.year}}</td>
         <td>{{client.gerant.prenomGerant + " "}}{{client.gerant.nomGerant}}</td>
@@ -108,11 +108,11 @@
              style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
             <i class="material-icons">&#xE254;</i>
           </a>
-          <a type="button" href="#myModal1" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
+          <a type="button" href="#myModal" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
              data-toggle="modal">
             <i class="material-icons">&#xE5C9;</i>
           </a>
-          <div id="myModal1" class="modal fade">
+          <div id="myModal" class="modal fade">
             <div class="modal-dialog modal-confirm">
               <div class="modal-content">
                 <div class="modal-header flex-column">
@@ -179,25 +179,26 @@
              style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
             <i class="material-icons">&#xE254;</i>
           </a>
-          <a type="button" href="#myModal" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
+          <a type="button" href="#myModal1" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
              data-toggle="modal">
             <i class="material-icons">&#xE5C9;</i>
           </a>
-          <div id="myModal" class="modal fade">
+          <div id="myModal1" class="modal fade">
             <div class="modal-dialog modal-confirm">
               <div class="modal-content">
                 <div class="modal-header flex-column">
                   <div class="icon-box">
-                    <i class="material-icons">&#xE5CD;</i>
+                    <i style="font-size: 50px" class="material-icons">&#xE5CD;</i>
                   </div>
                   <h4 class="modal-title w-100">Etes-vous sûr ?</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                   <p><strong>Voulez-vous supprimer cette ligne ?</strong></p>
                 </div>
                 <div class="modal-footer justify-content-center">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                  <button style="background-color: #435d7d" type="button" class="btn btn-secondary"
+                          data-dismiss="modal">Annuler
+                  </button>
                   <button type="button" (click)="supprimerClient(client)" class="btn btn-danger">Supprimer</button>
                 </div>
               </div>

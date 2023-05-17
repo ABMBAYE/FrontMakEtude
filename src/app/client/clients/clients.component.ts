@@ -28,18 +28,9 @@ export class ClientsComponent implements OnInit {
     this.chargerClients();
     this.chargerYears();
     this.chargerGerants();
+    this.nombreDeClientTotalCF();
 
-    this.clientService.nombreDeClientCF().subscribe(
-      data => {
-        this.nombreDeClient = data;
-      }
-    );
 
-    this.clientService.sommeCF().subscribe(
-      data => {
-        this.sommeCF = data;
-      }
-    );
   }
   chargerClients(){
     this.clientService.listeClients().subscribe(client => {
@@ -57,13 +48,10 @@ export class ClientsComponent implements OnInit {
     });
   }
   supprimerClient(client : Client) {
-    //let conf = confirm("Etes-vous sûr ?");
-   // if (conf) {
       this.clientService.supprimerClient(client.idClient).subscribe(() => {
         this.chargerClients();
         window.location.reload();
       });
-   // }
   }
   rechercherParNom(){
     this.clientService.rechercherParNom(this.nomClient).subscribe(clientsFiltred => {
@@ -75,5 +63,12 @@ export class ClientsComponent implements OnInit {
       clientsFiltred =>{
         this.clients = clientsFiltred;
     });
+  }
+  nombreDeClientTotalCF(){
+    this.clientService.nombreDeClientTotalCF().subscribe(
+      data => {
+        this.nombreDeClient = data;
+      }
+    );
   }
 }

@@ -20,11 +20,13 @@ import {AddGerantComponent} from "./gerant/add-gerant/add-gerant.component";
 import {GerantsComponent} from "./gerant/gerants/gerants.component";
 import {UpdateGerantComponent} from "./gerant/update-gerant/update-gerant.component";
 import {ComptabiliteComponent} from "./comptabilite/comptabilite.component";
+import {YearGuard} from "./year.guard";
+import {GerantGuard} from "./gerant.guard";
 
 const routes: Routes = [
-  {path: "clients", component : ClientsComponent},
+  {path: "clients", component : ClientsComponent, canActivate:[ClientGuard]},
   {path: "addClient", component : AddClientComponent, canActivate:[ClientGuard]},
-  {path: "updateClient/:idClient", component : UpdateClientComponent},
+  {path: "updateClient/:idClient", component : UpdateClientComponent, canActivate:[ClientGuard]},
 
   {path: "clientsPar", component : ClientsParComponent},
   {path: "addClientPar", component : AddClientParComponent},
@@ -36,15 +38,15 @@ const routes: Routes = [
 
   {path: "login", component : LoginComponent},
 
-  {path: "addYear", component : AddYearComponent},
-  {path: "updateYear/:idYear", component : UpdateYearComponent},
-  {path: "years", component : YearsComponent},
+  {path: "addYear", component : AddYearComponent, canActivate:[YearGuard]},
+  {path: "updateYear/:idYear", component : UpdateYearComponent, canActivate:[YearGuard]},
+  {path: "years", component : YearsComponent, canActivate:[YearGuard]},
 
-  {path: "addGerant", component : AddGerantComponent},
-  {path: "updateGerant/:idGerant", component : UpdateGerantComponent},
-  {path: "gerants", component : GerantsComponent},
+  {path: "addGerant", component : AddGerantComponent, canActivate:[GerantGuard]},
+  {path: "updateGerant/:idGerant", component : UpdateGerantComponent, canActivate:[GerantGuard]},
+  {path: "gerants", component : GerantsComponent, canActivate:[GerantGuard]},
 
-  {path: "accueil", component : AccueilComponent},
+  {path: "accueil", component : AccueilComponent, canActivate:[ClientGuard]},
 
   {path: "comptabilite", component : ComptabiliteComponent},
 
