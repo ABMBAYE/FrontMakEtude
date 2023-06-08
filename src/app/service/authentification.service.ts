@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
-import { User } from '../model/user.model';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {User} from '../model/user.model';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthentificationService {
   users: User[] = [
-    { "idUser" : 1, "username": "Khadim", "password": "123", "roles": ['USER'] },
-    { "idUser" : 2, "username": "Ahmadou", "password": "123", "roles": ['ADMIN'] }
+    {"idUser": 1, "username": "Khadim", "password": "123", "roles": ['USER']},
+    {"idUser": 2, "username": "Ahmadou", "password": "123", "roles": ['ADMIN']}
   ];
 
   public loggedUser!: string;
@@ -16,7 +16,8 @@ export class AuthentificationService {
   public isloggedIn: Boolean = false;
   public roles!: string[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   logout() {
     this.isloggedIn = false;
@@ -45,20 +46,20 @@ export class AuthentificationService {
   isAdmin(): Boolean {
     if (!this.roles) // this.roles== undefiened
       return false;
-    return (this.roles.indexOf('ADMIN') >-1);
+    return (this.roles.indexOf('ADMIN') > -1);
   }
 
-  setLoggedUserFromLocalStorage(login : string) {
+  setLoggedUserFromLocalStorage(login: string) {
     this.loggedUser = login;
     this.isloggedIn = true;
     this.getUserRoles(login);
   }
 
-  getUserRoles(username :string){
+  getUserRoles(username: string) {
     this.users.forEach((curUser) => {
-    if( curUser.username == username ) {
-      this.roles = curUser.roles;
-    }
-  });
-}
+      if (curUser.username == username) {
+        this.roles = curUser.roles;
+      }
+    });
   }
+}

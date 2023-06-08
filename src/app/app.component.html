@@ -20,65 +20,113 @@
   <title>Gestion des Clients</title>
 </head>
 
-<body>
 
 <nav class="navbar navbar-expand-sm navbar-dark">
   <a class="navbar-brand">
     <h1><b>MAK'ETUDE</b></h1>
   </a>
-  <a class="navbar-brand" routerLink="accueil">
-    <h3><b>Accueil</b></h3>
-  </a>
-
-  <div class="navbar-nav ml-auto">
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a *ngIf="authService.isloggedIn" routerLink="accueil" class="nav-item nav-link dropdown-toggle active" data-toggle="dropdown"><i
+        class="fa fa-home"></i><span>Accueil</span></a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Ajouter</a>
+        <a class="dropdown-item" href="#">Lister</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a *ngIf="authService.isloggedIn" routerLink="gerants" class="nav-item nav-link active"><i
+        class="fa fa-users"></i><span>Gérant(s)</span></a>
+    </li>
+    <li class="nav-item">
+      <a *ngIf="authService.isloggedIn" routerLink="years" class="nav-item nav-link active"><i
+        class="fa fa-calendar"></i><span>Année(s)</span></a>
+    </li>
+    <li class="nav-item">
+      <a *ngIf="authService.isloggedIn" routerLink="comptabilite" class="nav-item nav-link active"><i
+        class="fa fa-dollar"></i><span>Comptabilités</span></a>
+    </li>
+    <li class="nav-item">
+      <a *ngIf="authService.isloggedIn" class="nav-item nav-link active dropdown-toggle" href="#" data-toggle="dropdown"><i
+        class="fa fa-dollar"></i><span>Comptabilités</span></a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink="comptaCF">Campus France</a>
+        <a class="dropdown-item" routerLink="comptaPS">Parcoursup</a>
+        <a class="dropdown-item" routerLink="comptabilite">Total</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-item nav-link active dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><i
+        class="fa fa-user"></i><span>{{authService.isloggedIn ? authService.loggedUser : "Mon Compte"}}</span></a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item item" *ngIf="!authService.isloggedIn" routerLink="login">Connexion <i
+          class="fa fa-sign-in"></i></a>
+        <a class="dropdown-item">Profile <i class="fa fa-user-o"></i></a>
+        <a class="dropdown-item">Settings <i class="fa fa-sliders"></i></a>
+        <div class="divider dropdown-divider" *ngIf="authService.isloggedIn"></div>
+        <a class="dropdown-item item" *ngIf="authService.isloggedIn">Déconnexion <i class="fa fa-sign-out"></i></a>
+      </div>
+    </li>
+  </ul>
+  <!--<div class="navbar-nav ml-auto">
+    <a *ngIf="authService.isloggedIn" routerLink="accueil" class="nav-item nav-link active"><i
+      class="fa fa-home"></i><span>Accueil</span></a>
+    <a *ngIf="authService.isloggedIn" routerLink="gerants" class="nav-item nav-link"><i
+      class="fa fa-users"></i><span>Gérant(s)</span></a>
+    <a *ngIf="authService.isloggedIn" routerLink="years" class="nav-item nav-link"><i
+      class="fa fa-calendar"></i><span>Année(s)</span></a>
+    <a *ngIf="authService.isloggedIn" routerLink="comptabilite" class="nav-item nav-link"><i
+      class="fa fa-dollar"></i><span>Comptabilités</span></a>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">{{authService.loggedUser}} <i class="fa fa-user"></i></a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop"
+           data-toggle="dropdown">{{authService.isloggedIn ? authService.loggedUser : "Mon Compte"}} <i
+          class="fa fa-user"></i></a>
         <div class="dropdown-menu">
-          <a class="dropdown-item item" *ngIf="!authService.isloggedIn" routerLink="login">Login <i class="fa fa-sign-in"></i></a>
-          <a class="dropdown-item item" routerLink="years">Année(s) <i class="fa fa-calendar"></i></a>
-          <a class="dropdown-item item" routerLink="gerants">Gérant(s) <i class="fa fa-user"></i></a>
-          <a class="dropdown-item item" routerLink="comptabilite">Comptabilité<i class="fa fa-money"></i></a>
-          <a class="dropdown-item item" *ngIf="authService.isloggedIn" routerLink="login">Logout <i
-            class="fa fa-sign-out"></i></a>
+          <a class="dropdown-item item" *ngIf="!authService.isloggedIn" routerLink="login">Connexion <i
+            class="fa fa-sign-in"></i></a>
+          <a class="dropdown-item">Profile <i class="fa fa-user-o"></i></a>
+          <a class="dropdown-item">Settings <i class="fa fa-sliders"></i></a>
+          <div class="divider dropdown-divider" *ngIf="authService.isloggedIn"></div>
+          <a class="dropdown-item item" *ngIf="authService.isloggedIn">Déconnexion <i class="fa fa-sign-out"></i></a>
         </div>
       </li>
     </ul>
-  </div>
+  </div>-->
 
 </nav>
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+<div></div>
+<div></div>
+<!--<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
   <a href="#" class="navbar-brand"><h1><b>MAK'ETUDE</b></h1></a>
   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <!-- Collection of nav links, forms, and other content for toggling -->
+  &lt;!&ndash; Collection of nav links, forms, and other content for toggling &ndash;&gt;
   <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
     <div class="navbar-nav ml-auto">
-      <a *ngIf="!authService.isloggedIn" routerLink="accueil" class="nav-item nav-link active"><i
+      <a *ngIf="authService.isloggedIn" routerLink="accueil" class="nav-item nav-link active"><i
         class="fa fa-home"></i><span>Accueil</span></a>
-      <a *ngIf="!authService.isloggedIn" routerLink="gerants" class="nav-item nav-link"><i
+      <a *ngIf="authService.isloggedIn" routerLink="gerants" class="nav-item nav-link"><i
         class="fa fa-users"></i><span>Gérant(s)</span></a>
-      <a *ngIf="!authService.isloggedIn" routerLink="years" class="nav-item nav-link"><i
+      <a *ngIf="authService.isloggedIn" routerLink="years" class="nav-item nav-link"><i
         class="fa fa-calendar"></i><span>Année(s)</span></a>
-      <a *ngIf="!authService.isloggedIn" routerLink="comptabilite" class="nav-item nav-link"><i
+      <a *ngIf="authService.isloggedIn" routerLink="comptabilite" class="nav-item nav-link"><i
         class="fa fa-dollar"></i><span>Comptabilités</span></a>
       <div class="nav-item dropdown">
-        <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action">Ahmadou</a>
+        <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action testCompte">{{authService.isloggedIn ? authService.loggedUser : "Mon Compte"}}</a>
         <div class="dropdown-menu">
-          <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Login</a>
+          <a *ngIf="!authService.isloggedIn" routerLink="login" class="dropdown-item"><i class="fa fa-user-o"></i> Connexion</a>
           <a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
           <a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a>
           <a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
           <div class="divider dropdown-divider"></div>
-          <a href="#" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Déconnexion</a>
+          <a *ngIf="authService.isloggedIn" routerLink="login" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Déconnexion</a>
         </div>
       </div>
     </div>
   </div>
-</nav>
-</body>
+</nav>-->
 
 </html>
-
 <router-outlet></router-outlet>

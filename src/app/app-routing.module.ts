@@ -22,6 +22,8 @@ import {UpdateGerantComponent} from "./gerant/update-gerant/update-gerant.compon
 import {ComptabiliteComponent} from "./comptabilite/comptabilite.component";
 import {YearGuard} from "./year.guard";
 import {GerantGuard} from "./gerant.guard";
+import {ComptaCFComponent} from "./compta-cf/compta-cf.component";
+import {ComptaPSComponent} from "./compta-ps/compta-ps.component";
 
 const routes: Routes = [
   {path: "clients", component : ClientsComponent, canActivate:[ClientGuard]},
@@ -49,6 +51,11 @@ const routes: Routes = [
   {path: "accueil", component : AccueilComponent, canActivate:[ClientGuard]},
 
   {path: "comptabilite", component : ComptabiliteComponent},
+
+  {path: "comptaCF", component : ComptaCFComponent},
+
+  {path: "comptaPS", component : ComptaPSComponent},
+
 
   {path: 'app-forbidden', component: ForbiddenComponent},
 

@@ -57,10 +57,7 @@ export class ClientService {
     const url = `${this.apiURL}/clients/reachByName/${nom}`;
     return this.http.get<Client[]>(url);
   }
-  rechercherParYear(idYear : number):Observable<Client[]> {
-    const url = `${this.apiURL}/clients/reachByYear/${idYear}`;
-    return this.http.get<Client[]>(url);
-  }
+
   nombreDeClientTotalCF():Observable<number> {
     const url = this.apiURL+"/clients/nombreDeClientTotal";
     return this.http.get<number>(url);

@@ -6,6 +6,7 @@ import {YearService} from "../../service/year.service";
 import {AuthentificationService} from "../../service/authentification.service";
 import {Gerant} from "../../model/gerant.model";
 import {GerantService} from "../../service/gerant.service";
+import {Client} from "../../model/client.model";
 
 @Component({
   selector: 'app-clients-par',
@@ -14,6 +15,8 @@ import {GerantService} from "../../service/gerant.service";
 })
 export class ClientsParComponent implements OnInit {
   clientsPar! : ClientPar[];
+  filteredClientsPar: ClientPar[] = [];
+  selectedYear: string = 'All Rentrée';
   years! : Year[];
   gerants! : Gerant[];
   nomReach !: string;
@@ -28,12 +31,13 @@ export class ClientsParComponent implements OnInit {
     this.chargerYears();
     this.chargerGerants();
 
-    this.nombreDeClientTotalPS();
+    //this.nombreDeClientTotalPS();
   }
 
   chargerClientsPar(){
     this.clientService.listeClientPar().subscribe(client => {
       this.clientsPar = client;
+      this.filteredClientsPar = this.clientsPar;
     });
   }
   chargerYears(){
@@ -60,17 +64,26 @@ export class ClientsParComponent implements OnInit {
       this.clientsPar = clientsFiltred;
     });
   }
-  rechercherParYear() {
-    this.clientService.rechercherParYear(this.yearReach).subscribe(
-      clientsFiltred =>{
-        this.clientsPar = clientsFiltred
-      });
+  filterClientsParByYear() {
+    console.log("Entrée ?")
+    if (this.selectedYear === 'All Rentrée') {
+      this.filteredClientsPar = this.clientsPar;
+      console.log("Entrée 1 :"+this.filteredClientsPar)
+    }
+    else {
+      // @ts-ignore
+      this.filteredClientsPar = this.clientsPar.filter(client => client.year.idYear === this.selectedYear.idYear);
+      console.log("Entrée 2 :"+this.filteredClientsPar)
+    }
   }
-  nombreDeClientTotalPS(){
-    this.clientService.nombreDeClientTotalPS().subscribe(
-      data => {
-        this.nombreDeClient = data;
-      }
-    );
+
+  nombreClientParByYear():number{
+    if (this.selectedYear !== 'All Rentrée') {
+      // @ts-ignore
+      return this.clientsPar.filter(client => client.year.idYear === this.selectedYear.idYear).length;
+    }
+    else {
+      return this.clientsPar.length;
+    }
   }
 }

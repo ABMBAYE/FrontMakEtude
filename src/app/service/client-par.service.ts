@@ -81,6 +81,7 @@ export class ClientParService {
     const url = this.apiURL+"/clients/sommeCFAndPS";
     return this.http.get<number>(url);
   }
+
   nombreAcceptationPS():Observable<number>{
     const url = this.apiURL+"/clients/nombreAcceptationPS";
     return this.http.get<number>(url);

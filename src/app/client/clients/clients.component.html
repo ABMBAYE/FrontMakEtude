@@ -22,9 +22,9 @@
           <h1><b>Suivi des comptes</b></h1>
         </div>
         <div class="col-sm-3"><br>
-          <p style="color: white;">
+          <p style="color: white; text-align: center">
             <b>Nombre de Clients</b>
-            <span>{{nombreDeClient}}</span>
+            <span>{{nombreClientByYear()}}</span>
           </p>
         </div>
 
@@ -41,17 +41,17 @@
       <div class="row">
         <div class="col-sm-9">
           <div class="filter-group">
-            <label>Name</label>
+            <label><strong>Name</strong></label>
             <input type="text" [(ngModel)]="nomClient" class="form-control">
             <button type="button" (click)="rechercherParNom()" class="btn btn-primary"><i class="fa fa-search"></i>
             </button>
           </div>
 
           <div class="filter-group">
-            <label>Année</label>
-            <select class="form-control" [(ngModel)]="idYearReach" (change)="rechercherParYear()">
-              <option>All</option>
-              <option *ngFor="let year of years" [value]="year.year">{{year.year}}</option>
+            <label><strong>Rentrée</strong></label>
+            <select class="form-control" [(ngModel)]="selectedYear" (change)="filterClientsByYear()">
+              <option>All Rentrée</option>
+              <option *ngFor="let year of years" [ngValue]="year">Rentrée {{year.year}}</option>
             </select>
           </div>
           <span class="filter-icon"><i class="fa fa-filter"></i></span>
@@ -70,8 +70,7 @@
     <table class="table table-striped table-hover table-bordered">
       <thead>
       <tr style="background-color: #435d7d; color: white; text-align: center;">
-        <th>Année</th>
-        <th>Gérant</th>
+        <th>Rentrée</th>
         <th>Prénom(s)</th>
         <th>Nom</th>
         <th>Identifiant</th>
@@ -87,10 +86,9 @@
         <th>Actions</th>
       </tr>
       </thead>
-      <tbody *ngFor="let client of clients">
+      <tbody *ngFor="let client of filteredClients">
       <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Ahmadou'">
-        <td style="background-color: #435d7d; color: white">{{client.year.year}}</td>
-        <td>{{client.gerant.prenomGerant + " "}}{{client.gerant.nomGerant}}</td>
+        <td style="background-color: #435d7d; color: white"><b>{{client.year.year}}</b></td>
         <td>{{client.prenom | titlecase}}</td>
         <td>{{client.nom | uppercase}}</td>
         <td>{{client.identifiant}}</td>
@@ -101,8 +99,8 @@
         <td>{{client.paiement | titlecase}}</td>
         <td>{{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</td>
         <td>{{client.entretien | titlecase}}</td>
-        <td [ngStyle]="{ color: '#3FCB2C'}">{{client.acceptation}}/7</td>
-        <td [ngStyle]="{ color: '#E0322A'}">{{client.refus}}/7</td>
+        <td [ngStyle]="{ color: '#3FCB2C'}"><strong>{{client.acceptation}}/7</strong></td>
+        <td [ngStyle]="{ color: '#E0322A'}"><strong>{{client.refus}}/7</strong></td>
         <td class="text-center">
           <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateClient', client.idClient]"
              style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
@@ -141,8 +139,7 @@
     <table class="table table-striped table-hover table-bordered">
       <thead>
       <tr style="background-color: #435d7d; color: white; text-align: center;">
-        <th>Année</th>
-        <th>Gérant</th>
+        <th>Rentrée</th>
         <th>Prénom(s)</th>
         <th>Nom</th>
         <th>Identifiant</th>
@@ -158,10 +155,9 @@
         <th>Actions</th>
       </tr>
       </thead>
-      <tbody *ngFor="let client of clients">
+      <tbody *ngFor="let client of filteredClients">
       <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Khadim'">
-        <td style="background-color: #435d7d; color: white">{{client.year.year}}</td>
-        <td>{{client.gerant.prenomGerant + " "}}{{client.gerant.nomGerant}}</td>
+        <td style="background-color: #435d7d; color: white"><b>{{client.year.year}}</b></td>
         <td>{{client.prenom | titlecase}}</td>
         <td>{{client.nom | uppercase}}</td>
         <td>{{client.identifiant}}</td>
@@ -172,8 +168,8 @@
         <td>{{client.paiement | titlecase}}</td>
         <td>{{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</td>
         <td>{{client.entretien | titlecase}}</td>
-        <td [ngStyle]="{ color: '#3FCB2C'}">{{client.acceptation}}/7</td>
-        <td [ngStyle]="{ color: '#E0322A'}">{{client.refus}}/7</td>
+        <td [ngStyle]="{ color: '#3FCB2C'}"><strong>{{client.acceptation}}/7</strong></td>
+        <td [ngStyle]="{ color: '#E0322A'}"><strong>{{client.refus}}/7</strong></td>
         <td class="text-center">
           <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateClient', client.idClient]"
              style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">

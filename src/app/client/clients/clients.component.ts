@@ -13,7 +13,11 @@ import {GerantService} from "../../service/gerant.service";
 })
 export class ClientsComponent implements OnInit {
   clients! : Client[];
+  filteredClients: Client[] = [];
+
   years! : Year[];
+  selectedYear: string = 'All Rentrée';
+
   gerants! : Gerant[];
   nomClient !: string;
   yearReach !: string;
@@ -25,16 +29,16 @@ export class ClientsComponent implements OnInit {
               public yearService : YearService, private gerantService : GerantService) { }
 
   ngOnInit(): void {
+
     this.chargerClients();
     this.chargerYears();
     this.chargerGerants();
-    this.nombreDeClientTotalCF();
-
-
+    //this.nombreDeClientTotalCF();
   }
   chargerClients(){
     this.clientService.listeClients().subscribe(client => {
       this.clients = client;
+      this.filteredClients = this.clients;
     });
   }
   chargerYears(){
@@ -54,21 +58,34 @@ export class ClientsComponent implements OnInit {
       });
   }
   rechercherParNom(){
-    this.clientService.rechercherParNom(this.nomClient).subscribe(clientsFiltred => {
+    this.clientService.rechercherParNom(this.nomClient).subscribe(
+      clientsFiltred => {
       this.clients = clientsFiltred;
     });
   }
-  rechercherParYear() {
-    this.clientService.rechercherParYear(this.idYearReach).subscribe(
-      clientsFiltred =>{
-        this.clients = clientsFiltred;
-    });
+  filterClientsByYear() {
+    if (this.selectedYear === 'All Rentrée') {
+      this.filteredClients = this.clients;
+    }
+    else {
+      // @ts-ignore
+      this.filteredClients = this.clients.filter(client => client.year.idYear === this.selectedYear.idYear);
+    }
   }
-  nombreDeClientTotalCF(){
+  /*nombreDeClientTotalCF(){
     this.clientService.nombreDeClientTotalCF().subscribe(
       data => {
         this.nombreDeClient = data;
-      }
-    );
+      });
+  }*/
+
+  nombreClientByYear():number{
+    if (this.selectedYear !== 'All Rentrée') {
+      // @ts-ignore
+      return this.clients.filter(client => client.year.idYear === this.selectedYear.idYear).length;
+    }
+    else {
+      return this.clients.length;
+    }
   }
 }

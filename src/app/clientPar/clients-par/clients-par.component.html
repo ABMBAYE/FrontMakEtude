@@ -30,9 +30,9 @@
           <h1><b>Suivi des comptes</b></h1>
         </div>
         <div class="col-sm-3"><br>
-          <p style="color: white;">
+          <p style="color: white; text-align: center">
             <b>Nombre de Clients</b>
-            <span>{{nombreDeClient}}</span>
+            <span>{{nombreClientParByYear()}}</span>
           </p>
         </div>
         <div class="col-sm-4">
@@ -55,22 +55,21 @@
             </button>
           </div>
 
-          <div class="filter-group">
+          <!--<div class="filter-group">
             <label>Année</label>
             <select class="form-control" [(ngModel)]="yearReach" (change)="rechercherParYear()">
               <option>All</option>
               <option *ngFor="let year of years" [value]="year.year">{{year.year}}</option>
             </select>
-          </div>
-          <span class="filter-icon"><i class="fa fa-filter"></i></span>
-          <!--<div class="filter-group">
-            <label>Gérant</label>
-            <select class="form-control">
-              <option>All</option>
-              <option *ngFor="let gerant of gerants" [value]="gerant.prenomGerant">{{gerant.prenomGerant+" "+gerant.nomGerant}}</option>
+          </div>-->
+          <div class="filter-group">
+            <label><strong>Rentrée</strong></label>
+            <select class="form-control" [(ngModel)]="selectedYear" (change)="filterClientsParByYear()">
+              <option>All Rentrée</option>
+              <option *ngFor="let year of years" [ngValue]="year">Rentrée {{year.year}}</option>
             </select>
           </div>
-          <span class="filter-icon"><i class="fa fa-filter"></i></span>-->
+          <span class="filter-icon"><i class="fa fa-filter"></i></span>
         </div>
       </div>
     </div>
@@ -79,7 +78,6 @@
       <thead>
       <tr style="background-color: #334CFF; color: white; text-align: center;">
         <th>Année</th>
-        <th>Gérant</th>
         <th>Prénom(s)</th>
         <th>Nom</th>
         <th>Adresse Mail</th>
@@ -96,10 +94,9 @@
         <th>Actions</th>
       </tr>
       </thead>
-      <tbody *ngFor="let client of clientsPar">
+      <tbody *ngFor="let client of filteredClientsPar">
       <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Ahmadou'">
-        <td style="background-color: #334CFF; color: white">{{client.year.year}}</td>
-        <td>{{client.gerant.prenomGerant + " "}}{{client.gerant.nomGerant}}</td>
+        <td style="background-color: #334CFF; color: white"><b>{{client.year.year}}</b></td>
         <td>{{client.prenom | titlecase}}</td>
         <td>{{client.nom | uppercase}}</td>
         <td>{{client.adresseMail}}</td>
@@ -110,9 +107,9 @@
         <td>{{client.inscription}}</td>
         <td>{{client.formulation}}</td>
         <td>{{client.confirmation}}</td>
-        <td [ngStyle]="{ color: '#E0322A'}">{{client.attente}}/20</td>
-        <td [ngStyle]="{ color: '#E0322A'}">{{client.refus}}/20</td>
-        <td [ngStyle]="{ color: '#3FCB2C'}">{{client.accepte}}/20</td>
+        <td [ngStyle]="{ color: '#E0322A'}"><strong>{{client.attente}}/20</strong></td>
+        <td [ngStyle]="{ color: '#E0322A'}"><strong>{{client.refus}}/20</strong></td>
+        <td [ngStyle]="{ color: '#3FCB2C'}"><strong>{{client.accepte}}/20</strong></td>
        <!-- <td class="text-center">
           <a class="btn btn-success" [routerLink]="['/updateClientPar', client.idClientPar]" style="color: #334CFF;"
              class="edit" title="Edit" data-toggle="tooltip">
@@ -161,7 +158,6 @@
       <thead>
       <tr style="background-color: #334CFF; color: white; text-align: center;">
         <th>Année</th>
-        <th>Gérant</th>
         <th>Prénom(s)</th>
         <th>Nom</th>
         <th>Adresse Mail</th>
@@ -178,10 +174,9 @@
         <th>Actions</th>
       </tr>
       </thead>
-      <tbody *ngFor="let client of clientsPar">
+      <tbody *ngFor="let client of filteredClientsPar">
       <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === 'Khadim'">
-        <td style="background-color: #334CFF; color: white">{{client.year.year}}</td>
-        <td>{{client.gerant.prenomGerant + " "}}{{client.gerant.nomGerant}}</td>
+        <td style="background-color: #334CFF; color: white"><b>{{client.year.year}}</b></td>
         <td>{{client.prenom | titlecase}}</td>
         <td>{{client.nom | uppercase}}</td>
         <td>{{client.adresseMail}}</td>
@@ -192,9 +187,9 @@
         <td>{{client.inscription}}</td>
         <td>{{client.formulation}}</td>
         <td>{{client.confirmation}}</td>
-        <td [ngStyle]="{ color: '#E0322A'}">{{client.attente}}/20</td>
-        <td [ngStyle]="{ color: '#E0322A'}">{{client.refus}}/20</td>
-        <td [ngStyle]="{ color: '#3FCB2C'}">{{client.accepte}}/20</td>
+        <td [ngStyle]="{ color: '#E0322A'}"><strong>{{client.attente}}/20</strong></td>
+        <td [ngStyle]="{ color: '#E0322A'}"><strong>{{client.refus}}/20</strong></td>
+        <td [ngStyle]="{ color: '#3FCB2C'}"><strong>{{client.accepte}}/20</strong></td>
         <td class="text-center">
           <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateClientPar', client.idClientPar]"
              style="color: #334CFF;" class="edit" title="Edit" data-toggle="tooltip">

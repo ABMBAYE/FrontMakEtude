@@ -24,11 +24,11 @@ body {
 */
 body {
   font-family: 'Varela Round', sans-serif;
-  background-color: #435d7d;
   color: white;
   width: 100%;
 }
 .navbar {
+  font-family: 'Varela Round', sans-serif;
   color: #fff;
   background-color: #435d7d !important;
   padding: 5px 16px;
@@ -76,6 +76,10 @@ body {
   display: block;
   text-align: center;
 }
+.navbar .navbar-nav .nav-item > a > i {
+  display: block;
+  text-align: center;
+}
 .navbar .dropdown-item i {
   font-size: 16px;
   min-width: 22px;
@@ -102,8 +106,8 @@ body {
   font-size: 15px;
 }
 .navbar .dropdown-menu a:hover, .navbar .dropdown-menu a:focus {
-  color: #333 !important;
-  background: transparent !important;
+  color: white !important;
+  background: #435d7d !important;
 }
 .navbar .navbar-nav .active a, .navbar .navbar-nav .active a:hover, .navbar .navbar-nav .active a:focus {
   color: #fff;
@@ -166,4 +170,16 @@ body {
   .input-group {
     width: 100%;
   }
+}
+.testCompte{
+  align-items: center;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 1rem;
+  gap: 0.5rem;
+  justify-content: center;
+  line-height: 1.25rem;
+  text-decoration-line: none;
 }

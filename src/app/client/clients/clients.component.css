@@ -306,12 +306,9 @@ table.table .avatar {
   outline: none;
 }
 
-
-
-
-
 .table-filter .filter-group {
   float: right;
+  border-radius: 20px;
   margin-left: 15px;
 }
 .table-filter input, .table-filter select {
@@ -341,7 +338,7 @@ table.table .avatar {
   display: inline-block;
 }
 .filter-group select.form-control {
-  width: 110px;
+  width: 157px;
 }
 .filter-icon {
   float: right;

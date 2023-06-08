@@ -23,6 +23,11 @@ import { AddGerantComponent } from './gerant/add-gerant/add-gerant.component';
 import { UpdateGerantComponent } from './gerant/update-gerant/update-gerant.component';
 import { GerantsComponent } from './gerant/gerants/gerants.component';
 import { ComptabiliteComponent } from './comptabilite/comptabilite.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from "@angular/material/select";
+import {MatDialogContent, MatDialogModule} from "@angular/material/dialog";
+import { ComptaCFComponent } from './compta-cf/compta-cf.component';
+import { ComptaPSComponent } from './compta-ps/compta-ps.component';
 
 @NgModule({
   declarations: [
@@ -45,14 +50,19 @@ import { ComptabiliteComponent } from './comptabilite/comptabilite.component';
     AddGerantComponent,
     UpdateGerantComponent,
     GerantsComponent,
-    ComptabiliteComponent
-    ],
+    ComptabiliteComponent,
+    ComptaCFComponent,
+    ComptaPSComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
