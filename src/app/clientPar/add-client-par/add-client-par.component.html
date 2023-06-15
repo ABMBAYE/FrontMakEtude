@@ -25,7 +25,7 @@
                             <label>Prénom(s)</label>
                             <input type="text" [(ngModel)]="newClientPar.prenom" formControlName="prenom"
                                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }"
-                                placeholder="Préom(s)" />
+                                placeholder="Prénom(s)" />
                             <div *ngIf="submitted && f['prenom'].errors" class="invalid-feedback">
                                 <div *ngIf="f['prenom'].errors?.['required'] || f['prenom'].errors?.['null']"
                                     style="color: bisque;"><strong>Champ Obligatoire</strong></div>
@@ -109,7 +109,7 @@
                             <select class="col-md-6" [(ngModel)]="newClientPar.inscription"
                                 formControlName="inscription"
                                 [ngClass]="{ 'is-invalid': submitted && f['inscription'].errors }"
-                                (change)="charger(newClientPar)" class="form-control">
+                                (change)="chargerInscription(newClientPar)" class="form-control">
                                 <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
                             </select>
                             <div *ngIf="submitted && f['inscription'].errors" class="invalid-feedback">
@@ -122,7 +122,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>Formulation</label>
-                            <select class="col-md-6" [(ngModel)]="newClientPar.formulation"
+                            <select class="col-md-6" [(ngModel)]="newClientPar.formulation" (change)="chargerFormulation(newClientPar)"
                                 formControlName="formulation"
                                 [ngClass]="{ 'is-invalid': submitted && f['formulation'].errors }" class="form-control">
                                 <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
@@ -146,6 +146,19 @@
                             </div>
                         </div>
                     </div>
+                  <div class="row" style="display: none">
+                    <div class="col-md-6">
+                      <label>Reliquat</label>
+                      <select class="col-md-6" [(ngModel)]="newClientPar.reliquat" formControlName="reliquat"
+                              [ngClass]="{ 'is-invalid': submitted && f['reliquat'].errors }" class="form-control">
+                        <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
+                      </select>
+                      <div *ngIf="submitted && f['reliquat'].errors" class="invalid-feedback">
+                        <div *ngIf="f['reliquat'].errors?.['required']" style="color: bisque;"><strong>Champ
+                          obligatoire.</strong></div>
+                      </div>
+                    </div>
+                  </div>
                     <br />
                     <div class="row">
                         <div class="col-md-4">

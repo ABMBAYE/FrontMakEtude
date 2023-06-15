@@ -43,51 +43,11 @@ export class ClientParService {
     const url = `${this.apiURL}/clients/${idClient}`;
     return this.http.delete(url, httpOptions);
   }
-
   consulterClientPar(idClient: number): Observable<ClientPar> {
     const url = `${this.apiURL}/clients/${idClient}`;
     return this.http.get<ClientPar>(url);
   }
-
   updateClientPar(client :ClientPar) : Observable<ClientPar> {
     return this.http.put<ClientPar>(`${this.apiURL}/clients`, client, httpOptions);
-  }
-
-  rechercherParNom(nom: string):Observable< ClientPar[]> {
-    const url = `${this.apiURL}/clients/reachByName/${nom}`;
-    return this.http.get<ClientPar[]>(url);
-  }
-  rechercherParYear(year : string):Observable<ClientPar[]> {
-    const url = `${this.apiURL}/clients/reachByYear/${year}`;
-    return this.http.get<ClientPar[]>(url);
-  }
-  nombreDeClientPS():Observable<number> {
-    const url = this.apiURL+"/clients/nombreDeClient";
-    return this.http.get<number>(url);
-  }
-  nombreDeClientTotalPS():Observable<number> {
-    const url = this.apiURL+"/clients/nombreDeClientTotal";
-    return this.http.get<number>(url);
-  }
-  nombreDeClientCFAndPS():Observable<number> {
-    const url = this.apiURL+"/clients/nombreDeClientCFAndPS";
-    return this.http.get<number>(url);
-  }
-  sommePS():Observable<number> {
-    const url = this.apiURL+"/clients/sommePS";
-    return this.http.get<number>(url);
-  }
-  sommeTotalCFAndPS():Observable<number> {
-    const url = this.apiURL+"/clients/sommeCFAndPS";
-    return this.http.get<number>(url);
-  }
-
-  nombreAcceptationPS():Observable<number>{
-    const url = this.apiURL+"/clients/nombreAcceptationPS";
-    return this.http.get<number>(url);
-  }
-  sommeTotalAcceptationPS():Observable<number> {
-    const url = this.apiURL+"/clients/sommeTotalAcceptationPS";
-    return this.http.get<number>(url);
   }
 }

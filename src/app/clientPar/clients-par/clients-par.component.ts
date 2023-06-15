@@ -16,12 +16,10 @@ import {Client} from "../../model/client.model";
 export class ClientsParComponent implements OnInit {
   clientsPar! : ClientPar[];
   filteredClientsPar: ClientPar[] = [];
-  selectedYear: string = 'All Rentrée';
+  selectedYear: string = 'All Rentrées';
   years! : Year[];
   gerants! : Gerant[];
-  nomReach !: string;
-  yearReach !: string;
-  nombreDeClient !: number;
+  searchTerm!: string;
 
   constructor(private clientService : ClientParService, public authService : AuthentificationService,
               private gerantService : GerantService, public yearService : YearService) { }
@@ -58,32 +56,26 @@ export class ClientsParComponent implements OnInit {
         window.location.reload();
       });
   }
-
-  rechercherParNom(){
-    this.clientService.rechercherParNom(this.nomReach).subscribe(clientsFiltred => {
-      this.clientsPar = clientsFiltred;
-    });
-  }
   filterClientsParByYear() {
-    console.log("Entrée ?")
     if (this.selectedYear === 'All Rentrée') {
       this.filteredClientsPar = this.clientsPar;
-      console.log("Entrée 1 :"+this.filteredClientsPar)
     }
     else {
       // @ts-ignore
       this.filteredClientsPar = this.clientsPar.filter(client => client.year.idYear === this.selectedYear.idYear);
-      console.log("Entrée 2 :"+this.filteredClientsPar)
     }
   }
 
   nombreClientParByYear():number{
-    if (this.selectedYear !== 'All Rentrée') {
+    if (this.selectedYear !== 'All Rentrées') {
       // @ts-ignore
       return this.clientsPar.filter(client => client.year.idYear === this.selectedYear.idYear).length;
     }
     else {
       return this.clientsPar.length;
     }
+  }
+  onKeyUp(filterText : string){
+    this.filteredClientsPar = this.clientsPar.filter(item => item.nom?.toUpperCase().includes(filterText));
   }
 }

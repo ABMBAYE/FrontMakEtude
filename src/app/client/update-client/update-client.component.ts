@@ -32,6 +32,8 @@ export class UpdateClientComponent implements OnInit {
         prenom: ['', Validators.required],
         nom: ['', Validators.required],
 
+        reliquat: ['', Validators.required],
+
         identifiant: ['', [Validators.required, Validators.pattern(/^(SN\d{2}-)\d{5}$/)]],
         numTel: ['', [Validators.required, Validators.pattern(/^(77|78|70|76)\s\d{3}\s\d{2}\s\d{2}$/)]],
 

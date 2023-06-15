@@ -24,6 +24,10 @@ import {YearGuard} from "./year.guard";
 import {GerantGuard} from "./gerant.guard";
 import {ComptaCFComponent} from "./compta-cf/compta-cf.component";
 import {ComptaPSComponent} from "./compta-ps/compta-ps.component";
+import {InfosclientComponent} from "./infosclient/infosclient.component";
+import {UtilisateurComponent} from "./utilisateur/utilisateurs/utilisateur.component";
+import {AddUtilisateurComponent} from "./utilisateur/add-utilisateur/add-utilisateur.component";
+import {UpdateUtilisateurComponent} from "./utilisateur/update-utilisateur/update-utilisateur.component";
 
 const routes: Routes = [
   {path: "clients", component : ClientsComponent, canActivate:[ClientGuard]},
@@ -55,6 +59,12 @@ const routes: Routes = [
   {path: "comptaCF", component : ComptaCFComponent},
 
   {path: "comptaPS", component : ComptaPSComponent},
+
+  {path: "infosclient", component : InfosclientComponent},
+
+  {path: "utilisateurs", component : UtilisateurComponent},
+  {path: "addUtilisateur", component : AddUtilisateurComponent},
+  {path: "updateUtilisateur/:idUser", component : UpdateUtilisateurComponent},
 
 
   {path: 'app-forbidden', component: ForbiddenComponent},

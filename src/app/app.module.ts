@@ -28,6 +28,10 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatDialogContent, MatDialogModule} from "@angular/material/dialog";
 import { ComptaCFComponent } from './compta-cf/compta-cf.component';
 import { ComptaPSComponent } from './compta-ps/compta-ps.component';
+import { InfosclientComponent } from './infosclient/infosclient.component';
+import { UtilisateurComponent } from './utilisateur/utilisateurs/utilisateur.component';
+import { AddUtilisateurComponent } from './utilisateur/add-utilisateur/add-utilisateur.component';
+import { UpdateUtilisateurComponent } from './utilisateur/update-utilisateur/update-utilisateur.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +56,11 @@ import { ComptaPSComponent } from './compta-ps/compta-ps.component';
     GerantsComponent,
     ComptabiliteComponent,
     ComptaCFComponent,
-    ComptaPSComponent
+    ComptaPSComponent,
+    InfosclientComponent,
+    UtilisateurComponent,
+    AddUtilisateurComponent,
+    UpdateUtilisateurComponent
   ],
   imports: [
     BrowserModule,

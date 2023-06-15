@@ -36,6 +36,7 @@ export class AddClientComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       prenom: ['', Validators.required],
       nom: ['', Validators.required],
+      reliquat: ['', Validators.required],
 
       identifiant: ['', [Validators.required, Validators.pattern(/^(SN\d{2}-)\d{5}$/)]],
       numTel: ['', [Validators.required, Validators.pattern(/^(77|78|70|76|75)\s\d{3}\s\d{2}\s\d{2}$/)]],
@@ -106,6 +107,7 @@ chargerGerants(){
       client.paiement = '';
       client.entretien = '';
     }
+    client.reliquat = 'Non'
     client.acceptation = 0;
     client.refus = 0;
   }
@@ -115,6 +117,7 @@ chargerGerants(){
     }else{
       client.entretien = '';
     }
+    client.reliquat = 'Non'
     client.acceptation = 0;
     client.refus = 0;
   }

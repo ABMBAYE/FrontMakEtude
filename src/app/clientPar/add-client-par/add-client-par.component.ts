@@ -28,6 +28,7 @@ export class AddClientParComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       prenom: ['', Validators.required],
       nom: ['', Validators.required],
+      reliquat: ['', Validators.required],
 
       motDePasse: ['', Validators.required],
       adresseMail: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@gmail.com$/)]],
@@ -90,16 +91,29 @@ export class AddClientParComponent implements OnInit {
     }
   }
 
-  charger(client: ClientPar) {
+  chargerInscription(client: ClientPar) {
     if (client.inscription === 'Non') {
-      //this.showDiv = true;
-
       client.formulation = 'Non';
       client.confirmation = 'Non';
-      client.attente = '0';
-      client.refus = '0';
-      client.accepte = '0';
+    }else{
+      client.formulation = '';
+      client.confirmation = '';
     }
+    client.reliquat = 'Non';
+    client.attente = 0;
+    client.refus = 0;
+    client.accepte = 0;
+  }
+  chargerFormulation(client: ClientPar) {
+    if (client.formulation === 'Non') {
+      client.confirmation = 'Non';
+    }else{
+      client.confirmation = '';
+    }
+    client.reliquat = 'Non';
+    client.attente = 0;
+    client.refus = 0;
+    client.accepte = 0;
   }
 
 }

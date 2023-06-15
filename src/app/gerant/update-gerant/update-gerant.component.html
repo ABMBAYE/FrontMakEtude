@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="icon-box">
+          <i class="material-icons">&#xe742;</i>
+        </div>
+      </div>
+      <form>
+        <div class="row">
+          <div class="col-sm-12">
+            <label>Prénom(s)</label>
+            <input type="text" [(ngModel)]="currentGerant.prenomGerant" name="prenomGerant" class="form-control"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <label>Nom</label>
+            <input type="text" [(ngModel)]="currentGerant.nomGerant" name="nomGerant" class="form-control"/>
+          </div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-sm-5">
+            <button type="submit" class="btn btn-secondary center" data-bs-dismiss="modal" routerLink="/years">Close</button>
+          </div>
+          <div class="col-sm-7">
+            <button type="submit" (click)="updateGerant()" class="btn btn-success">Modifier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

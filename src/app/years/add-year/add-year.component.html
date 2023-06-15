@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="modal-dialog modal-confirm">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="icon-box">
+        <i class="material-icons">&#xe742;</i>
+      </div>
+    </div>
+    <form>
+      <div class="row">
+        <div class="col-sm-12">
+          <label>Année</label>
+          <input type="text" [(ngModel)]="newYear.year" name="year" class="form-control" placeholder="YYYY-YYYY"/>
+        </div>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button class="btn btn-danger btn-block" (click)="addYear()" data-dismiss="modal" routerLink="/years">OK</button>
+    </div>
+  </div>
+</div>
+</div>

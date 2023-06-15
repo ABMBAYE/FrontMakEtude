@@ -1,5 +1,6 @@
 import {Year} from "./year.model";
 import {Gerant} from "./gerant.model";
+import {Client} from "./client.model";
 
 export class ClientPar {
     idClientPar!: number;
@@ -13,9 +14,11 @@ export class ClientPar {
     inscription?: string;
     formulation?: string;
     confirmation?: string;
-    attente?: string;
-    accepte? : string;
-    refus? : string;
+    reliquat ?: string;
+    attente?: number;
+    accepte? : number;
+    refus? : number;
     year = new Year();
+
     gerant = new Gerant();
 }

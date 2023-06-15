@@ -32,7 +32,7 @@ export class UpdateClientParComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       prenom: ['', Validators.required],
       nom: ['', Validators.required],
-
+      reliquat: ['', Validators.required],
       motDePasse: ['', Validators.required],
       adresseMail: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@gmail.com$/)]],
 

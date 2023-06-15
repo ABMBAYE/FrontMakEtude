@@ -49,29 +49,10 @@ export class ClientService {
     const url = `${this.apiURL}/clients/${idClient}`;
     return this.http.get<Client>(url);
   }
-
   updateClient(client :Client) : Observable<Client> {
     return this.http.put<Client>(`${this.apiURL}/clients`, client, httpOptions);
   }
-  rechercherParNom(nom: string):Observable< Client[]> {
-    const url = `${this.apiURL}/clients/reachByName/${nom}`;
-    return this.http.get<Client[]>(url);
-  }
-
-  nombreDeClientTotalCF():Observable<number> {
-    const url = this.apiURL+"/clients/nombreDeClientTotal";
-    return this.http.get<number>(url);
-  }
-  sommeCF():Observable<number> {
-    const url = this.apiURL+"/clients/sommeCF";
-    return this.http.get<number>(url);
-  }
-  nombreAcceptationCF():Observable<number>{
-    const url = this.apiURL+"/clients/nombreAcceptationCF";
-    return this.http.get<number>(url);
-  }
-  sommeTotalAcceptationCF():Observable<number> {
-    const url = this.apiURL+"/clients/sommeTotalAcceptationCF";
-    return this.http.get<number>(url);
+  getClientByIdentifiant(identifiant: string | null) {
+    return this.http.get(`${this.apiURL}/${identifiant}`);
   }
 }

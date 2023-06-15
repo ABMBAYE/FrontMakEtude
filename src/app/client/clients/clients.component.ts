@@ -6,6 +6,7 @@ import {Year} from "../../model/year.model";
 import {YearService} from "../../service/year.service";
 import {Gerant} from "../../model/gerant.model";
 import {GerantService} from "../../service/gerant.service";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
@@ -14,19 +15,13 @@ import {GerantService} from "../../service/gerant.service";
 export class ClientsComponent implements OnInit {
   clients! : Client[];
   filteredClients: Client[] = [];
-
+  searchTerm!: string;
   years! : Year[];
-  selectedYear: string = 'All Rentrée';
+  selectedYear: string = 'All Rentrées';
 
   gerants! : Gerant[];
-  nomClient !: string;
-  yearReach !: string;
-  idYearReach !: number;
-  nombreDeClient !: number;
-  sommeCF !: number;
-
   constructor(private clientService : ClientService, public authService : AuthentificationService,
-              public yearService : YearService, private gerantService : GerantService) { }
+              public yearService : YearService, private gerantService : GerantService, private router : Router) { }
 
   ngOnInit(): void {
 
@@ -54,17 +49,12 @@ export class ClientsComponent implements OnInit {
   supprimerClient(client : Client) {
       this.clientService.supprimerClient(client.idClient).subscribe(() => {
         this.chargerClients();
-        window.location.reload();
+        this.router.navigate(['clients']);
+        //window.location.reload();
       });
   }
-  rechercherParNom(){
-    this.clientService.rechercherParNom(this.nomClient).subscribe(
-      clientsFiltred => {
-      this.clients = clientsFiltred;
-    });
-  }
   filterClientsByYear() {
-    if (this.selectedYear === 'All Rentrée') {
+    if (this.selectedYear === 'All Rentrées') {
       this.filteredClients = this.clients;
     }
     else {
@@ -72,20 +62,16 @@ export class ClientsComponent implements OnInit {
       this.filteredClients = this.clients.filter(client => client.year.idYear === this.selectedYear.idYear);
     }
   }
-  /*nombreDeClientTotalCF(){
-    this.clientService.nombreDeClientTotalCF().subscribe(
-      data => {
-        this.nombreDeClient = data;
-      });
-  }*/
-
   nombreClientByYear():number{
-    if (this.selectedYear !== 'All Rentrée') {
+    if (this.selectedYear !== 'All Rentrées') {
       // @ts-ignore
       return this.clients.filter(client => client.year.idYear === this.selectedYear.idYear).length;
     }
     else {
       return this.clients.length;
     }
+  }
+  onKeyUp(filterText : string){
+    this.filteredClients = this.clients.filter(item => item.nom?.toUpperCase().includes(filterText));
   }
 }

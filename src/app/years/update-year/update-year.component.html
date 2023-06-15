@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="icon-box">
+          <i class="material-icons">&#xe742;</i>
+        </div>
+      </div>
+      <form>
+        <div class="row">
+          <div class="col-sm-12">
+            <label>Année</label>
+            <input type="text" [(ngModel)]="currentYear.year" name="year" class="form-control"/>
+          </div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-sm-5">
+            <button type="submit" class="btn btn-secondary center" data-bs-dismiss="modal" routerLink="/years">Close</button>
+          </div>
+          <div class="col-sm-7">
+            <button type="submit" (click)="updateYear()" class="btn btn-success">Modifier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="container">
+  <div class="modal-dialog">
+    <div class="modal-content center">
+      <form (ngSubmit)="validChamps()" [formGroup]="registerForm">
+        <div class="modal-header text-center">
+          <h1 class="modal-title w-100" style="color: #dadde2;">Ajouter les informations</h1>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <label>Prénom(s)</label>
+              <input type="text" [(ngModel)]="newClient.prenom" formControlName="prenom"
+                     class="form-control" placeholder="Prénom(s)"
+                     [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }" />
+              <div *ngIf="submitted && f['prenom'].errors" class="invalid-feedback">
+                <div *ngIf="f['prenom'].errors?.['required'] || f['prenom'].errors?.['null']"
+                     style="color: bisque;"><strong>Champ obligatoire.</strong></div>
+              </div>
+            </div>
+          </div>
+          <br />
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>-->

@@ -148,6 +148,19 @@
                         </div>
                     </div>
                     <br />
+                  <div class="row" style="display: none">
+                    <div class="col-md-6">
+                      <label>Reliquat</label>
+                      <select class="col-md-6" [(ngModel)]="newClient.reliquat" formControlName="reliquat"
+                              [ngClass]="{ 'is-invalid': submitted && f['reliquat'].errors }" class="form-control">
+                        <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
+                      </select>
+                      <div *ngIf="submitted && f['reliquat'].errors" class="invalid-feedback">
+                        <div *ngIf="f['reliquat'].errors?.['required']" style="color: bisque;"><strong>Champ
+                          obligatoire.</strong></div>
+                      </div>
+                    </div>
+                  </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label>Acceptation</label>

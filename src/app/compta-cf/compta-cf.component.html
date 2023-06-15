@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<br>
+<br>
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-12 text-center"><br>
+          <h1><b><i>Comptabilité Campus France</i></b></h1>
+        </div>
+      </div>
+    </div>
+    <div class="filter-group">
+      <label><strong>Rentrée</strong></label>
+      <select class="form-control" [(ngModel)]="selectedYear" (change)="filterClientsByYear()">
+        <option>All Rentrées</option>
+        <option *ngFor="let year of years" [ngValue]="year">Rentrée {{year.year}}</option>
+      </select>
+    </div>
+    <span class="filter-icon"><i class="fa fa-filter"></i></span>
+    <br><br><br>
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+      <tr style="background-color: #435d7d; color: white; text-align: center;">
+        <th><i>Comptabilité</i></th>
+        <th><i>Compte Campus France</i></th>
+        <th><i>Acceptations</i></th>
+        <th><i>Reliquat</i></th>
+        <th><i>Total</i></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr style="text-align: center;">
+        <td style="background-color: #435d7d; color: white"><i><b>Nombre De Clients</b></i></td>
+        <td><i><b>{{nombreClientCFByYear()}}</b></i></td>
+        <td style="background-color: #5cb85c; color: white"><i><b>{{nombreAcceptationByYear()}}</b></i></td>
+        <td><i><b>{{nombreAcceptationReliquatByYear()}}</b></i></td>
+        <td><i><b>-</b></i></td>
+      </tr>
+      <tr style="text-align: center;">
+        <td style="background-color: #435d7d; color: white"><i><b>Somme A Payer</b></i></td>
+        <td><i><b>{{sommeApayerCF | number}} Fcfa</b></i></td>
+        <td><i><b>-</b></i></td>
+        <td><i><b>{{sommeApayerAcceptation | number}} Fcfa</b></i></td>
+        <td><i><b>-</b></i></td>
+      </tr>
+      <tr style="text-align: center;">
+        <td style="background-color: #435d7d; color: white"><i><b>Total</b></i></td>
+        <td><i><b>{{sommeCFByYear() | number}} Fcfa</b></i></td>
+        <td><i><b>-</b></i></td>
+        <td><i><b>{{sommeAcceptationCFByYear() | number}} Fcfa</b></i></td>
+        <td><i><b>{{sommeCFByYear() + sommeAcceptationCFByYear() | number}} Fcfa</b></i></td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+</html>

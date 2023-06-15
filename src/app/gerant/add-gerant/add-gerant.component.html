@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="icon-box">
+          <i class="material-icons">&#xef65;</i>
+        </div>
+      </div>
+      <form>
+        <div class="row">
+          <div class="col-sm-12">
+            <label>prénom(s)</label>
+            <input type="text" [(ngModel)]="newGerant.prenomGerant" name="prenom" class="form-control" placeholder="Prénom(s)"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <label>Nom</label>
+            <input type="text" [(ngModel)]="newGerant.nomGerant" name="nom" class="form-control" placeholder="Nom"/>
+          </div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button class="btn btn-danger btn-block" (click)="addGerant()" data-dismiss="modal" routerLink="/gerants">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

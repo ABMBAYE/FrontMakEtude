@@ -15,6 +15,7 @@ export class Client {
     acceptation?: number;
     refus?: number;
     dateEntretien? : Date;
+    reliquat ?: string;
     year = new Year();
     gerant = new Gerant();
 }

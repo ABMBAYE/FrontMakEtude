@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="icon-box">
+          <i class="material-icons">&#xef65;</i>
+        </div>
+      </div>
+      <form>
+        <div class="row">
+          <div class="col-sm-12">
+            <label>Prénom(s)</label>
+            <input type="text" [(ngModel)]="newUser.prenomUser" name="prenom" class="form-control" placeholder="Prénom(s)"/>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-12">
+            <label>Nom</label>
+            <input type="text" [(ngModel)]="newUser.nomUser" name="nom" class="form-control" placeholder="Nom"/>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-12">
+            <label>Username</label>
+            <input type="text" [(ngModel)]="newUser.username" name="Username" class="form-control" placeholder="Username"/>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-sm-12">
+            <label>Password</label>
+            <input type="text" [(ngModel)]="newUser.password" name="nom" class="form-control" placeholder="Password"/>
+          </div>
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button class="btn btn-danger btn-block" (click)="addUser()" data-dismiss="modal" routerLink="/utilisateurs">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
