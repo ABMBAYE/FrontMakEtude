@@ -12,15 +12,18 @@ export class AppComponent {
 
   constructor (public authService: AuthentificationService, private router : Router) {}
 
-  /* ngOnInit (): void { 
-    let isloggedin: string; 
+  /* ngOnInit (): void {
+    let isloggedin: string;
     let loggedUser:string;
 
-    isloggedin = localStorage.getItem('isloggedIn'); 
-    loggedUser = localStorage.getItem('loggedUser'); 
-    
-    if (isloggedin!="true" || !loggedUser) 
-      this.router.navigate(['/login']); 
-    else this.authService.setLoggedUserFromLocalStorage(loggedUser); 
+    isloggedin = localStorage.getItem('isloggedIn');
+    loggedUser = localStorage.getItem('loggedUser');
+
+    if (isloggedin!="true" || !loggedUser)
+      this.router.navigate(['/login']);
+    else this.authService.setLoggedUserFromLocalStorage(loggedUser);
   } */
+  onLogout(){
+    this.authService.logout();
+  }
 }

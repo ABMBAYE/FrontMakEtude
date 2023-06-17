@@ -20,7 +20,7 @@ export class AddUtilisateurComponent implements OnInit {
 
   addUser() {
     this.userService.ajouterUser(this.newUser).subscribe(user => {
-      this.router.navigate(['users']);
+      this.router.navigate(['utilisateurs']);
     });
   }
 }

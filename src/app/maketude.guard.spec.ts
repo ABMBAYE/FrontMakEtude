@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GerantGuard } from './gerant.guard';
+import { MaketudeGuard } from './maketude.guard';
 
-describe('GerantGuard', () => {
-  let guard: GerantGuard;
+describe('MaketudeGuard', () => {
+  let guard: MaketudeGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(GerantGuard);
+    guard = TestBed.inject(MaketudeGuard);
   });
 
   it('should be created', () => {

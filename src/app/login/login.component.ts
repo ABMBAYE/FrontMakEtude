@@ -18,11 +18,22 @@ export class LoginComponent implements OnInit {
 
   onLoggedin(){
     let isValidUser: Boolean = this.authService.SignIn(this.user);
-    if (isValidUser)
+    let isValidAdmin: Boolean = this.authService.isAdmin();
+    let isValidEtudiant: Boolean = !this.authService.isAdmin();
+
+    if (isValidUser && isValidAdmin){
       this.router.navigate(['accueil']);
+    }
+    else if(isValidUser && isValidEtudiant){
+      this.router.navigate(['infosclient']);
+    }
     else
       //alert('Login ou mot de passe incorrecte!');
       this.erreur = 1;
+  }
+
+  onLogout(){
+    this.authService.logout();
   }
 
 }

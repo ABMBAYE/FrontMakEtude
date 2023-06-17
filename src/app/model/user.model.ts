@@ -6,5 +6,6 @@ export class User {
     prenomUser !: string;
     username !: string;
     password !: string;
+    role !: string;
     //roles = new Role();
 }

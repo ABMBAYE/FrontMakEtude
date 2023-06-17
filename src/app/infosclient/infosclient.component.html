@@ -1,1 +1,55 @@
-<p>infosclient works!</p>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+<br>
+<div class="table-responsive">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-12" style="text-align: center"><br>
+          <h1><b>Bienvenue <i>{{authService.loggedUser}}</i> dans votre espace client.</b></h1>
+        </div>
+      </div>
+    </div>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+        <tr style="background-color: #435d7d; color: white; text-align: center;">
+          <th>Nom</th>
+          <th>Prénom(s)</th>
+          <th>Votre dossier est-il soumis ?</th>
+          <th>Votre paiement des frais d'adhésion est-il validé ?</th>
+          <th>Votre date d'Entretien</th>
+          <th>Acceptation</th>
+          <th>Refus</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let client of filteredClients">
+        <tr style="text-align: center;">
+          <td><b>{{client.nom | uppercase}}</b></td>
+          <td><b>{{client.prenom}}</b></td>
+          <td><b>{{client.soumis}}</b></td>
+          <td><b>{{client.paiement}}</b></td>
+          <td><b>{{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</b></td>
+          <td><b>{{client.acceptation}}</b></td>
+          <td><b>{{client.refus}}</b></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+</body>
+
+</html>
+<router-outlet></router-outlet>

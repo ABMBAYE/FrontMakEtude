@@ -7,6 +7,8 @@ import {YearService} from "../../service/year.service";
 import {Gerant} from "../../model/gerant.model";
 import {GerantService} from "../../service/gerant.service";
 import {Router} from "@angular/router";
+import {UserService} from "../../service/user.service";
+import {User} from "../../model/user.model";
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
@@ -15,18 +17,19 @@ import {Router} from "@angular/router";
 export class ClientsComponent implements OnInit {
   clients! : Client[];
   filteredClients: Client[] = [];
-  searchTerm!: string;
   years! : Year[];
+  users! : User[];
   selectedYear: string = 'All Rentrées';
 
   gerants! : Gerant[];
-  constructor(private clientService : ClientService, public authService : AuthentificationService,
+  constructor(private clientService : ClientService, public authService : AuthentificationService, private userService : UserService,
               public yearService : YearService, private gerantService : GerantService, private router : Router) { }
 
   ngOnInit(): void {
 
     this.chargerClients();
     this.chargerYears();
+    this.chargerUsers();
     this.chargerGerants();
     //this.nombreDeClientTotalCF();
   }
@@ -39,6 +42,11 @@ export class ClientsComponent implements OnInit {
   chargerYears(){
     this.yearService.listeYears(). subscribe(year => {
       this.years = year;
+    });
+  }
+  chargerUsers(){
+    this.userService.listeUsers(). subscribe(user => {
+      this.users = user;
     });
   }
   chargerGerants(){

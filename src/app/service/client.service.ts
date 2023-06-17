@@ -52,7 +52,4 @@ export class ClientService {
   updateClient(client :Client) : Observable<Client> {
     return this.http.put<Client>(`${this.apiURL}/clients`, client, httpOptions);
   }
-  getClientByIdentifiant(identifiant: string | null) {
-    return this.http.get(`${this.apiURL}/${identifiant}`);
-  }
 }

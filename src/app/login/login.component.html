@@ -11,6 +11,9 @@
 </head>
 
 <div class="login-form">
+  <div class="alert alert-danger" *ngIf="erreur==1" style="text-align: center">
+    <strong>Votre username ou votre mot de passe incorrecte...!</strong>
+  </div>
   <form>
     <div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
     <h4 class="modal-title"><strong>Se connecter</strong></h4>

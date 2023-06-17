@@ -35,4 +35,13 @@ export class UserService {
     const url = `${this.apiURL}/users/${idUser}`;
     return this.http.get<User>(url);
   }
+  private currentUser: User | null = null;
+
+  setCurrentUser(user: User) {
+    this.currentUser = user;
+  }
+
+  getCurrentUser(): User | null {
+    return this.currentUser;
+  }
 }

@@ -1,5 +1,6 @@
 import {Year} from "./year.model";
 import {Gerant} from "./gerant.model";
+import {User} from "./user.model";
 
 export class Client {
     idClient!: number;
@@ -18,4 +19,5 @@ export class Client {
     reliquat ?: string;
     year = new Year();
     gerant = new Gerant();
+    user = new User();
 }
