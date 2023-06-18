@@ -7,5 +7,9 @@ export class User {
     username !: string;
     password !: string;
     role !: string;
-    //roles = new Role();
+    civilite !: string;
+    mobile !: string;
+    adresse !: string;
+    ville !: string ;
+    birthDay !: Date;
 }

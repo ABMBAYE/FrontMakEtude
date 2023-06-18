@@ -22,15 +22,7 @@ export class InfosclientComponent implements OnInit {
   ngOnInit(): void {
     this.chargerClients();
     this.chargerUsers();
-    //this.filterClientsByUser();
-    this.currentUser = this.getCurrentUser();
   }
-  /*chargerClients(){
-    this.clientService.listeClients().subscribe(client => {
-      this.clients = client;
-      this.filteredClients = this.clients;
-    });
-  }*/
   chargerClients() {
     this.clientService.listeClients().subscribe(clients => {
       this.clients = clients;
@@ -40,21 +32,10 @@ export class InfosclientComponent implements OnInit {
       });
     });
   }
-  chargerUsers(){
-    this.userService.listeUsers().subscribe(user => {
-      this.users = user;
+  chargerUsers() {
+    this.userService.listeUsers().subscribe(users => {
+      this.users = users;
+      this.chargerClients();
     });
-  }
-  getCurrentUser(): User {
-    // Récupérer l'utilisateur actuel à partir de l'authentification ou autre moyen
-    // Retourner l'utilisateur courant
-    // Exemple :
-    const usernameTest = this.authService.loggedUserTest;
-    const username = this.users.find(user => user.username);
-    console.log("Current User 1 : "+this.authService.loggedUserTest)
-    console.log("Current User 2 : "+this.chargerUsers())
-    console.log("Current User 2 : "+username)
-    // @ts-ignore
-    return this.users.find(user => user.username === usernameTest);
   }
 }

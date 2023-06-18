@@ -32,6 +32,7 @@ import { InfosclientComponent } from './infosclient/infosclient.component';
 import { UtilisateurComponent } from './utilisateur/utilisateurs/utilisateur.component';
 import { AddUtilisateurComponent } from './utilisateur/add-utilisateur/add-utilisateur.component';
 import { UpdateUtilisateurComponent } from './utilisateur/update-utilisateur/update-utilisateur.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { UpdateUtilisateurComponent } from './utilisateur/update-utilisateur/upd
     InfosclientComponent,
     UtilisateurComponent,
     AddUtilisateurComponent,
-    UpdateUtilisateurComponent
+    UpdateUtilisateurComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

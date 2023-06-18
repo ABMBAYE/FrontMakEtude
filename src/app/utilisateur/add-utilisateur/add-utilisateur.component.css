@@ -9,6 +9,7 @@ body {
   padding: 20px;
   border-radius: 5px;
   border: none;
+  width: 150%;
 }
 .modal-confirm .modal-header {
   border-bottom: none;

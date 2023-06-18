@@ -19,7 +19,7 @@
     <div class="table-title">
       <div class="row">
         <div class="col-sm-12" style="text-align: center"><br>
-          <h1><b>Bienvenue <i>{{authService.loggedUser}}</i> dans votre espace client.</b></h1>
+          <h1><b>{{authService.isAdmin() ? "Bonjour monsieur "+authService.loggedUser : "Bienvenue "+authService.loggedUser+" dans votre espace client."}}</b></h1>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
         </tr>
         </thead>
         <tbody *ngFor="let client of filteredClients">
-        <tr style="text-align: center;">
+        <tr style="text-align: center;"*ngIf="authService.loggedUserTest === client.identifiant">
           <td><b>{{client.nom | uppercase}}</b></td>
           <td><b>{{client.prenom}}</b></td>
           <td><b>{{client.soumis}}</b></td>
