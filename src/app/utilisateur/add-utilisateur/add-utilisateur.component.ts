@@ -31,12 +31,12 @@ export class AddUtilisateurComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  civilites():Civilite[]{
-    return this.listCivilites;
-  }
   addUser() {
     this.userService.ajouterUser(this.newUser).subscribe(user => {
       this.router.navigate(['utilisateurs']);
     });
+  }
+  convertToUppercase(event: any) {
+    this.newUser.role = event.target.value.toUpperCase();
   }
 }

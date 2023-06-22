@@ -1,76 +1,77 @@
 <div class="container">
-  <div class="modal-dialog modal-confirm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="icon-box">
-          <i class="material-icons">&#xef65;</i>
-        </div>
-      </div>
+  <div class="modal-dialog">
+    <div class="modal-content center upSize">
       <form>
-        <div class="row">
-          <div class="col-sm-6">
-            <label>Prénom(s)</label>
-            <input type="text" [(ngModel)]="newUser.prenomUser" name="prenom" class="form-control" placeholder="Prénom(s)"/>
+        <div class="modal-header text-center">
+          <h1 class="modal-title w-100" style="color: #dadde2">Ajouter un utilisateur</h1>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-4">
+              <label>Civilités</label>
+              <select class="col-md-6" [(ngModel)]="newUser.civilite" name="civilite" class="form-control">
+                <option *ngFor="let s of listCivilites" [value]="s.civilite">{{s.civilite}}</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label>Prénom(s)</label>
+              <input type="text" [(ngModel)]="newUser.prenomUser" name="prenomUser" class="form-control" placeholder="Prénom(s)"/>
+            </div>
+            <div class="col-md-4">
+              <label>Nom</label>
+              <input type="text" [(ngModel)]="newUser.nomUser" name="nomUser" class="form-control" placeholder="Nom"/>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Username</label>
+              <input type="text" [(ngModel)]="newUser.username" name="username" class="form-control" placeholder="Username"/>
+            </div>
+            <div class="col-sm-6">
+              <label>Password</label>
+              <input type="text" [(ngModel)]="newUser.password" name="password" class="form-control" placeholder="Password"/>
+            </div>
           </div>
           <br>
-          <div class="col-sm-6">
-            <label>Nom</label>
-            <input type="text" [(ngModel)]="newUser.nomUser" name="nom" class="form-control" placeholder="Nom"/>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Rôle</label>
+              <input type="text" [(ngModel)]="newUser.role" (input)="convertToUppercase($event)" name="nom" class="form-control" placeholder="Rôle"/>
+            </div>
+            <div class="col-sm-6">
+              <label>Mobile</label>
+              <input type="text" [(ngModel)]="newUser.mobile" name="mobile" class="form-control" placeholder="Mobile"/>
+            </div>
           </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Date De Naissance</label>
+              <input type="date" [(ngModel)]="newUser.birthDay" name="birthDay" class="form-control" placeholder="Date De Naissance"/>
+            </div>
+            <div class="col-sm-6">
+              <label>Ville</label>
+              <input type="text" [(ngModel)]="newUser.ville" name="ville" class="form-control" placeholder="Ville"/>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-sm-12">
+              <label>Adresse</label>
+              <input type="text" [(ngModel)]="newUser.adresse" name="adresse" class="form-control" placeholder="Adresse"/>
+            </div>
+          </div>
+          <br />
         </div>
-        <br>
-        <br>
-        <div class="row">
-          <div class="col-sm-6">
-            <label>Username</label>
-            <input type="text" [(ngModel)]="newUser.username" name="Username" class="form-control" placeholder="Username"/>
-          </div>
-          <div class="col-sm-6">
-            <label>Password</label>
-            <input type="text" [(ngModel)]="newUser.password" name="nom" class="form-control" placeholder="Password"/>
-          </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal"
+                  routerLink="/utilisateurs">Close</button>
+          <button type="submit" (click)="addUser()" class="btn btn-success">Ajouter</button>
         </div>
-        <br>
-        <div class="row">
-          <div class="col-sm-6">
-            <label>Rôle</label>
-            <input type="text" [(ngModel)]="newUser.role" name="nom" class="form-control" placeholder="Rôle"/>
-          </div>
-          <div class="col-sm-6">
-            <label>Mobile</label>
-            <input type="text" [(ngModel)]="newUser.mobile" name="mobile" class="form-control" placeholder="Mobile"/>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-sm-6">
-            <label>Date De Naissance</label>
-            <input type="date" [(ngModel)]="newUser.birthDay" name="birthDay" class="form-control" placeholder="Date De Naissance"/>
-          </div>
-          <div class="col-sm-6">
-            <label>Ville</label>
-            <input type="text" [(ngModel)]="newUser.ville" name="ville" class="form-control" placeholder="Ville"/>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-md-6">
-            <label>Civilité</label>
-            <select class="col-md-6" [(ngModel)]="newUser.civilite" name="civilite" class="form-control">
-              <option *ngFor="let civi of listCivilites" [value]="civi.civilite">{{civi.civilite}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <label>Adresse</label>
-            <input type="text" [(ngModel)]="newUser.adresse" name="adresse" class="form-control" placeholder="Adresse"/>
-          </div>
-        </div>
+
       </form>
-      <div class="modal-footer">
-        <button class="btn btn-danger btn-block" (click)="addUser()" data-dismiss="modal" routerLink="/utilisateurs">OK</button>
-      </div>
     </div>
   </div>
 </div>

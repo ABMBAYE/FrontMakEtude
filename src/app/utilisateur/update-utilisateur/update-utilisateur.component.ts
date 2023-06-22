@@ -4,6 +4,7 @@ import {GerantService} from "../../service/gerant.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../../model/user.model";
 import {UserService} from "../../service/user.service";
+import {Civilite} from "../../model/civilite.model";
 
 @Component({
   selector: 'app-update-utilisateurs',
@@ -13,7 +14,21 @@ import {UserService} from "../../service/user.service";
 export class UpdateUtilisateurComponent implements OnInit {
   currentUser = new User();
   updatedId!: number;
-  constructor(private userService : UserService, private router : Router, private activatedRoute: ActivatedRoute) { }
+  listCivilites : Civilite[]
+
+  constructor(private userService : UserService, private router : Router, private activatedRoute: ActivatedRoute) {
+    this.listCivilites = [
+      {
+        idCivilite : 1, civilite : "Madame"
+      },
+      {
+        idCivilite : 2, civilite : "Mademoiselle"
+      },
+      {
+        idCivilite : 3, civilite : "Monsieur"
+      }
+    ]
+  }
 
   ngOnInit(): void {
     this.userService.consulterUser(this.activatedRoute.snapshot.params['idUser']).subscribe(user =>{
@@ -25,5 +40,8 @@ export class UpdateUtilisateurComponent implements OnInit {
     this.userService.updateUser(this.currentUser).subscribe(user => {
       this.router.navigate(['utilisateurs']);
     });
+  }
+  convertToUppercase(event: any) {
+    this.currentUser.role = event.target.value.toUpperCase();
   }
 }

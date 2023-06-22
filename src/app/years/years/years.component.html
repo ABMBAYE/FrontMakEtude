@@ -21,33 +21,36 @@
       <br>
 
       <div class="col-sm-8">
-          <button type="button" class="btn btn-success add-new" data-toggle="modal" routerLink="/addYear"><i class="fa fa-plus"></i> Add New Year</button>
-        </div>
+        <button type="button" class="btn btn-success add-new" data-toggle="modal" routerLink="/addYear"><i
+          class="fa fa-plus"></i> Add New Year
+        </button>
+      </div>
       <br>
 
       <table class="table table-striped table-hover table-bordered">
-  <thead>
-  <tr style="background-color: #435d7d; color: white; text-align: center;">
-    <th>Année</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody *ngFor="let y of years">
-  <tr style="text-align: center;">
-    <td>{{y.year}}</td>
-    <td class="text-center">
-      <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateYear', y.idYear]"
-         style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
-        <i class="material-icons">&#xE254;</i>
-      </a>
-      <a type="button" *ngIf="authService.isAdmin()" (click)="supprimerYear(y)" style="color: red;" class="trigger-btn"
-         data-toggle="modal">
-        <i class="material-icons">&#xE5C9;</i>
-      </a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+        <thead>
+        <tr style="background-color: #435d7d; color: white; text-align: center;">
+          <th>Année</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let y of years">
+        <tr style="text-align: center;">
+          <td>{{y.year}}</td>
+          <td class="text-center">
+            <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateYear', y.idYear]"
+               style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
+              <i class="material-icons">&#xE254;</i>
+            </a>
+            <a type="button" *ngIf="authService.isAdmin()" (click)="supprimerYear(y)" style="color: red;"
+               class="trigger-btn"
+               data-toggle="modal">
+              <i class="material-icons">&#xE5C9;</i>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 </div>

@@ -5,6 +5,8 @@ import {Client} from "../model/client.model";
 import {User} from "../model/user.model";
 import {UserService} from "../service/user.service";
 import {AuthentificationService} from "../service/authentification.service";
+import {ClientPar} from "../model/clientpar.model";
+import {ClientParService} from "../service/client-par.service";
 
 @Component({
   selector: 'app-infosclient',
@@ -13,14 +15,16 @@ import {AuthentificationService} from "../service/authentification.service";
 })
 export class InfosclientComponent implements OnInit {
   clients: Client[] = [];
+  clientsPar: ClientPar[] = [];
   users: User[] = [];
   filteredClients: Client[] = [];
-  currentUser !: User;
+  filteredClientsPar: ClientPar[] = [];
   constructor(public authService : AuthentificationService, private route: ActivatedRoute,
-              private userService : UserService, private clientService : ClientService) { }
+              private userService : UserService, private clientService : ClientService, private clientParService : ClientParService) { }
 
   ngOnInit(): void {
     this.chargerClients();
+    this.chargerClientsPar();
     this.chargerUsers();
   }
   chargerClients() {
@@ -28,6 +32,16 @@ export class InfosclientComponent implements OnInit {
       this.clients = clients;
       this.filteredClients = this.clients.filter(client => {
         const user = this.users.find(user => user.username === client.identifiant);
+        return user !== undefined;
+      });
+    });
+  }
+
+  chargerClientsPar() {
+    this.clientParService.listeClientPar().subscribe(data => {
+      this.clientsPar = data;
+      this.filteredClientsPar = this.clientsPar.filter(client => {
+        const user = this.users.find(user => user.username === client.numDossier);
         return user !== undefined;
       });
     });

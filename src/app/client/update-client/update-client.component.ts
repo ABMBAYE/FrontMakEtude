@@ -17,7 +17,6 @@ import {GerantService} from "../../service/gerant.service";
 export class UpdateClientComponent implements OnInit {
   currentClient = new Client();
   listBol : BoolList[];
-  updatedId! : number;
   updatedIdYear! : number;
   updatedIdGerant! : number;
   registerForm!: FormGroup;

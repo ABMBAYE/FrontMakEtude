@@ -35,6 +35,7 @@
       <table class="table table-striped table-hover table-bordered">
         <thead>
         <tr style="background-color: #435d7d; color: white; text-align: center;">
+          <th>Civilité</th>
           <th>Nom</th>
           <th>Prénom(s)</th>
           <th>Username</th>
@@ -45,6 +46,7 @@
         </thead>
         <tbody *ngFor="let user of users">
         <tr style="text-align: center;">
+          <td>{{user.civilite}}</td>
           <td>{{user.nomUser | uppercase}}</td>
           <td>{{user.prenomUser | titlecase}}</td>
           <td>{{user.username}}</td>
