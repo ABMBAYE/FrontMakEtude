@@ -36,7 +36,7 @@
         </tr>
         </thead>
         <tbody *ngFor="let client of filteredClients">
-        <tr style="text-align: center;"*ngIf="authService.loggedUserTest === client.identifiant">
+        <tr style="text-align: center;" *ngIf="authService.loggedUserTest === client.identifiant">
           <td><b>{{client.nom | uppercase}}</b></td>
           <td><b>{{client.prenom}}</b></td>
           <td><b>{{client.soumis}}</b></td>
@@ -52,4 +52,56 @@
 </body>
 
 </html>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+<br>
+<section class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mb-4 mb-sm-5">
+        <div class="card card-style1 border-0">
+          <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+            <div class="row align-items-center">
+              <!--<div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="...">
+              </div>-->
+              <div class="col-lg-12 px-xl-10">
+                <div class="bg-secondary py-1-9 px-1-9 px-sm-12 mb-1-9 rounded">
+                  <h1 class="h2 text-white mb-0 text-center"><b>{{authService.isAdmin() ? "Bonjour monsieur "+authService.loggedUser : "Bienvenue "+authService.loggedUser+" dans votre espace client."}}</b></h1>
+                </div>
+                <div *ngFor="let client of filteredClients">
+                  <ul class="list-unstyled mb-1-9" *ngIf="authService.loggedUserTest === client.identifiant">
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nom :</span><span class="text-secondary me-2 font-weight-400" style="color: #5cb85c"> <b><i> {{client.nom | uppercase}}</i></b></span></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Prénom(s) :</span><b> {{client.prenom}}</b></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Votre dossier est-il soumis ?</span><b> {{client.soumis}}</b></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Votre paiement des frais d'adhésion est-il validé ?</span><b>{{client.paiement}}</b></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Votre date d'Entretien :</span><b> {{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</b></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Refus :</span><b> {{client.refus}}</b></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Acceptation :</span><b> {{client.acceptation}}</b></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
+
 <router-outlet></router-outlet>
