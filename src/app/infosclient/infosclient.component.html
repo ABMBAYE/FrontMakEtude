@@ -32,7 +32,37 @@
                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Le dossier est-il soumis ?</span><span style="font-size: 18px; color: chocolate"> <b><i> {{client.soumis}}</i></b></span></li>
                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Paiement pour CF est-il validé ?</span><span style="font-size: 18px; color: chocolate"> <b><i> {{client.paiement}}</i></b></span></li>
                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Date d'Entretien :</span><span style="font-size: 18px; color: chocolate"> <b><i> {{client.dateEntretien ? (client.dateEntretien | date:'dd MMMM yyyy':'fr') : '-'}}</i></b></span></li>
-                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nombre de Refus :</span><span style="font-size: 18px; color: red"><b><i> {{client.refus}}</i></b></span></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nombre de Refus :</span><span style="font-size: 18px; color: red"><b><i> {{client.refus}}</i></b></span><a routerLink="/details" class="trigger-btn" data-toggle="modal"><span style="color: #435d7d"><b><i>  (Voir les détails)</i></b></span></a></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nombre de Refus :</span><span style="font-size: 18px; color: red"><b><i> {{client.refus}}</i></b></span>
+                      <a type="button" href="#myModal1" style="color: red;" class="trigger-btn" data-toggle="modal">
+                        <span style="color: #435d7d"><b><i>  (Voir les détails)</i></b></span>
+                    </a>
+                      <div id="myModal1" class="modal fade">
+                        <div class="modal-dialog modal-confirm">
+                          <div class="modal-content">
+                            <div class="modal-header flex-column">
+                              <div class="icon-box">
+                                <i style="font-size: 50px" class="material-icons">&#xE5CD;</i>
+                              </div>
+                              <h4 class="modal-title w-100"><strong>Détails de mes réponses</strong></h4>
+                            </div>
+                            <div class="modal-body">
+                              <ol>
+                                <li>Licence Sciences humaines et sociales mention géographie et aménagement parcours Géographie, Aménagement et Environnement</li>
+                                <br>
+                                <li>licence Sciences humaines et sociales mention géographie et aménagement </li><br>
+                                <li>Licence Sciences humaines et sociales / Sciences Technologies Santé mention géographie et aménagement parcours Géographie et Aménagement</li><br>
+                                <li>Bachelor universitaire de technologie (BUT) Gestion des entreprises et des administrations </li><br>
+                                <li>Bachelor Universitaire de Technologie (BUT) mention Gestion des entreprises et des administrations </li>
+                              </ol>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                              <button style="background-color: #435d7d" type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nombre d'Acceptations :</span><span style="font-size: 18px; color: #5cb85c"><b><i> {{client.acceptation}}</i></b></span></li>
                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Le Reliquat est-il versé :</span><span style="font-size: 18px; color: chocolate"><b><i> {{client.reliquat}}</i></b></span></li>
                   </ul>

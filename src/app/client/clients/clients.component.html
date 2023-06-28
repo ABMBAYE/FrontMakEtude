@@ -42,7 +42,8 @@
         <div class="col-sm-9">
           <div class="filter-group">
             <label><strong>Nom</strong></label>
-            <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)" placeholder="Nom Du Client En MAJ">
+            <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)"
+                   placeholder="Nom Du Client En MAJ">
           </div>
           <div class="filter-group">
             <label><strong>Rentrée</strong></label>
@@ -64,77 +65,77 @@
       </div>
     </div>
     <div *ngFor="let gerant of gerants">
-    <h1 class="text-center">Gérant : <b><i>{{gerant.prenomGerant}}</i></b></h1>
-    <table class="table table-striped table-hover table-bordered">
-      <thead>
-      <tr style="background-color: #435d7d; color: white; text-align: center;">
-        <th>Rentrée</th>
-        <th>Nom</th>
-        <th>Prénom(s)</th>
-        <th>Identifiant</th>
-        <th>Téléphone</th>
-        <th>Adresse Mail</th>
-        <th>Mot De Passe</th>
-        <th>Soumis</th>
-        <th>Paiement</th>
-        <th>Date d'Entretien</th>
-        <th>Entretien</th>
-        <th>Acceptation</th>
-        <th>Refus</th>
-        <th>Reliquat</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody *ngFor="let client of filteredClients">
-      <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === gerant.prenomGerant">
-        <td style="background-color: #435d7d; color: white"><b>{{client.year.year}}</b></td>
-        <td>{{client.nom | uppercase}}</td>
-        <td>{{client.prenom | titlecase}}</td>
-        <td>{{client.identifiant}}</td>
-        <td>+221 {{client.numTel}}</td>
-        <td>{{client.adresseMail}}</td>
-        <td>{{client.motDePasse}}</td>
-        <td>{{client.soumis | titlecase}}</td>
-        <td>{{client.paiement | titlecase}}</td>
-        <td>{{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</td>
-        <td>{{client.entretien | titlecase}}</td>
-        <td [ngStyle]="{ color: '#3FCB2C'}"><strong>{{client.acceptation}}/7</strong></td>
-        <td [ngStyle]="{ color: '#E0322A'}"><strong>{{client.refus}}/7</strong></td>
-        <td>{{client.reliquat}}</td>
-        <td class="text-center">
-          <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateClient', client.idClient]"
-             style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
-            <i class="material-icons">&#xE254;</i>
-          </a>
-          <a type="button" href="#myModal1" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
-             data-toggle="modal">
-            <i class="material-icons">&#xE5C9;</i>
-          </a>
-          <div id="myModal1" class="modal fade">
-            <div class="modal-dialog modal-confirm">
-              <div class="modal-content">
-                <div class="modal-header flex-column">
-                  <div class="icon-box">
-                    <i style="font-size: 50px" class="material-icons">&#xE5CD;</i>
+      <h1 class="text-center">Gérant : <b><i>{{gerant.prenomGerant}}</i></b></h1>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+        <tr style="background-color: #435d7d; color: white; text-align: center;">
+          <th>Rentrée</th>
+          <th>Nom</th>
+          <th>Prénom(s)</th>
+          <th>Identifiant</th>
+          <th>Téléphone</th>
+          <th>Adresse Mail</th>
+          <th>Mot De Passe</th>
+          <th>Soumis</th>
+          <th>Paiement</th>
+          <th>Date d'Entretien</th>
+          <th>Entretien</th>
+          <th>Acceptation</th>
+          <th>Refus</th>
+          <th>Reliquat</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let client of filteredClients">
+        <tr style="text-align: center;" *ngIf="client.gerant.prenomGerant === gerant.prenomGerant">
+          <td style="background-color: #435d7d; color: white"><b>{{client.year.year}}</b></td>
+          <td>{{client.nom | uppercase}}</td>
+          <td>{{client.prenom | titlecase}}</td>
+          <td>{{client.identifiant}}</td>
+          <td>+221 {{client.numTel}}</td>
+          <td>{{client.adresseMail}}</td>
+          <td>{{client.motDePasse}}</td>
+          <td>{{client.soumis | titlecase}}</td>
+          <td>{{client.paiement | titlecase}}</td>
+          <td>{{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</td>
+          <td>{{client.entretien | titlecase}}</td>
+          <td [ngStyle]="{ color: '#3FCB2C'}"><strong>{{client.acceptation}}/7</strong></td>
+          <td [ngStyle]="{ color: '#E0322A'}"><strong>{{client.refus}}/7</strong></td>
+          <td>{{client.reliquat}}</td>
+          <td class="text-center">
+            <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/updateClient', client.idClient]"
+               style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
+              <i class="material-icons">&#xE254;</i>
+            </a>
+            <a type="button" href="#myModal1" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
+               data-toggle="modal">
+              <i class="material-icons">&#xE5C9;</i>
+            </a>
+            <div id="myModal1" class="modal fade">
+              <div class="modal-dialog modal-confirm">
+                <div class="modal-content">
+                  <div class="modal-header flex-column">
+                    <div class="icon-box">
+                      <i style="font-size: 50px" class="material-icons">&#xE5CD;</i>
+                    </div>
+                    <h4 class="modal-title w-100">Etes-vous sûr ?</h4>
                   </div>
-                  <h4 class="modal-title w-100">Etes-vous sûr ?</h4>
-                </div>
-                <div class="modal-body">
-                  <p><strong>Voulez-vous supprimer cette ligne ?</strong></p>
-                </div>
-                <div class="modal-footer justify-content-center">
-                  <button style="background-color: #435d7d" type="button" class="btn btn-secondary"
-                          data-dismiss="modal">Annuler
-                  </button>
-                  <button type="button" (click)="supprimerClient(client)" class="btn btn-danger">Supprimer</button>
+                  <div class="modal-body">
+                    <p><strong>Voulez-vous supprimer cette ligne ?</strong></p>
+                  </div>
+                  <div class="modal-footer justify-content-center">
+                    <button style="background-color: #435d7d" type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Annuler
+                    </button>
+                    <button type="button" (click)="supprimerClient(client)" class="btn btn-danger">Supprimer</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
