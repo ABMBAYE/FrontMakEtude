@@ -17,14 +17,11 @@ export class InfosclientComponent implements OnInit {
   users: User[] = [];
   filteredClients: Client[] = [];
 
-  clientsPar: ClientPar[] = [];
-  filteredClientsPar: ClientPar[] = [];
   constructor(public authService : AuthentificationService, private userService : UserService,
-              private clientService : ClientService, private clientParService : ClientParService) { }
+              private clientService : ClientService) { }
 
   ngOnInit(): void {
     this.chargerClients();
-    this.chargerClientsPar();
     this.chargerUsers();
   }
   chargerClients() {
@@ -32,15 +29,6 @@ export class InfosclientComponent implements OnInit {
       this.clients = clients;
       this.filteredClients = this.clients.filter(client => {
         const user = this.users.find(user => user.username === client.identifiant);
-        return user !== undefined;
-      });
-    });
-  }
-  chargerClientsPar() {
-    this.clientParService.listeClientPar().subscribe(data => {
-      this.clientsPar = data;
-      this.filteredClientsPar = this.clientsPar.filter(client => {
-        const user = this.users.find(user => user.username === client.numDossier);
         return user !== undefined;
       });
     });
