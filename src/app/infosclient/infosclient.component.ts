@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientService} from "../service/client.service";
-import {ActivatedRoute, Router} from "@angular/router";
 import {Client} from "../model/client.model";
 import {User} from "../model/user.model";
 import {UserService} from "../service/user.service";
@@ -15,12 +14,13 @@ import {ClientParService} from "../service/client-par.service";
 })
 export class InfosclientComponent implements OnInit {
   clients: Client[] = [];
-  clientsPar: ClientPar[] = [];
   users: User[] = [];
   filteredClients: Client[] = [];
+
+  clientsPar: ClientPar[] = [];
   filteredClientsPar: ClientPar[] = [];
-  constructor(public authService : AuthentificationService, private route: ActivatedRoute,
-              private userService : UserService, private clientService : ClientService, private clientParService : ClientParService) { }
+  constructor(public authService : AuthentificationService, private userService : UserService,
+              private clientService : ClientService, private clientParService : ClientParService) { }
 
   ngOnInit(): void {
     this.chargerClients();
@@ -36,7 +36,6 @@ export class InfosclientComponent implements OnInit {
       });
     });
   }
-
   chargerClientsPar() {
     this.clientParService.listeClientPar().subscribe(data => {
       this.clientsPar = data;

@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Client} from "../model/client.model";
 import {User} from "../model/user.model";
-import {FormGroup} from "@angular/forms";
-import {Gerant} from "../model/gerant.model";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,7 +11,6 @@ const httpOptions = {
 })
 export class UserService {
   apiURL: string = 'http://localhost:8080/maketude';
-
   constructor(private http: HttpClient) {
     this.listeUsers();
   }
@@ -34,14 +30,5 @@ export class UserService {
   consulterUser(idUser : User): Observable<User> {
     const url = `${this.apiURL}/users/${idUser}`;
     return this.http.get<User>(url);
-  }
-  private currentUser: User | null = null;
-
-  setCurrentUser(user: User) {
-    this.currentUser = user;
-  }
-
-  getCurrentUser(): User | null {
-    return this.currentUser;
   }
 }

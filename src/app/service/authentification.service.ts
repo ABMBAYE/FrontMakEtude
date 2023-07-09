@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {User} from '../model/user.model';
 import {Router} from '@angular/router';
-import {Role} from "../model/role.model";
-import {Observable} from "rxjs";
 import {UserService} from "./user.service";
+import {ClientPar} from "../model/clientpar.model";
+import {Client} from "../model/client.model";
+import {ClientService} from "./client.service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +19,15 @@ export class AuthentificationService {
   public loggedCivilite!: string;
   public loggedAdresse!: string;
   public loggedMobile!: string;
-  public loggedBirthDay!: Date;
-  public loggedVille!: string;
-  public loggedUserUsername!: string;
-  public roleUser!: string;
+  public loggedBirthDay !: Date;
+  public loggedVille !: string;
+  public loggedUserUsername !: string;
+  public loggedRole!: string;
 
   public isloggedIn: Boolean = false;
   //public roles!: Role[];
 
-  constructor(private router: Router, private userService : UserService) {
+  constructor(private router: Router, private userService : UserService, private clientService : ClientService) {
   }
   ngOnInit(): void {
     this.chargerUsers();
@@ -41,9 +42,18 @@ export class AuthentificationService {
 
   logout() {
     this.isloggedIn = false;
+
     this.loggedUser = undefined!;
     this.loggedUserUsername = undefined!;
-    this.roleUser = undefined!;
+    this.loggedCivilite = undefined!;
+    this.loggedAdresse = undefined!;
+    this.loggedBirthDay = undefined!;
+    this.loggedPrenom = undefined!;
+    this.loggedVille = undefined!;
+    this.loggedMobile = undefined!;
+    this.loggedRole = undefined!;
+    this.loggedNom = undefined!;
+
     localStorage.removeItem('loggedUser');
     localStorage.removeItem('loggedUserUsername');
     localStorage.setItem('isloggedIn', String(this.isloggedIn));
@@ -56,7 +66,6 @@ export class AuthentificationService {
       if (user.username == curUser.username && user.password == curUser.password) {
         validUser = true;
         this.loggedUser = curUser.prenomUser+" "+curUser.nomUser.toUpperCase();
-        this.userLog.civilite = curUser.civilite;
         this.loggedUserUsername = curUser.username;
         this.loggedNom = curUser.nomUser;
         this.loggedPrenom = curUser.prenomUser;
@@ -65,8 +74,10 @@ export class AuthentificationService {
         this.loggedVille = curUser.ville;
         this.loggedBirthDay = curUser.birthDay;
         this.loggedCivilite = curUser.civilite;
+        this.loggedRole = curUser.role;
+
         this.isloggedIn = true;
-        this.roleUser = curUser.role;
+
         localStorage.setItem('loggedUser', this.loggedUser);
         localStorage.setItem('loggedUserUsername', this.loggedUserUsername);
         localStorage.setItem('isloggedIn', String(this.isloggedIn));
@@ -75,12 +86,23 @@ export class AuthentificationService {
     return validUser;
   }
   isAdmin():Boolean{
-    if (!this.roleUser) //this.roles== undefiened
+    if (!this.loggedRole)
       return false;
-    return (this.roleUser.indexOf('ADMIN') >-1);
+    return (this.loggedRole.indexOf('ADMIN') >-1);
   }
   isFemelle():Boolean{
     if (this.loggedCivilite === 'Mademoiselle' || this.loggedCivilite === 'Madame')
+      return true;
+    return false;
+  }
+
+  isCF():Boolean{
+    if (this.loggedUserUsername.startsWith("SN"))
+      return true;
+    return false;
+  }
+  isPS():Boolean{
+    if (!this.loggedUserUsername.startsWith("SN"))
       return true;
     return false;
   }

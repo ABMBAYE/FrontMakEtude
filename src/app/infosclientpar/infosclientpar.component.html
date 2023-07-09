@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+<br>
+<section class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mb-4 mb-sm-5">
+        <div class="card card-style1 border-0">
+          <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+            <div class="row align-items-center">
+              <div class="col-lg-12 px-xl-10">
+                <div class="py-1-9 px-1-9 px-sm-12 mb-1-9 rounded" style="background-color: #334CFF">
+                  <h1 class="h2 text-white mb-0 text-center"><b>{{authService.isAdmin() ? "Bonjour Monsieur "+authService.loggedUser+". Cette page est dédiée aux clients." : "Bienvenue "+authService.loggedUser+" dans votre espace client."}}</b></h1>
+                </div>
+                <div *ngFor="let client of filteredClientsPar">
+                  <ul class="list-unstyled mb-1-9 text-center" *ngIf="authService.loggedUserUsername === client.numDossier">
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nom :</span><span class="colStyle"> <b><i> {{client.nom | uppercase}}</i></b></span></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Prénom(s) :</span><span class="colStyle"> <b><i> {{client.prenom}}</i></b></span></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Inscription sur la plateforme PS : </span><span class="colStyle"> <b><i> {{client.inscription}}</i></b></span></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Formulation des voeux sur la plateforme PS : </span><span class="colStyle"> <b><i> {{client.formulation}}</i></b></span></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Confirmation des voeux sur la plateforme PS : </span><span class="colStyle"> <b><i> {{client.confirmation}}</i></b></span></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nombre d'Attente :</span><span style="font-size: 18px; color: #ceaa4d"><b><i> {{client.attente}}</i></b></span></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nombre de Refus :</span><span style="font-size: 18px; color: red"><b><i> {{client.refus}}</i></b></span></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nombre d'Acceptation :</span><span style="font-size: 18px; color: #5cb85c"><b><i> {{client.accepte}}</i></b></span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
+<router-outlet></router-outlet>

@@ -58,7 +58,6 @@ export class ComptabiliteComponent implements OnInit {
     else {
       // @ts-ignore
       this.filteredClients = this.clients.filter(client => client.year.idYear === this.selectedYear.idYear);
-      console.log("Bonjour Clients : "+this.filteredClients)
       // @ts-ignore
       this.filteredClientsPar = this.clientsPar.filter(clientPar => clientPar.year.idYear === this.selectedYear.idYear);
       //console.log("Bonjour Clients Par: "+this.filteredClientsPar)

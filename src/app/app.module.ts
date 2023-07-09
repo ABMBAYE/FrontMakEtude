@@ -34,6 +34,7 @@ import { AddUtilisateurComponent } from './utilisateur/add-utilisateur/add-utili
 import { UpdateUtilisateurComponent } from './utilisateur/update-utilisateur/update-utilisateur.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DetailsComponent } from './details/details.component';
+import { InfosclientparComponent } from './infosclientpar/infosclientpar.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { DetailsComponent } from './details/details.component';
     AddUtilisateurComponent,
     UpdateUtilisateurComponent,
     ProfileComponent,
-    DetailsComponent
+    DetailsComponent,
+    InfosclientparComponent
   ],
   imports: [
     BrowserModule,

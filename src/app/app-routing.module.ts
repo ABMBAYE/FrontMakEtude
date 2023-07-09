@@ -26,6 +26,7 @@ import {UpdateUtilisateurComponent} from "./utilisateur/update-utilisateur/updat
 import {MaketudeGuard} from "./maketude.guard";
 import {ProfileComponent} from "./profile/profile.component";
 import {DetailsComponent} from "./details/details.component";
+import {InfosclientparComponent} from "./infosclientpar/infosclientpar.component";
 
 const routes: Routes = [
   {path: "clients", component : ClientsComponent, canActivate:[MaketudeGuard]},
@@ -59,6 +60,7 @@ const routes: Routes = [
   {path: "comptaPS", component : ComptaPSComponent, canActivate:[MaketudeGuard]},
 
   {path: "infosclient", component : InfosclientComponent},
+  {path: "infosclientpar", component : InfosclientparComponent},
 
   {path: "utilisateurs", component : UtilisateurComponent, canActivate:[MaketudeGuard]},
   {path: "addUtilisateur", component : AddUtilisateurComponent, canActivate:[MaketudeGuard]},

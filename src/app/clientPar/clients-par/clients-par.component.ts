@@ -6,7 +6,6 @@ import {YearService} from "../../service/year.service";
 import {AuthentificationService} from "../../service/authentification.service";
 import {Gerant} from "../../model/gerant.model";
 import {GerantService} from "../../service/gerant.service";
-import {Client} from "../../model/client.model";
 
 @Component({
   selector: 'app-clients-par',
@@ -19,7 +18,6 @@ export class ClientsParComponent implements OnInit {
   selectedYear: string = 'All Rentrées';
   years! : Year[];
   gerants! : Gerant[];
-  searchTerm!: string;
 
   constructor(private clientService : ClientParService, public authService : AuthentificationService,
               private gerantService : GerantService, public yearService : YearService) { }

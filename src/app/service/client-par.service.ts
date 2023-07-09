@@ -5,6 +5,7 @@ import { ClientPar } from '../model/clientpar.model';
 import { Observable } from 'rxjs';
 import {FormGroup} from "@angular/forms";
 import {Client} from "../model/client.model";
+import {User} from "../model/user.model";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

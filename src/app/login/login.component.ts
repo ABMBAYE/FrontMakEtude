@@ -10,9 +10,9 @@ import { AuthentificationService } from '../service/authentification.service';
 })
 export class LoginComponent implements OnInit {
   user = new User();
-  erreur=0;
+  erreur = 0;
 
-  constructor(private authService : AuthentificationService, private router: Router) { }
+  constructor(private authService : AuthentificationService, private router : Router) { }
   ngOnInit(): void {
   }
 
@@ -25,15 +25,17 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['accueil']);
     }
     else if(isValidUser && isValidEtudiant){
-      this.router.navigate(['infosclient']);
+      if(this.authService.isCF()){
+        this.router.navigate(['infosclient']);
+      }else if(this.authService.isPS()){
+        this.router.navigate(['infosclientpar']);
+      }
     }
     else
-      //alert('Login ou mot de passe incorrecte!');
       this.erreur = 1;
   }
 
   onLogout(){
     this.authService.logout();
   }
-
 }
