@@ -42,7 +42,7 @@
 
                         <div class="col-md-6">
                             <label>Nom</label>
-                            <input type="text" [(ngModel)]="newClient.nom" formControlName="nom" class="form-control"
+                            <input type="text" [(ngModel)]="newClient.nom" (input)="convertToUppercase($event)" formControlName="nom" class="form-control"
                                 placeholder="Nom" [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }" />
                             <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
                                 <div *ngIf="f['nom'].errors?.['required'] || f['nom'].errors?.['null']"

@@ -32,7 +32,7 @@
                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Le dossier est-il soumis ? </span><span class="colStyle"> <b><i> {{client.soumis}}</i></b></span></li>
                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Paiement pour CF est-il validé ? </span><span class="colStyle"> <b><i> {{client.paiement}}</i></b></span></li>
                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Date d'Entretien : </span><span class="colStyle"> <b><i> {{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</i></b></span></li>
-                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nombre de Refus :</span><span style="font-size: 18px; color: red"><b><i> {{client.refus}}</i></b></span></li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nombre de Refus :</span><span style="font-size: 18px; color: red"><b><i> {{client.refus}}</i></b></span><a routerLink="years"> Détails</a> </li>
                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Nombre d'Acceptation :</span><span style="font-size: 18px; color: #5cb85c"><b><i> {{client.acceptation}}</i></b></span></li>
                   </ul>
                 </div>

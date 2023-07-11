@@ -102,4 +102,7 @@ export class UpdateClientParComponent implements OnInit {
       });
     }
   }
+  convertToUppercase(event: any) {
+    this.currentClient.nom = event.target.value.toUpperCase();
+  }
 }

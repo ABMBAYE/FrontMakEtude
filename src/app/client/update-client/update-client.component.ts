@@ -102,4 +102,8 @@ chargerGerants(){
       });
     }
   }
+
+  convertToUppercase(event: any) {
+    this.currentClient.nom = event.target.value.toUpperCase();
+  }
 }

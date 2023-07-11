@@ -40,7 +40,7 @@
 
                         <div class="col-md-6">
                             <label>Nom</label>
-                            <input type="text" [(ngModel)]="currentClient.nom" formControlName="nom"
+                            <input type="text" [(ngModel)]="currentClient.nom" (input)="convertToUppercase($event)" formControlName="nom"
                                 class="form-control" placeholder="Nom"
                                 [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }" />
                             <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
@@ -131,8 +131,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>Date d'Entretien</label>
-                            <input type="date" [ngModel]="currentClient.dateEntretien" (ngModelChange)="currentClient.dateEntretien= $event"
-                                   formControlName="dateEntretien" class="form-control"/>
+                            <input type="date" [ngModel]="currentClient.dateEntretien | date: 'yyyy-MM-dd'" (ngModelChange)="currentClient.dateEntretien= $event"
+                                   name="dateEntretien" class="form-control"/>
                         </div>
                         <div class="col-md-6">
                             <label>Entretien</label>
@@ -147,19 +147,6 @@
                         </div>
                     </div>
                     <br />
-                  <div class="row">
-                    <div class="col-md-12">
-                      <label>Reliquat</label>
-                      <select class="col-md-6" [(ngModel)]="currentClient.reliquat" formControlName="reliquat"
-                              [ngClass]="{ 'is-invalid': submitted && f['soumis'].errors }" class="form-control">
-                        <option *ngFor="let s of listBol" [value]="s.boolValue">{{s.boolValue}}</option>
-                      </select>
-                      <div *ngIf="submitted && f['reliquat'].errors" class="invalid-feedback">
-                        <div *ngIf="f['reliquat'].errors?.['required']" style="color: bisque;"><strong>Champ
-                          obligatoire.</strong></div>
-                      </div>
-                    </div>
-                  </div>
                   <br />
                     <div class="row">
                         <div class="col-md-4">

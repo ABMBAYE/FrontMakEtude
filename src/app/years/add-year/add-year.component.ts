@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Client} from "../../model/client.model";
 import {Year} from "../../model/year.model";
-import {ClientService} from "../../service/client.service";
 import {Router} from "@angular/router";
-import {FormBuilder} from "@angular/forms";
 import {YearService} from "../../service/year.service";
 
 @Component({

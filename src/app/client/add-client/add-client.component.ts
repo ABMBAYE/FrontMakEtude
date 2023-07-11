@@ -121,4 +121,8 @@ chargerGerants(){
     client.acceptation = 0;
     client.refus = 0;
   }
+
+  convertToUppercase(event: any) {
+    this.newClient.nom = event.target.value.toUpperCase();
+  }
 }

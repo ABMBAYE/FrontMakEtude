@@ -55,11 +55,14 @@ export class ClientsComponent implements OnInit {
     });
   }
   supprimerClient(client : Client) {
+    let conf = confirm("Etes-vous sûr ?");
+
+    if(conf){
       this.clientService.supprimerClient(client.idClient).subscribe(() => {
         this.chargerClients();
         this.router.navigate(['clients']);
-        //window.location.reload();
       });
+    }
   }
   filterClientsByYear() {
     if (this.selectedYear === 'All Rentrées') {

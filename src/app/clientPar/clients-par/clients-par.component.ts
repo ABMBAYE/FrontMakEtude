@@ -6,6 +6,7 @@ import {YearService} from "../../service/year.service";
 import {AuthentificationService} from "../../service/authentification.service";
 import {Gerant} from "../../model/gerant.model";
 import {GerantService} from "../../service/gerant.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-clients-par',
@@ -20,7 +21,7 @@ export class ClientsParComponent implements OnInit {
   gerants! : Gerant[];
 
   constructor(private clientService : ClientParService, public authService : AuthentificationService,
-              private gerantService : GerantService, public yearService : YearService) { }
+              private gerantService : GerantService, public yearService : YearService, private router : Router) { }
 
   ngOnInit(): void {
     this.chargerClientsPar();
@@ -41,18 +42,18 @@ export class ClientsParComponent implements OnInit {
       this.years = year;
     });
   }
-
   chargerGerants(){
     this.gerantService.listeGerants().subscribe(gerant => {
       this.gerants = gerant;
     });
   }
-
   supprimerClientPar(client : ClientPar) {
+    if(confirm("Etes-vous sûr ?")){
       this.clientService.supprimerClientPar(client.idClientPar).subscribe(() => {
         this.chargerClientsPar();
-        window.location.reload();
+        this.router.navigate(['clientsPar']);
       });
+    }
   }
   filterClientsParByYear() {
     if (this.selectedYear === 'All Rentrée') {

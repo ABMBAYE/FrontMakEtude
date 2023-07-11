@@ -99,7 +99,7 @@
           <td>{{client.paiement | titlecase}}</td>
           <td>{{client.dateEntretien ? (client.dateEntretien | date:'d MMMM yyyy':'fr') : '-'}}</td>
           <td>{{client.entretien | titlecase}}</td>
-          <td [ngStyle]="{ color: '#3FCB2C'}"><strong><a style="color: #3FCB2C" routerLink="/years">{{client.acceptation}}/7</a></strong></td>
+          <td [ngStyle]="{ color: '#3FCB2C'}"><strong><a style="color: #3FCB2C">{{client.acceptation}}/7</a></strong></td>
           <td [ngStyle]="{ color: '#E0322A'}"><strong>{{client.refus}}/7</strong></td>
           <td>{{client.reliquat}}</td>
           <td class="text-center">
@@ -107,11 +107,14 @@
                style="color: #435d7d;" class="edit" title="Edit" data-toggle="tooltip">
               <i class="material-icons">&#xE254;</i>
             </a>
-            <a type="button" href="#myModal1" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
-               data-toggle="modal">
+            <a *ngIf="authService.isAdmin()" routerLink="/" (click)="supprimerClient(client)" style="color: red;" class="delete" title="Delete">
               <i class="material-icons">&#xE5C9;</i>
             </a>
-            <div id="myModal1" class="modal fade">
+            <!--<a type="button" href="#myModal1" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
+               data-toggle="modal">
+              <i class="material-icons">&#xE5C9;</i>
+            </a>-->
+            <!--<div id="myModal1" class="modal fade">
               <div class="modal-dialog modal-confirm">
                 <div class="modal-content">
                   <div class="modal-header flex-column">
@@ -131,7 +134,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div>-->
           </td>
         </tr>
         </tbody>

@@ -122,7 +122,10 @@
              style="color: #334CFF;" class="edit" title="Edit" data-toggle="tooltip">
             <i class="material-icons">&#xE254;</i>
           </a>
-          <a type="button" href="#myModal" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
+          <a *ngIf="authService.isAdmin()" routerLink="/" (click)="supprimerClientPar(client)" style="color: red;" class="delete" title="Delete">
+            <i class="material-icons">&#xE5C9;</i>
+          </a>
+          <!--<a type="button" href="#myModal" *ngIf="authService.isAdmin()" style="color: red;" class="trigger-btn"
              data-toggle="modal">
             <i class="material-icons">&#xE5C9;</i>
           </a>
@@ -146,7 +149,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>-->
         </td>
       </tr>
       </tbody>

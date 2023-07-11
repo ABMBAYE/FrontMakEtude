@@ -115,5 +115,7 @@ export class AddClientParComponent implements OnInit {
     client.refus = 0;
     client.accepte = 0;
   }
-
+  convertToUppercase(event: any) {
+    this.newClientPar.nom = event.target.value.toUpperCase();
+  }
 }
